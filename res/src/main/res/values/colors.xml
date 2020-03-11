@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#3d3d3d</color>
+    <color name="colorPrimary">#03a9f4</color>
+    <color name="colorPrimaryDark">#03a9f4</color>
+
+    <color name="default_bg">#f5f5f5</color>
+    <color name="default_blue_dark">#0288d1</color>
+    <color name="default_blue_light">#039be5</color>
+    <color name="default_disable">#d9d9d9</color>
+    <color name="default_divider">#d4d4d4</color>
+    <color name="default_purple">#d500f9</color>
+    <color name="default_yellow2">#F98B02</color>
+
+    <color name="text_dark">#999999</color>
+    <color name="text_light_dark">#333333</color>
+    <color name="text_normal">#666666</color>
+    <color name="transparent">#00000000</color>
+
+
+
+    <color name="colorGray">#ccc</color>
+    <color name="default_black">#333333</color>
+    <color name="default_black2">#282C2F</color>
+    <color name="default_bac">#F7F9F9</color>
+    <color name="default_black_s">#CC000000</color>
+    <color name="default_blue">#007AFF</color>
+    <color name="default_blue2">#7EBCFF</color>
+    <color name="default_blue_pop">#007AFF</color>
+    <color name="default_blue_transparent">#E6007AFF</color>
+    <color name="default_gray">#999999</color>
+    <color name="default_gray2">#9B9B9B</color>
+    <color name="default_gray3">#9B9B9B</color>
+    <color name="default_gray_trans">#40000000</color>
+    <color name="default_gray_trans_">#F0F0F7</color>
+    <color name="default_gray_light">#eeeeee</color>
+    <color name="default_gray_light_d">#DDDDDD</color>
+    <color name="default_white">#FFFFFF</color>
+    <color name="default_white_home">#FFFFFF</color>
+    <color name="default_grey_white">#F2F2FB</color>
+    <color name="default_red">#F00</color>
+    <color name="default_red2">#F43A62</color>
+    <color name="default_fire">#FC3438</color>
+    <color name="default_fire2">#FC2D31</color>
+    <color name="default_cyan">#8F99B5</color>
+    <color name="default_cyan2">#444D64</color>
+    <color name="default_yellow">#FFc600</color>
+    <color name="default_dark_yellow">#B67500</color>
+    <color name="default_yellow_light">#FF9a00</color>
+    <color name="default_yellow_light_home">#FF9a00</color>
+    <color name="default_yellow_light_height">#FF5900</color>
+    <color name="default_orange">#FA540B</color>
+    <color name="default_yellow_gray">#D2B27F</color>
+    <color name="default_gold_light">#E9CEA4</color>
+    <color name="default_gold">#E8952E</color>
+    <color name="default_devider_color">#eeeeee</color>
+    <color name="default_green">#00A600</color>
+    <color name="default_green2">#39BB55</color>
+    <color name="default_green3">#FF00965F</color>
+
+    <color name="bg_keyborad_color_normal">#fff</color>
+    <color name="bg_keyborad_color_press">#bfbfbf</color>
+    <color name="keyborad_line_color">#bfbfbf</color>
+    <color name="btnnormal">#108EE9</color>
+
+
+
+
+</resources>

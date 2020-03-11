@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="MatchWrap.Ripple">
+        <item name="android:paddingStart">@dimen/default_start</item>
+        <item name="android:paddingEnd">@dimen/default_end</item>
+        <item name="android:textColor">@color/default_black</item>
+        <item name="android:gravity">center_vertical</item>
+        <!-- 点击的时候有波纹效果,类似微信条目点击  -->
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--UI-->
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_7">7dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_9">9dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_11">11dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_13">13dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_35">35dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
+
+    <!--Font-->
+    <dimen name="sp_10">10sp</dimen>
+    <dimen name="sp_11">11sp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_17">17sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_21">21sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_30">30sp</dimen>
+
+
+
+    <dimen name="default_status_bar_height">0dp</dimen>
+    <dimen name="default_divider_height">1px</dimen>
+    <dimen name="default_divider_width">1px</dimen>
+    <dimen name="default_header_bar_height">@dimen/dp_50</dimen>
+    <dimen name="default_icon_height">@dimen/dp_60</dimen>
+    <dimen name="default_icon_width">@dimen/dp_60</dimen>
+    <dimen name="default_margin">@dimen/dp_15</dimen>
+    <dimen name="default_margin_middle">@dimen/dp_10</dimen>
+    <dimen name="default_margin_small">@dimen/dp_5</dimen>
+    <dimen name="default_padding">@dimen/dp_15</dimen>
+    <dimen name="default_padding_middle">@dimen/dp_10</dimen>
+    <dimen name="default_padding_small">@dimen/dp_5</dimen>
+    <dimen name="default_radius">@dimen/dp_6</dimen>
+    <dimen name="default_border_size">1px</dimen>
+    <dimen name="default_divider">@dimen/dp_1</dimen>
+    <dimen name="default_start">@dimen/dp_15</dimen>
+    <dimen name="default_end">@dimen/dp_15</dimen>
+    <dimen name="default_top">@dimen/dp_15</dimen>
+    <dimen name="default_btm">@dimen/dp_15</dimen>
+
+    <dimen name="default_text_small">@dimen/sp_12</dimen>
+    <dimen name="default_text_middle">@dimen/sp_14</dimen>
+    <dimen name="default_text_big">@dimen/sp_16</dimen>
+    <dimen name="default_text_large">@dimen/sp_18</dimen>
+    <dimen name="default_text_xlarge">@dimen/sp_20</dimen>
+
+    <dimen name="default_text_title">@dimen/default_text_big</dimen>
+    <dimen name="default_text_item_title">@dimen/default_text_big</dimen>
+    <dimen name="default_text_item_subtitle">@dimen/default_text_middle</dimen>
+    <dimen name="default_text_item_desc">@dimen/default_text_small</dimen>
+    <dimen name="default_text_item_label">@dimen/default_text_middle</dimen>
+
+
+
+</resources>

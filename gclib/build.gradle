@@ -1,0 +1,102 @@
+apply plugin: "com.android.library"
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+//apply plugin: 'kotlin-kapt'
+
+
+//作为module的通用配置
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        //testInstrumentationRunner "android.test.runner.AndroidJUnitRunner"
+        //consumerProguardFiles 'consumer-rules.pro'
+        testInstrumentationRunner "android.test.runner.AndroidJUnitRunner"
+
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+
+}
+
+
+/*configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:26.1.0'
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '28.0.0'
+            }
+        }
+    }
+}*/
+
+
+
+dependencies {
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //testImplementation 'junit:junit:4.12'
+    //androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    //androidTestImplementation 'android.test.espresso:espresso-core:3.1.0'
+
+    def dp = rootProject.ext.dependencies
+    api dp["appcompat-v7"]
+    implementation dp["kotlin_jdk"]
+
+    api dp["recyclerview-v7"]
+    api dp["BaseRecyclerViewAdapterHelper"]
+    api dp["design"]
+    api dp["anko"]
+
+    api dp["rxandroid"]
+    api dp["rxjava"]
+    api dp["rxpermissions"]
+    api dp["rxkotlin"]
+
+    api dp["rxlifecycle"]
+    api dp["zh-rxlifecycle-compat"]
+    api dp["zh-rxlifecycle"]
+
+
+    api dp["rxrelay"]
+
+    api dp["guava"]
+    api dp["retrofit"]
+    api dp["retrofit-converter-gson"]
+    api dp["retrofit-converter-jackson"]
+    api dp["retrofit-adapter-rxjava2"]
+
+    api dp["glide"]
+    api dp["glide-transformations"]
+    api dp["multidex"]
+    api dp["utilcode"]
+
+    api dp["xlog"]
+
+    api project(":res")
+
+}

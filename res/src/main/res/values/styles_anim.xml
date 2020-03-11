@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    向下展开,向上收起-->
+    <style name="TranslatePopShowBottom">
+        <item name="android:windowEnterAnimation">@anim/from_top_2_bottom</item>
+        <item name="android:windowExitAnimation">@anim/from_bottom_2_top</item>
+    </style>
+    <!--    向上展开,向下收起-->
+    <style name="TranslatePopShowTop">
+        <item name="android:windowEnterAnimation">@anim/from_bottom_2_top2</item>
+        <item name="android:windowExitAnimation">@anim/from_top_2_bottom2</item>
+    </style>
+</resources>

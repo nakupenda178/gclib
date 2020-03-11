@@ -1,0 +1,143 @@
+/*
+第三方库的版本管理
+*/
+
+ext {
+
+    kotlin_version = '1.3.50'
+
+    android = [compileSdkVersion: 27,
+               buildToolsVersion: '29.0.2',
+               package          : "com.github.guqt178",
+               minSdkVersion    : 19,
+               targetSdkVersion : 27,
+               versionCode      : 1,
+               versionName      : "1.0.0",
+    ]
+
+
+    dependVersion = [support                      : "27.1.1",
+                     retrofit                     : "2.4.0",
+                     okhttp                       : "3.10.0",
+                     dagger2                      : "2.15",
+                     butterknife                  : "8.8.1",
+                     blockcanary                  : "1.2.1",
+                     leakcanary                   : "1.5.4",
+                     materialDialogsVersion       : "0.8.5.6@aar",
+                     anko_version                 : "0.10.8",
+                     rxKotlin_version             : "2.4.0",
+                     rxandroid                    : "2.0.2",
+                     rxpermission                 : "0.9.5@aar",
+                     rxlifecycle                  : "3.1.0",
+                     android_support_version      : "26.1.0",
+                     glide_version                : "4.9.0",
+                     take_photo_version           : "4.0.3",
+                     multi_state_view_version     : '1.3.2',
+                     arouter_api_version          : '1.4.0',
+                     arouter_compiler_version     : '1.2.1',
+                     baseRecyclerViewAdapterHelper: '2.9.30',
+                     banner                       : '1.4.10',
+                     rxbinding3                   : '3.1.0',
+                     agentWeb                     : '4.0.2',
+                     photo_view                   : '2.3.0'
+    ]
+
+
+    dependencies = [//base
+                    "appcompat-v7"                 : "com.android.support:appcompat-v7:${dependVersion.support}",
+                    "support-v4"                   : "com.android.support:support-v4:${dependVersion.support}",
+                    "cardview-v7"                  : "com.android.support:cardview-v7:${dependVersion.support}",
+                    "recyclerview-v7"              : "com.android.support:recyclerview-v7:${dependVersion.support}",
+                    "design"                       : "com.android.support:design:${dependVersion.support}",
+
+                    //ui
+                    "anko"                         : "org.jetbrains.anko:anko:${dependVersion.anko_version}",
+
+                    "material-calendarview"        : "com.prolificinteractive:material-calendarview:1.4.0",
+                    "materialsearchview"           : "com.miguelcatalan:materialsearchview:1.4.0",
+                    "multiline-collapsingtoolbar"  : "net.opacapp:multiline-collapsingtoolbar:1.3.1",
+                    "html-textview"                : "org.sufficientlysecure:html-textview:3.1",
+                    "navigation-bar"               : "com.ashokvarma.android:bottom-navigation-bar:2.0.2",
+                    "banner"                       : "com.youth.banner:banner:${dependVersion.banner}",
+                    "pickerview"                   : "com.contrarywind:Android-PickerView:4.1.4",
+
+                    "switchbutton"                 : "ch.ielse:switchbutton:1.0.1",
+                    "material-dialogs"             : "com.github.afollestad.material-dialogs:core:${dependVersion.materialDialogsVersion}",
+                    "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:${dependVersion.baseRecyclerViewAdapterHelper}",
+                    "kprogresshud"                 : "com.kaopiz:kprogresshud:1.1.0",
+                    "smartRefresh"                 : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-12",
+                    "smartRefreshHeader"           : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-12",
+                    "luban"                        : "top.zibin:Luban:1.1.8",
+                    "SwipeLayout"                  : "com.github.ArmanSar:SwipeLayout:1.0.8",
+                    "MultiFlowLayout"              : "com.github.AnJiaoDe:MultiFlowLayout:V1.1.2",
+                    //char
+                    "MPChart"                      : "com.github.PhilJay:MPAndroidChart:v3.0.3",
+                    //rx
+                    "rxkotlin"                     : "io.reactivex.rxjava2:rxkotlin:$dependVersion.rxKotlin_version",
+                    "rxjava"                       : "io.reactivex.rxjava2:rxjava:2.2.15",
+                    "rxandroid"                    : "io.reactivex.rxjava2:rxandroid:2.1.1",
+
+                    "rxpermissions"                : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3",
+
+                    "zh-rxlifecycle-compat"        : "com.github.nekocode.rxlifecycle:rxlifecycle-compact:2.0",
+                    "zh-rxlifecycle"               : "com.github.nekocode.rxlifecycle:rxlifecycle:2.0",
+
+                    "rxlifecycle"                  : "com.trello.rxlifecycle3:rxlifecycle:${dependVersion.rxlifecycle}",
+                    "rxlifecycle-life"             : "com.trello.rxlifecycle3:rxlifecycle-android:${dependVersion.rxlifecycle}",
+                    "rxlifecycle-life-kotlin"      : "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:${dependVersion.rxlifecycle}",
+                    "rxlifecycle_components"       : "com.trello.rxlifecycle3:rxlifecycle-components:${dependVersion.rxlifecycle}",
+
+                    "rxrelay"                      : "com.jakewharton.rxrelay2:rxrelay:2.1.1",
+                    "rxbinding3"                   : "com.jakewharton.rxbinding3:rxbinding:${dependVersion.rxbinding3}",
+                    "rxbinding3_material"          : "com.jakewharton.rxbinding3:rxbinding-material:${dependVersion.rxbinding3}",
+                    "leak"                         : 'com.squareup.leakcanary:leakcanary-android:2.0',
+
+                    "guava"                        : "com.google.guava:guava:26.0-android",
+                    "google"                       : "com.google.guava:guava:21.0",
+                    "kotlin_bus"                   : "com.eightbitlab:rxbus:1.0.2",
+
+                    //network
+                    "retrofit"                     : "com.squareup.retrofit2:retrofit:${dependVersion.retrofit}",
+                    "retrofit-converter-gson"      : "com.squareup.retrofit2:converter-gson:${dependVersion.retrofit}",
+                    "retrofit-converter-jackson"   : "com.squareup.retrofit2:converter-jackson:${dependVersion.retrofit}",
+                    "retrofit-adapter-rxjava2"     : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
+
+                    "gson"                         : "com.google.code.gson:gson:2.7",
+                    "okhttp"                       : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
+                    "okhttp-logging-interceptor"   : "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",
+                    "jackson_converter_kotlin"     : "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.1",
+                    "jackson_converter"            : "com.squareup.retrofit2:converter-jackson:2.5.0",
+
+                    //pic
+                    "matisse"                      : "com.zhihu.android:matisse:0.5.1",
+                    "glide-transformations"        : "jp.wasabeef:glide-transformations:1.2.1",
+                    "glide"                        : "com.github.bumptech.glide:glide:${dependVersion.glide_version}",
+                    "glide-okhttp3-integration"    : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
+                    //di
+                    "dagger"                       : "com.google.dagger:dagger:${dependVersion.dagger2}",
+                    "dagger-compiler"              : "com.google.dagger:dagger-compiler:${dependVersion.dagger2}",
+                    "annotation"                   : "org.glassfish:javax.annotation:10.0-b28",
+
+                    "arouter"                      : "com.alibaba:arouter-api:${dependVersion.arouter_api_version}",
+                    "arouter_compiler"             : "com.alibaba:arouter-compiler:${dependVersion.arouter_compiler_version}",
+                    "multidex"                     : "com.android.support:multidex:1.0.3",
+
+
+                    //logger
+                    "logger"                       : "com.orhanobut:logger:2.2.0",
+                    "xlog"                         : "com.elvishew:xlog:1.6.1",
+                    //animation
+                    "nineold_android"              : 'com.nineoldandroids:library:2.4.0',
+                    //util
+                    // if u use AndroidX, use the following
+                    "utilcode"                     : 'com.blankj:utilcode:1.25.9',
+                    "utilcode_x"                   : 'com.blankj:utilcodex:1.25.9',
+
+                    //third
+                    "badgeview"                    : "q.rorbin:badgeview:1.1.3",
+                    //popwindow
+                    "base_popup"                   : "com.github.razerdp:BasePopup:2.2.1",
+                    "base_popup_support"           : "com.github.razerdp:BasePopup-compat-support:2.2.1",
+                    "kotlin_jdk"                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41"
+    ]
+}
