@@ -3,7 +3,7 @@ apply from: "../../config.gradle"
 dependencies {
     def dp = rootProject.ext.dependencies
 
-    api project(":libs:res")
+    api project(":modules:res")
 
     api dp["recyclerview-v7"]
     api dp["BaseRecyclerViewAdapterHelper"]
