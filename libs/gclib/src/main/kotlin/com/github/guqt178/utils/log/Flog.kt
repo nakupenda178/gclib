@@ -6,7 +6,7 @@ import android.util.Log
  * 日志打印类，对打印日志进行封装，方便根据日志定位问题
  * 这个类会打印调用路径
  */
-object FLog {
+object Flog {
     private const val START_STACK_INDEX = 4
     private const val PRINT_STACK_COUTN = 2
     private var logCallback: IFLogLogCallback? = null

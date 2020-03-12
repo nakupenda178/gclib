@@ -56,13 +56,13 @@ import java.io.File;
  *</p>
  */
 
-public class DownloadUtils {
+public class DownloadApkUtils {
     private DownloadManager mDownloadManager;
     private Context mContext;
     private long downloadId;
     private String apkName;
 
-    public DownloadUtils(Context context) {
+    public DownloadApkUtils(Context context) {
         mContext = context;
     }
 

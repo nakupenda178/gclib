@@ -22,11 +22,11 @@
 
 
     <external-path
-        name="jcamera_media_path"
-        path="media/" />
+        name="my_media_path"
+        path="download/" />
     <external-files-path
-        name="jcamera_media_external_path"
-        path="media/" />
+        name="my_media_external_path"
+        path="download/" />
 
 
 </paths>

@@ -1,4 +1,4 @@
-package com.github.guqt178.utils;
+package com.github.guqt178.utils.keyboard;
 
 import android.content.Context;
 import android.graphics.Rect;

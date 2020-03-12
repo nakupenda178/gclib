@@ -16,6 +16,7 @@ internal class LoggerImpl(
     config: LogConfiguration? = null,
     printers: Array<Printer>? = null
 ) : ILogger {
+    private var mTag = M_TAG_NAME
 
     private var isDebug = true
     private var mConfig: LogConfiguration? = null
@@ -28,6 +29,13 @@ internal class LoggerImpl(
     }
 
     init {
+        doInit(config, printers)
+    }
+
+    private fun doInit(
+        config: LogConfiguration? = null,
+        printers: Array<Printer>? = null
+    ) {
         mConfig = config ?: defaultConfig()
         if (!printers.isNullOrEmpty()) {
             mPrinters = printers
@@ -74,21 +82,27 @@ internal class LoggerImpl(
     }
 
     companion object {
-        private var M_TAG = "ALOG"
+        private var M_TAG_NAME = "ALOG"
     }
 
     override fun tag(tag: String) {
-        M_TAG = tag
+        mTag = tag
+        doInit()
     }
 
-    override fun getTag(): String = M_TAG
+    fun resetTag() {
+        mTag = M_TAG_NAME
+        doInit()
+    }
+
+    override fun getTag(): String = mTag
 
     private fun defaultPrinter() = AndroidPrinter()
 
     private fun defaultFilePrinter() =
         FilePrinter.Builder(// Printer that print the log to the file system
-            File(Environment.getExternalStorageDirectory(), "ALggerExample").path
-        )            // Specify the path to save log file
+                File(Environment.getExternalStorageDirectory(), "ALggerExample").path
+            )            // Specify the path to save log file
             .fileNameGenerator(
                 DateFileNameGenerator()
             )        // Default: ChangelessFileNameGenerator("log")
@@ -104,10 +118,10 @@ internal class LoggerImpl(
             else
                 LogLevel.NONE
         )
-        .tag(M_TAG)                   // Specify TAG, default: "X-LOG"
+        .tag(mTag)                   // Specify TAG, default: "X-LOG"
+        .nb()
         // .t()                                                // Enable thread info, disabled by default
-        // .st(2)                                              // Enable stack trace info with depth 2, disabled by default
-        //.b()
+         //.st(2)                                              // Enable stack trace info with depth 2, disabled by default
         // Enable border, disabled by default
         // .jsonFormatter(new MyJsonFormatter())               // Default: DefaultJsonFormatter
         // .xmlFormatter(new MyXmlFormatter())                 // Default: DefaultXmlFormatter

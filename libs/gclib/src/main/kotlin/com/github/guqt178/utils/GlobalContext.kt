@@ -4,17 +4,20 @@ import android.app.Application
 import android.content.Context
 
 /**
- * 快捷方式获取application
+ * 快捷方式获取application,建议在Application中初始化
  *
  */
 class GlobalContext {
 
-    companion object{
-        lateinit var context: Application
+    companion object {
+        private var context: Application? = null
 
         @JvmStatic
-        fun init(app: Application){
+        fun init(app: Application) {
             context = app
         }
+
+        fun getContext() = context
+                ?: throw IllegalAccessException("invoke init in application first!!")
     }
 }

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 /**
  * 新建一个线程运行任务
  */
-fun execute(t: () -> Unit) {
+fun newThread(t: () -> Unit) {
     val namedThreadFactory = ThreadFactoryBuilder()
         .setNameFormat("my-thread-pool-%d").build()
     val singleThreadPool = ThreadPoolExecutor(

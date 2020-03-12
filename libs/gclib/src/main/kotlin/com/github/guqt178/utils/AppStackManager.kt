@@ -7,7 +7,8 @@ import android.content.Context
 import java.util.*
 
 /**
- * @author Dsh  on 2018/5/8.
+ * @author gc  on 2018/5/8.
+ * activity回退栈管理
  */
 class AppStackManager private constructor() {
 

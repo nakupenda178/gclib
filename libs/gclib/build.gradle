@@ -16,6 +16,9 @@ dependencies {
     api dp["rxkotlin"]
 
     api dp["rxlifecycle"]
+    api dp["rxlifecycle-life"]
+    api dp["rxlifecycle_components"]
+
     api dp["zh-rxlifecycle-compat"]
     api dp["zh-rxlifecycle"]
 

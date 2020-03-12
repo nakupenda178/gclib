@@ -1,4 +1,4 @@
-package com.moerlong.provider.utils;
+package com.github.guqt178.widgets.recyclerview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

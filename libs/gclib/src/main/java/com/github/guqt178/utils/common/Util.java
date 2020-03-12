@@ -1,4 +1,4 @@
-package com.moerlong.baselibrary.utils;
+package com.github.guqt178.utils.common;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -229,15 +229,13 @@ public class Util {
      * @param onComplete
      * @return
      */
-    public static Disposable countDown(LifecycleProvider<FragmentEvent> life,
-                                       long total,
+    public static Disposable countDown(long total,
                                        Consumer<Long> onNext,
                                        Action onComplete) {
         return Observable.interval(0, 1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .take(total + 1)
                 .map((time) -> total - time)
-                .compose(life.bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 //.doOnSubscribe((disposable) ->result = disposable )
                 .subscribe(
@@ -249,15 +247,13 @@ public class Util {
                 );
     }
 
-    public static Disposable countDown2(LifecycleProvider<ActivityEvent> life,
-                                        long total,
+    public static Disposable countDown2(long total,
                                         Consumer<Long> onNext,
                                         Action onComplete) {
         return Observable.interval(0, 1, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .take(total + 1)
                 .map((time) -> total - time)
-                .compose(life.bindToLifecycle())
                 .observeOn(AndroidSchedulers.mainThread())
                 //.doOnSubscribe((disposable) ->result = disposable )
                 .subscribe(

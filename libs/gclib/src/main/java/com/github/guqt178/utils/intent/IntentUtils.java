@@ -1,4 +1,4 @@
-package com.moerlong.baselibrary.utils;
+package com.github.guqt178.utils.intent;
 
 import android.app.Activity;
 import android.content.ComponentName;

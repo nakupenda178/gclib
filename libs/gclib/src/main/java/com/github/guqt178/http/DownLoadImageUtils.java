@@ -1,4 +1,4 @@
-package com.moerlong.baselibrary.utils.download;
+package com.github.guqt178.http;
 
 import android.os.AsyncTask;
 import android.os.Environment;
@@ -17,6 +17,7 @@ import java.util.Locale;
 
 /**
  * Copyright (c) 2017. alpha, Inc. All rights reserved.
+ * 下载图片工具类
  */
 public class DownLoadImageUtils {
 

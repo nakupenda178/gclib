@@ -6,7 +6,7 @@ import com.github.guqt178.utils.log.LoggerWrapper.Companion.logger
  * xLog
  * com.elvishew.xlog.XLog
  */
-object ALog {
+object Alog {
     fun wtf(msg: String, vararg format: Any) {
         logger!!.wtf(msg, *format)
     }

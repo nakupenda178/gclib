@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.app.library.utils;
+package com.github.guqt178.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -39,6 +39,8 @@ import android.util.Xml;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.github.guqt178.utils.file.FileUtils;
+
 import org.xmlpull.v1.XmlPullParser;
 
 import java.io.BufferedReader;
@@ -59,12 +61,13 @@ import java.util.regex.Pattern;
  * 名称：AbAppUtil.java
  * 描述：应用工具类.
  */
-public class AppUtils {
+@SuppressLint("MissingPermission")
+public class AppInfoUtils {
 
     public static List<String[]> mProcessList = null;
 
 
-    private AppUtils() {
+    private AppInfoUtils() {
         /* cannot be instantiated */
         throw new UnsupportedOperationException("cannot be instantiated");
     }
@@ -986,53 +989,6 @@ public class AppUtils {
         context.startActivity(new Intent(context.getPackageManager().getLaunchIntentForPackage(packagename)));
     }
 
-    /**
-     * 清除缓存
-     *
-     * @param context
-     */
-    public static void cleanCache(Context context) {
-        FileUtils.deleteFileByDirectory(context.getCacheDir());
-    }
-
-    /**
-     * 获取缓存大小
-     * @param context
-     * @return
-     * @throws Exception
-     */
-    public static String getTotalCacheSize(Context context)  {
-        long cacheSize = 0;
-        try {
-            cacheSize = FileUtils.getFolderSize(context.getCacheDir());
-            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                cacheSize += FileUtils.getFolderSize(context.getExternalCacheDir());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return FileUtils.getFormatSize(cacheSize);
-    }
-
-    /**
-     * 清除数据库
-     *
-     * @param context
-     */
-    public static void cleanDatabases(Context context) {
-        String filepath = String.format(String.format(context.getFilesDir().getParent() + File.separator + "%s", "databases"));
-        FileUtils.deleteFileByDirectory(new File(filepath));
-    }
-
-    /**
-     * 清除SharedPreference
-     *
-     * @param context
-     */
-    public static void cleanSharedPreference(Context context) {
-        String filepath = String.format(String.format(context.getFilesDir().getParent() + File.separator + "%s", "shared_prefs"));
-        FileUtils.deleteFileByDirectory(new File(filepath));
-    }
 
 
     /**

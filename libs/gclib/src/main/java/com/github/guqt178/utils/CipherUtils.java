@@ -1,5 +1,8 @@
-package com.moerlong.baselibrary.utils.download;
+package com.github.guqt178.utils;
 
+
+
+import com.github.guqt178.utils.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.Key;
