@@ -1,4 +1,4 @@
 rootProject.name='demo'
 include ':app'
-include ':gclib'
-include ':res'
+include ':libs:gclib'
+include ':libs:res'

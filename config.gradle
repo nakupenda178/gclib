@@ -26,7 +26,7 @@ android {
     }
 
     dexOptions {
-        javaMaxHeapSize "4g"
+        //javaMaxHeapSize "4g"
     }
 
     buildTypes {
@@ -48,6 +48,7 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            main.java.srcDirs += 'src/main/kotlin'
             manifest.srcFile 'src/main/AndroidManifest.xml'
         }
     }
@@ -69,14 +70,17 @@ android {
 
 
 dependencies {
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //testImplementation 'junit:junit:4.12'
-    //androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
     //androidTestImplementation 'android.test.espresso:espresso-core:3.1.0'
 
     def dp = rootProject.ext.dependencies
-    compileOnly dp["appcompat-v7"]
+    implementation dp["appcompat-v7"]
     implementation dp["kotlin_jdk"]
 
     //kapt dp["dagger-compiler"]

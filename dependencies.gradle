@@ -4,7 +4,7 @@
 
 ext {
 
-    kotlin_version = '1.3.50'
+    kotlin_version = '1.3.70'
 
     android = [compileSdkVersion: 27,
                buildToolsVersion: '29.0.2',
@@ -138,6 +138,6 @@ ext {
                     //popwindow
                     "base_popup"                   : "com.github.razerdp:BasePopup:2.2.1",
                     "base_popup_support"           : "com.github.razerdp:BasePopup-compat-support:2.2.1",
-                    "kotlin_jdk"                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.41"
+                    "kotlin_jdk"                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41"
     ]
 }

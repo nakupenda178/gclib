@@ -1,0 +1,29 @@
+apply from: "../../config.gradle"
+
+
+android {
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            //layout文件夹分类
+            res.srcDirs =
+                    [
+                            'src/main/res/layouts/widget',
+                            'src/main/res/layouts/dialog',
+                            'src/main/res/layouts/activity',
+                            'src/main/res/layouts/fragment',
+                            'src/main/res/layouts/common',
+                            'src/main/res/layouts/adapter',
+                            'src/main/res/layouts',
+                            'src/main/res'
+                    ]
+        }
+    }
+
+}
+
+dependencies {
+}
+

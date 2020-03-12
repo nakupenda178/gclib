@@ -1,0 +1,39 @@
+apply from: "../../config.gradle"
+
+dependencies {
+    def dp = rootProject.ext.dependencies
+
+    api project(":libs:res")
+
+    api dp["recyclerview-v7"]
+    api dp["BaseRecyclerViewAdapterHelper"]
+    api dp["design"]
+    api dp["anko"]
+
+    api dp["rxandroid"]
+    api dp["rxjava"]
+    api dp["rxpermissions"]
+    api dp["rxkotlin"]
+
+    api dp["rxlifecycle"]
+    api dp["zh-rxlifecycle-compat"]
+    api dp["zh-rxlifecycle"]
+
+
+    api dp["rxrelay"]
+
+    api dp["guava"]
+    api dp["retrofit"]
+    api dp["retrofit-converter-gson"]
+    api dp["retrofit-converter-jackson"]
+    api dp["retrofit-adapter-rxjava2"]
+
+    api dp["glide"]
+    api dp["glide-transformations"]
+    api dp["multidex"]
+    api dp["utilcode"]
+
+    api dp["xlog"]
+
+
+}
