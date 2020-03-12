@@ -1,4 +1,4 @@
-package com.github.guqt178.utils;
+package com.github.guqt178.utils.ext;
 
 import com.github.guqt178.utils.event.Bus;
 import com.jakewharton.rxrelay2.PublishRelay;
