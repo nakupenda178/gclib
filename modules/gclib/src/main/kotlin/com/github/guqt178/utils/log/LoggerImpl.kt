@@ -82,7 +82,7 @@ internal class LoggerImpl(
     }
 
     companion object {
-        private var M_TAG_NAME = "ALOG"
+        private var M_TAG_NAME = "Alog"
     }
 
     override fun tag(tag: String) {

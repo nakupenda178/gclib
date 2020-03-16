@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Environment
 import com.github.guqt178.http.retrofit.RetrofitManager
 import com.github.guqt178.utils.log.Alog
-import com.trello.rxlifecycle3.LifecycleProvider
+import com.trello.rxlifecycle2.LifecycleProvider
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -14,22 +14,32 @@ import retrofit2.http.GET
 import retrofit2.http.Streaming
 import retrofit2.http.Url
 import java.io.*
+import java.lang.RuntimeException
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+typealias OnErrorCallback = (Throwable) -> Unit
+typealias OnSuccessCallback = (File) -> Unit
 /**
  * 下载文件
  */
 class DownloadWorker {
 
     private var context: Context? = null
-    private val BASE_URL_DOWNLOAD = "http://192.168.0.1/"
 
-    private var ROOT = Environment.getExternalStorageDirectory().absolutePath
+    private val BASE_URL_DOWNLOAD = "http://127.0.0.1/"
 
 
+    //Android Pie（API 29）谷歌禁止在非自己应用的文件夹下创建文件或者是文件
+    private var mDownloadDir = Environment.getExternalStorageDirectory().absolutePath
+
+
+    /**
+     * @param fileUrl 下载的完整url example:http://www.storage.example.com/oss1239419427120742400.MOV
+     */
     @SuppressLint("CheckResult")
-    fun download(fileUrl: String, onError: (() -> Unit)? = null, callBack: (File) -> Unit) {
+    fun download(fileUrl: String, onError: OnErrorCallback? = null, callBack: OnSuccessCallback) {
         RetrofitManager
                 .createClient(BASE_URL_DOWNLOAD)
                 .createApi(InternalApi::class.java)
@@ -50,9 +60,10 @@ class DownloadWorker {
                     if (it?.isFile == true && it.exists())
                         callBack.invoke(it)
                     else
-                        Alog.debug("file [${it?.absoluteFile?.name}] dont exist")
+                        onError?.invoke(RuntimeException("File [${it?.absoluteFile?.name}] don`t exist"))
                 }, {
                     it.printStackTrace()
+                    onError?.invoke(it)
                 }, {
                     Alog.debug("onComplete")
                 })
@@ -69,27 +80,17 @@ class DownloadWorker {
         var fos: OutputStream? = null
         try {
             fis = body.byteStream()
-            val saveFileRoot = File(createDownloadFile())
-            val isPic = body.contentType()?.type()?.contains("image") ?: true
-            val saveFile = File(saveFileRoot, generateFileName(isPic))
+            val isPicType = body.contentType()?.type()?.contains("image") ?: true
+
+            //create file
+            val saveFileRoot = File(createDownloadFileDir())
+            val saveFile = File(saveFileRoot, generateFileName(isPicType))
             if (!saveFileRoot.exists()) {
-                saveFileRoot.mkdirs()
-                saveFile.createNewFile()
+                if (saveFileRoot.mkdirs())
+                    saveFile.createNewFile()
             }
-            /*if (!saveFileRoot.parentFile.exists()) { // 事先判断 ta 的父文件夹是否存在
-                val mkdirs: Boolean = saveFileRoot.parentFile.mkdirs()
-                Alog.debug(" file = ${saveFileRoot.parentFile.absolutePath.toString()};mkdirs = $mkdirs" )
-            }
-            if (!saveFile.exists()) {
-                val mkdirs: Boolean = saveFileRoot.mkdirs()
-                Alog.debug("makir result=$mkdirs")
-                if (!mkdirs) { // 如果 建立文件夹失败 将父文件夹删除
-                    if (saveFileRoot.parentFile.exists()) {
-                        Alog.debug("delete root file =$mkdirs")
-                        saveFileRoot.parentFile.delete()
-                    }
-                }
-            }*/
+
+            //write file
             fos = FileOutputStream(saveFile, false)
             val bis = BufferedInputStream(fis)
             val buffer = ByteArray(1024)
@@ -118,11 +119,12 @@ class DownloadWorker {
         return if (isPic) "IMG_${timeStamp}.jpg" else "video_${timeStamp}.mp4"
     }
 
+    //lifecycle
     private fun getLifeProvider() = context as? LifecycleProvider<*>
 
     //下载目录
-    //private fun createDownloadFile(): String = "$ROOT${File.separator}${context?.packageName}${File.separator}download"
-    private fun createDownloadFile(): String = "$ROOT/${context?.packageName}/download"
+    private fun createDownloadFileDir(): String = "${context?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)}"
+            .also { mDownloadDir = it }
 
     private interface InternalApi {
         @Streaming
@@ -132,8 +134,7 @@ class DownloadWorker {
 
     companion object {
 
-        //fun fork(life: LifecycleProvider<*>) = SingleTon.INSTANCE.also { it.life = life }
-
+        @JvmStatic
         fun fork(context: Context) = SingleTon.INSTANCE.also { it.context = context }
     }
 
