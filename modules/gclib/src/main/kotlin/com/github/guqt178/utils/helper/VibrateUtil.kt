@@ -1,9 +1,8 @@
-package com.github.guqt178.utils
+package com.github.guqt178.utils.helper
 
 import android.app.Service
 import android.content.Context
 import android.os.Vibrator
-import com.github.guqt178.utils.helper.SoundPoolHelper
 
 
 object VibrateUtil {
