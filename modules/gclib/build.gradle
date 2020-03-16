@@ -4,6 +4,7 @@ dependencies {
     def dp = rootProject.ext.dependencies
 
     api project(":modules:res")
+    api project(":modules:sweet-alert")
 
     api dp["recyclerview-v7"]
     api dp["BaseRecyclerViewAdapterHelper"]
