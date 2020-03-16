@@ -42,4 +42,11 @@
         <attr name="tl_indicator_gravity"  />
     </declare-styleable>
 
+
+    <declare-styleable name="TipsLoadingView">
+        <attr name="qmui_loading_view_size" format="dimension"/>
+        <attr name="android:color"/>
+    </declare-styleable>
+    <attr name="QMUILoadingStyle" format="reference"/>
+
 </resources>
