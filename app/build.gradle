@@ -41,6 +41,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
 
-    api project(":modules:gclib")
-    //    implementation 'com.github.nakupenda178:gclib:v1.0.1-SNAPSHOT'
+    api 'com.github.nakupenda178:gclib:1.0.0'
+    //api project(":modules:gclib")
 }
