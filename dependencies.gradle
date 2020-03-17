@@ -143,6 +143,7 @@ ext {
                     //popwindow
                     "base_popup"                   : "com.github.razerdp:BasePopup:2.2.1",
                     "base_popup_support"           : "com.github.razerdp:BasePopup-compat-support:2.2.1",
-                    "kotlin_jdk"                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41"
+                    "kotlin_jdk"                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlin_version}",
+                    "kotlin_reflection"            : "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"
     ]
 }

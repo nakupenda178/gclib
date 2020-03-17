@@ -9,7 +9,8 @@ dependencies {
     api dp["recyclerview-v7"]
     api dp["BaseRecyclerViewAdapterHelper"]
     api dp["design"]
-    api dp["anko"]
+    api dp["design"]
+    api dp["kotlin_reflection"]
 
     api dp["rxandroid"]
     api dp["rxjava"]

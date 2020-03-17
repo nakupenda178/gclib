@@ -1,4 +1,4 @@
-package com.moerlong.baselibrary.data.net
+package com.github.guqt178.http.retrofit
 
 /**
  * @author  ss on 2019/1/8 14:48.

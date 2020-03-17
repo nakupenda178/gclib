@@ -20,6 +20,9 @@ import java.io.FileReader
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import java.util.concurrent.Executors
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 
 /**
  * 快捷方式获取application,建议在Application中初始化
@@ -37,7 +40,12 @@ object GlobalContext {
 
     private val ACTIVITY_LIFECYCLE = ActivityLifecycleImpl()
     private val UTIL_HANDLER = Handler(Looper.getMainLooper())
-    private val UTIL_POOL = Executors.newFixedThreadPool(3)
+
+    private val UTIL_POOL    = ThreadPoolExecutor(
+            3,
+            3,
+            0L,
+            TimeUnit.MILLISECONDS, LinkedBlockingQueue<Runnable>(32))
 
     /**
      * Init utils.
@@ -94,8 +102,6 @@ object GlobalContext {
         init(app)
         return app
     }
-
-
 
 
     private fun getApplicationByReflect(): Application {
@@ -184,7 +190,8 @@ object GlobalContext {
         val leakViews = arrayOf("mLastSrvView", "mCurRootView", "mServedView", "mNextServedView")
         for (leakView in leakViews) {
             try {
-                val leakViewField = InputMethodManager::class.java.getDeclaredField(leakView) ?: continue
+                val leakViewField = InputMethodManager::class.java.getDeclaredField(leakView)
+                        ?: continue
                 if (!leakViewField.isAccessible) {
                     leakViewField.isAccessible = true
                 }
@@ -493,6 +500,7 @@ object GlobalContext {
                 state = COMPLETING
                 UTIL_HANDLER.post { mCallback.onCall(t) }
             } catch (th: Throwable) {
+                th.printStackTrace()
                 if (state != NEW) return
                 state = EXCEPTIONAL
             }

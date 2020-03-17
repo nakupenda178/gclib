@@ -1,25 +1,37 @@
 package com.github.guqt178.utils.thread
 
-import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import com.google.common.util.concurrent.ThreadFactoryBuilder
-import java.util.concurrent.LinkedBlockingQueue
-import java.util.concurrent.ThreadPoolExecutor
-import java.util.concurrent.TimeUnit
+import com.github.guqt178.DefaultAction
+import com.github.guqt178.DefaultConsumer
+import com.github.guqt178.DefaultSupplier
+import com.github.guqt178.utils.GlobalContext
 
+internal val H = Handler(Looper.getMainLooper())
 
 /**
- * 新建一个线程运行任务
+ * 异步运行一个任务
  */
-fun newThread(t: () -> Unit) {
-    val namedThreadFactory = ThreadFactoryBuilder()
-            .setNameFormat("my-thread-pool-%d").build()
-    val singleThreadPool = ThreadPoolExecutor(
-            1, 1,
-            0L, TimeUnit.MILLISECONDS,
-            LinkedBlockingQueue(1024), namedThreadFactory, ThreadPoolExecutor.AbortPolicy()
-    )
-    singleThreadPool.execute { t() }
-    singleThreadPool.shutdown()
+fun <R> Any.doAsyncTask(backgroundAction: DefaultSupplier<R>,
+                    onResult: DefaultConsumer<R>? = null): GlobalContext.Task<R>? {
+    return GlobalContext.doAsync(object : GlobalContext.Task<R>(object : GlobalContext.Callback<R> {
+        override fun onCall(data: R) {
+            onResult?.invoke(data)
+        }
+    }) {
+        override fun doInBackground(): R {
+            try {
+                return backgroundAction.invoke()
+            } catch (e: Exception) {
+                throw IllegalStateException("doInBackground occur exception!")
+            }
+        }
+    })
+}
+
+/**
+ * 执行延迟任务,在主线程
+ */
+fun Any.postDelay(delay: Number = 1000, action: DefaultAction) {
+    H.postDelayed({ action.invoke() }, delay.toLong())
 }

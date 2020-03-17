@@ -4,10 +4,10 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.OnLifecycleEvent
+import android.support.annotation.NonNull
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import io.reactivex.annotations.NonNull
 import java.util.regex.Pattern
 
 /**

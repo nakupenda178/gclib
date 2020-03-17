@@ -1,6 +1,5 @@
 package com.github.guqt178.http.retrofit
 
-import com.moerlong.baselibrary.data.net.ICreator
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
