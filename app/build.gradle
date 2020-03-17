@@ -42,4 +42,5 @@ dependencies {
 
 
     api project(":modules:gclib")
+    //    implementation 'com.github.nakupenda178:gclib:v1.0.1-SNAPSHOT'
 }
