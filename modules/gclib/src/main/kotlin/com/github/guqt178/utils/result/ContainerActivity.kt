@@ -29,7 +29,7 @@ class ContainerActivity : AppCompatActivity() {
 
     private fun initView() {
         val extras = intent?.extras
-        val classname = intent?.getStringExtra(CLASS_NAME)
+        val classname = intent?.getStringExtra(CLASS_NAME).orEmpty()
         //ee("classname = $classname")
 
         var fragment: Fragment? = supportFragmentManager.findFragmentByTag(classname)

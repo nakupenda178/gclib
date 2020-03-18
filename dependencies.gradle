@@ -6,11 +6,11 @@ ext {
 
     kotlin_version = '1.3.70'
 
-    android = [compileSdkVersion: 27,
+    android = [compileSdkVersion: 29,
                buildToolsVersion: '29.0.2',
                package          : "com.github.guqt178",
                minSdkVersion    : 19,
-               targetSdkVersion : 27,
+               targetSdkVersion : 29,
                versionCode      : 1,
                versionName      : "1.0.0",
     ]
@@ -140,6 +140,8 @@ ext {
 
                     //third
                     "badgeview"                    : "q.rorbin:badgeview:1.1.3",
+                    //Custom fonts in Android the easy wayCustom fonts in Android the easy way
+                    "calligraphy"                  : "uk.co.chrisjenx:calligraphy:2.3.0",
                     //popwindow
                     "base_popup"                   : "com.github.razerdp:BasePopup:2.2.1",
                     "base_popup_support"           : "com.github.razerdp:BasePopup-compat-support:2.2.1",

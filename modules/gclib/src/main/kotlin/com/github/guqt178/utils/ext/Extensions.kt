@@ -32,7 +32,7 @@ import kotlin.reflect.KProperty
 inline fun <reified F : Fragment> Fragment.startContainerActivity(
     bundle: Bundle? = null
 ) {
-    activity?.startContainerActivity(F::class.java.canonicalName, bundle)
+    activity?.startContainerActivity(F::class.java.canonicalName.orEmpty(), bundle)
 }
 
 inline fun <reified F : Fragment> Fragment.startContainerActivityForResult(
@@ -41,7 +41,7 @@ inline fun <reified F : Fragment> Fragment.startContainerActivityForResult(
     onResult: OnResult? = null
 ) {
     activity?.startContainerActivityForResult(
-            F::class.java.canonicalName,
+            F::class.java.canonicalName.orEmpty(),
             bundle,
             requestCode,
             onResult
@@ -51,7 +51,7 @@ inline fun <reified F : Fragment> Fragment.startContainerActivityForResult(
 inline fun <reified F : Fragment> Context?.startContainerActivity(
     bundle: Bundle? = null
 ) {
-    startContainerActivity(F::class.java.canonicalName, bundle)
+    startContainerActivity(F::class.java.canonicalName.orEmpty(), bundle)
 }
 
 /**

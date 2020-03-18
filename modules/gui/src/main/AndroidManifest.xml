@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.guqt178.gui" >
+    <application>
+        <activity
+            android:name=".widget.imageview.preview.ui.PreviewActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".widget.imageview.preview.ui.VideoPlayerActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    </application>
+</manifest>

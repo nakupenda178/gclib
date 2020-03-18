@@ -8,9 +8,7 @@ apply plugin: 'kotlin-kapt'
 
 
 
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.guqt178'
-
+apply from: '../../jitpack.gradle'
 
 //作为module的通用配置
 android {
@@ -86,6 +84,7 @@ dependencies {
 
     def dp = rootProject.ext.dependencies
     implementation dp["appcompat-v7"]
+    implementation dp["design"]
     implementation dp["kotlin_jdk"]
 
     //kapt dp["dagger-compiler"]
