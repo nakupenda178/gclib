@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = "aty"
+    private val TAG = "MainActivity"
     private fun createDownloadFileDir(): String {
         return "${externalCacheDir}/download"
     }
@@ -13,8 +13,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
     }
-
-
 }

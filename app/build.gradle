@@ -43,4 +43,6 @@ dependencies {
 
     //api 'com.github.nakupenda178:gclib:1.0.0'
     api project(":modules:gclib")
+    api project(":modules:top-snackbar")
+    api project(":modules:gui")
 }

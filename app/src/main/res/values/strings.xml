@@ -1,3 +1,455 @@
 <resources>
-    <string name="app_name">demo</string>
+    <string name="app_name">XUIDemo</string>
+    <string name="app_browser_name">XUI浏览器</string>
+    <!--华文行楷字体路径，其实可以不设置-->
+    <!--<string name="default_app_font_path">fonts/hwxk.ttf</string>-->
+
+    <string name="style_default">默认样式</string>
+    <string name="style_md_ios">Material Design &#038; iOS Style</string>
+
+    <string name="lab_please_select">请选择</string>
+    <string name="tip_number_only_error_message">数字必须大于0小于100!</string>
+    <string name="regexp_number_only">^[1-9]?\\d$</string>
+    <string name="common_example">示例图片</string>
+
+    <string name="about_item_homepage">访问官网</string>
+    <string name="about_item_wiki">说明文档</string>
+    <string name="about_item_update">版本更新</string>
+    <string name="about_item_sponsor">赞助项目</string>
+    <string name="about_item_github">GitHub主页</string>
+    <string name="about_copyright">© %1$s xuexiangjys All rights reserved.</string>
+    <string name="about_item_add_qq_group">加入QQ官方交流群</string>
+    <string name="title_sponsor_explain">&#160;&#160;&#160;&#160;你的打赏是我维护的动力，我将会列出所有打赏人员的清单在Github上作为凭证，打赏前请留下打赏项目的备注！</string>
+
+    <!-- 隐私政策弹窗   -->
+    <string name="lab_exit_app">退出应用</string>
+    <string name="lab_agree">同意</string>
+    <string name="lab_disagree">不同意</string>
+    <string name="lab_look_again">再次查看</string>
+    <string name="lab_still_disagree">仍不同意</string>
+    <string name="title_reminder">温馨提示</string>
+    <string name="content_think_about_it_again">要不要再想想</string>
+    <string name="content_privacy_explain_again">我们非常重视对你个人信息的保护，承诺严格按照《%s隐私权政策》保护及处理你的信息。如果你不同意该政策，很遗憾我们将无法为你提供服务</string>
+    <string name="lab_privacy_name">《%s隐私权政策》</string>
+
+    <!--ExpandableTextView-->
+    <string name="etv_content_demo1">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</string>
+
+    <!--ShadowButton-->
+    <string name="t5">RippleShadowShadowButton\n
+                app:sb_ripple_color=\"#eeeeee\"\n
+                app:sb_ripple_duration=\"500\"\n
+                app:sb_shape_type=\"round\"\n
+                app:sb_color_unpressed=\"#f44336\"\n
+    </string>
+    <string name="t4">RippleShadowShadowButton\n
+                app:sb_ripple_color=\"#8a87ee\"\n
+                app:sb_ripple_duration=\"500\"\n
+                app:sb_shape_type=\"rectangle\"\n
+                app:sb_color_unpressed=\"#f44336\"</string>
+    <string name="t3">ShadowImageView\n
+                app:sb_shape_type=\"round\"</string>
+    <string name="t2">ShadowButton\n
+                app:sb_shape_type=\"round\"</string>
+    <string name="t1">ShadowButton\n
+                app:sb_radius=\"6dp\"</string>
+    <string name="t0">ShadowButton\n
+                app:sb_alpha_pressed=\"40\"\n
+                app:sb_color_pressed=\"#0303ff\"\n
+                app:sb_color_unpressed=\"#8aacee\"</string>
+
+    <!--MaterialDialog-->
+    <string name="tip_bluetooth_permission">是否允许打开蓝牙？</string>
+    <string name="lab_yes">是</string>
+    <string name="lab_no">否</string>
+    <string name="tip_infos">提示</string>
+    <string name="content_simple_confirm_dialog">请注意，这是一个简单的提示性对话框！</string>
+    <string name="lab_submit">确定</string>
+    <string name="tip_warning">警告</string>
+    <string name="content_warning">当前为开发环境，是否切换到真实环境？</string>
+    <string name="lab_change">切换</string>
+    <string name="lab_continue">继续</string>
+    <string name="hint_please_input_password">请输入密码</string>
+    <string name="tip_options">选项</string>
+    <string name="tip_router_setting">路线设置</string>
+    <string name="lab_choice">选择</string>
+    <string name="tip_update">版本更新</string>
+    <string name="content_downloading">正在下载中，请稍后...</string>
+    <string name="tip_download_finished">下载完毕!</string>
+    <string name="lab_cancel">取消</string>
+    <string name="content_wait_for_receive_data">数据接收中，请稍后...</string>
+    <string name="lab_edit">编辑</string>
+    <string name="lab_add">添加</string>
+    <string name="lab_delete">删除</string>
+    <string name="lab_update">更新</string>
+    <string name="tip_please_select_transfer_type">选择一种切换方式</string>
+    <string name="tip_signature">签名</string>
+    <string name="lab_clear">清除</string>
+    <string name="tip_loading_message">正在加载数据...</string>
+    <string name="tip_start">开始</string>
+    <string name="tip_stop">停止</string>
+
+    <!--MaterialProgressBar-->
+    <string name="framework_implementation">Framework Implementation</string>
+    <string name="library_implementation">Library Implementation</string>
+    <string name="library_implementation_tinted">Library Implementation (Tinted)</string>
+    <string name="determinate_horizontal_progress">Determinate Horizontal ProgressBar</string>
+    <string name="indeterminate_horizontal_progress">Indeterminate Horizontal ProgressBar</string>
+    <string name="determinate_circular_progress">Determinate Circular ProgressBar</string>
+    <string name="indeterminate_circular_progress">Indeterminate Circular ProgressBar</string>
+    <string name="toolbar_progress">ProgressBar on Toolbar</string>
+    <string name="horizontal_progress_toolbar">Horizontal</string>
+    <string name="indeterminate_horizontal_progress_toolbar">Indeterminate Horizontal</string>
+    <string name="not_available"><i>(Not Available)</i></string>
+
+    <string name="determinate_circular_title">Determinate Circular Sample</string>
+    <string name="normal_progress">Normal Style</string>
+    <string name="normal_tinted_progress">Normal Style (Tinted)</string>
+    <string name="dynamic_progress">Dynamic Style</string>
+    <string name="dynamic_tinted_progress">Dynamic Style (Tinted)</string>
+
+    <string name="circularImageView_item_xml_circle_title">剪裁为圆形+边框+点击效果</string>
+    <string name="circularImageView_item_xml_oval_title">剪裁为椭圆形+边框+点击效果</string>
+    <string name="circularImageView_item_xml_round_rect_title">剪裁为圆角矩形+边框+点击效果</string>
+
+    <string name="circularImageView_modify_tip">可以通过右上角的按钮动态修改下图的效果</string>
+    <string name="circularImageView_modify_1">改变边框颜色与宽度</string>
+    <string name="circularImageView_modify_2">改变选中态边框颜色与宽度</string>
+    <string name="circularImageView_modify_3">改变选中态 Mask 的颜色（带透明度）</string>
+    <string name="circularImageView_modify_4">手工切换选中态</string>
+    <string name="circularImageView_modify_5">改变圆角大小</string>
+    <string name="circularImageView_modify_6">变为圆形</string>
+    <string name="circularImageView_modify_7">变为椭圆形</string>
+    <string name="circularImageView_modify_8">禁止使用touchSelect态</string>
+    <string name="circularImageView_modify_9">重置为初始态</string>
+
+    <string name="chart_toggle_values">显示/隐藏图表值</string>
+    <string name="chart_toggle_x_values">显示/隐藏X轴</string>
+    <string name="chart_toggle_y_values">显示/隐藏Y轴</string>
+    <string name="chart_animate_x">X轴动画</string>
+    <string name="chart_animate_y">Y轴动画</string>
+    <string name="chart_animate_xy">XY轴动画</string>
+    <string name="chart_save">图表保存</string>
+
+    <string name="chart_toggle_bar_borders">显示/隐藏边线</string>
+    <string name="chart_toggle_icons">显示/隐藏图标</string>
+    <string name="chart_toggle_percent">数值/百分比</string>
+    <string name="chart_toggle_hole">显示/隐藏中心圆</string>
+    <string name="chart_toggle_center_text">显示/隐藏中心文字</string>
+    <string name="chart_toggle_curved_slices">切换分割线样式</string>
+    <string name="chart_spin_animation">旋转动画</string>
+
+    <string name="chart_toggle_filled">切换区域填充</string>
+    <string name="chart_toggle_circles">显示/隐藏圆点</string>
+    <string name="chart_toggle_cubic">开启/关闭贝塞尔曲线</string>
+    <string name="chart_toggle_pinch_zoom">开启/关闭自由缩放手势</string>
+    <string name="chart_toggle_highlight">开启/关闭标记</string>
+
+    <string name="tab1">信息</string>
+    <string name="tab2">报告</string>
+    <string name="tab3">活动</string>
+    <string name="tab4">设置</string>
+
+    <!--PictureSelector-->
+    <string name="pick_photo">选择图片</string>
+    <string name="pick_video">选择视频</string>
+    <string name="pick_photo_gif">选择gif图片</string>
+    <string name="pick_photo_without_camera">选择图片（不带拍照按钮且点击不预览图片）</string>
+    <string name="pick_one_photo">选择单张图片</string>
+    <string name="multiple_pick_photo">多次进入PhotoPicker选择图片</string>
+
+    <!--下拉刷新-->
+    <string name="item_example_number_title">第%02d条数据</string>
+    <string name="item_example_number_abstract">这是测试的第%02d条数据</string>
+
+    <string name="item_style_theme_orange_abstract">更改为橙色主题颜色</string>
+    <string name="item_style_theme_red_abstract">更改为红色主题颜色</string>
+    <string name="item_style_theme_green_abstract">更改为绿色主题颜色</string>
+    <string name="item_style_theme_blue_abstract">更改为蓝色主题颜色</string>
+    <string name="item_style_content_translation_off">下拉的时候列表内容停留在原位不动</string>
+    <string name="item_style_content_translation_on">下拉的时候列表内容跟随向下偏移</string>
+    <string name="item_style_horizontal_drag_on">打开左右拖动效果</string>
+    <string name="item_style_horizontal_drag_off">关闭左右拖动效果</string>
+    <string name="item_style_spinner_scale">下拉的时候Header的高度跟随变大</string>
+    <string name="item_style_spinner_translation">下拉的时候Header的位置向下偏移</string>
+    <string name="item_style_spinner_behind">下拉的时候Header固定在背后</string>
+    <string name="item_style_spinner_update_on">开启显示上次更新功能</string>
+    <string name="item_style_spinner_update_off">关闭显示上次更新功能</string>
+    <string name="item_style_theme_default_abstract">更改为默认主题颜色</string>
+    <string name="item_style_load_more">上拉加载更多</string>
+    <string name="item_style_bezier_on">下拉的时候绘制贝塞尔曲线背景</string>
+    <string name="item_style_bezier_off">下拉的时候不绘制贝塞尔曲线背景</string>
+    <string name="item_style_app_bar_expand">展开AppBarLayout，变成可伸展头部的页面</string>
+    <string name="item_style_app_bar_collapse">折叠AppBarLayout，变成正常的列表页面</string>
+    <string name="item_style_store_house_english">跟换显示符号为英文</string>
+    <string name="item_style_store_house_chinese">跟换显示符号为中文</string>
+    <string name="item_style_store_house_icon">跟换显示符号为图标</string>
+    <string name="item_style_store_house_brand">跟换显示符号为商标</string>
+
+    <string name="item_head_style_bezier_circle">贝塞尔圆圈</string>
+    <string name="item_head_style_delivery">气球快递</string>
+    <string name="item_head_style_drop_box">掉落盒子</string>
+    <string name="item_head_style_fly_refresh">纸飞机</string>
+    <string name="item_head_style_fun_game_battle_city">战争城市</string>
+    <string name="item_head_style_fun_game_hit_block">打砖块</string>
+    <string name="item_head_style_phoenix">金色校园</string>
+    <string name="item_head_style_store_house">StoreHouse</string>
+    <string name="item_head_style_taurus">飞机起飞</string>
+    <string name="item_head_style_water_drop">小水滴</string>
+    <string name="item_head_style_wave_swipe">全屏水滴</string>
+
+    <!--CookieBar-->
+    <string name="cookie_title">这是一个标题</string>
+    <string name="cookie_message">这里是提示信息！这里是提示信息！这里是提示信息！这里是提示信息！这里是提示信息！</string>
+    <string name="cookie_action">点击一下</string>
+
+    <string name="tabSegment_mode_general">简单文字</string>
+    <string name="tabSegment_mode_bottom_indicator">文字 + 底部 indicator</string>
+    <string name="tabSegment_mode_top_indicator">文字 + 顶部 indicator</string>
+    <string name="tabSegment_mode_indicator_with_content">文字 + indicator 长度不要跟随内容长度</string>
+    <string name="tabSegment_mode_left_icon_and_auto_tint">文字 + icon(支持四个方向) + 自动着色选中态 icon</string>
+    <string name="tabSegment_mode_sign_count">显示红点</string>
+    <string name="tabSegment_mode_icon_change">选中态更换 icon</string>
+    <string name="tabSegment_mode_muti_color">不同 item，不同文字(icon)颜色</string>
+    <string name="tabSegment_mode_change_content_by_index">根据 index 更新 tab 文案</string>
+    <string name="tabSegment_mode_replace_tab_by_index">根据 index 完全替换 tab</string>
+
+
+    <string name="connecting_text">连接中&#8230;</string>
+    <string name="connected_text">连接成功！</string>
+    <string name="connection_error_text">连接失败！</string>
+
+    <!-- Utils 系列界面 -->
+
+    <!-- ColorUtils 颜色工具 -->
+    <string name="color_utils_alpha_title">设置颜色的 alpha 值</string>
+    <string name="color_utils_ratio_title">根据比例，在两个 color 值之间计算出一个 color 值</string>
+    <string name="color_utils_transform_title">将 color 颜色值转换为字符串</string>
+    <string name="color_utils_random_title">获取随机颜色</string>
+
+    <string name="color_utils_square_origin">原始</string>
+    <string name="color_utils_square_alpha">%1$.1f alpha</string>
+
+    <!-- DrawableUtils Drawable 工具 -->
+    <string name="drawable_utils_create_from_view_title">从一个 View 创建 Bitmap</string>
+    <string name="drawable_utils_create_from_view_button">以本界面 Root View 为例</string>
+    <string name="drawable_utils_solid_image_title">创建一张指定大小的纯色图片，支持圆角</string>
+    <string name="drawable_utils_circle_gradient_title">创建一张渐变图片，支持圆角</string>
+    <string name="drawable_utils_tint_color_title">设置 Drawable 的颜色</string>
+    <string name="drawable_utils_separator_title">创建带上分隔线或下分隔线的 Drawable</string>
+    <string name="lab_logout_confirm">是否确认退出？</string>
+    <string name="lab_open_third_app">是否允许页面打开第三方应用?</string>
+
+
+    <string name="error_message">This is an error toast.</string>
+    <string name="success_message">Success!</string>
+    <string name="info_message">Here is some info for you.</string>
+    <string name="warning_message">Beware of the dog.</string>
+    <string name="normal_message_without_icon">Normal toast w/o icon</string>
+    <string name="normal_message_with_icon">Normal toast w/ icon</string>
+
+    <string name="ratingbar_title">RatingBar</string>
+    <string name="scale_ratingbar_title">ScaleRatingBar</string>
+    <string name="rotation_ratingbar_title">RotationRatingBar</string>
+    <string name="add_rating_title">增加星级</string>
+    <string name="title_grade_class_select">班级选择</string>
+    <string name="title_sex_select">性别选择</string>
+    <string name="title_constellation_select">星座选择</string>
+    <string name="title_nation_select">民族选择</string>
+
+    <string name="title_toolbar">主标题</string>
+    <string name="title_toolbar_sub">副标题</string>
+
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+
+    <string name="nav_download">下载</string>
+    <string name="nav_movie">电影</string>
+    <string name="nav_music">音乐</string>
+    <string name="nav_photo">照片</string>
+    <string name="nav_dashboard">资讯</string>
+    <string name="nav_settings">设置</string>
+    <string name="nav_about">关于</string>
+    <string name="nav_donate">捐赠</string>
+    <string name="nav_my_apps">我的应用</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <!-- Strings related to Settings -->
+    <string name="settings_category_basic">基本设置</string>
+    <string name="settings_category_advanced">高级设置</string>
+    <string name="settings_category_other">其他设置</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="settings_switch_preference_title">Switch Preference</string>
+    <string name="settings_switch_preference_summary">Switch Preference 描述</string>
+    <string name="settings_check_box_preference_title">Check Box Preference</string>
+    <string name="settings_edit_text_preference_title">Edit Text Preference</string>
+    <string name="settings_edit_text_preference_default_value">Material Design</string>
+    <string name="settings_list_preference_dialog_title">List Preference</string>
+    <string name="settings_list_preference_title">List Preference</string>
+    <string name="settings_multi_select_list_preference_dialog_title">Multi Select List Preference</string>
+    <string name="settings_multi_select_list_preference_title">Multi Select List Preference</string>
+    <string name="settings_preference_click_title">OnPreferenceClickListener</string>
+    <string name="settings_preference_click_to_activity">点击跳转Activity</string>
+    <string name="pref_title_system_sync_settings">账户同步设置</string>
+    <string name="pref_title_new_message_notifications">消息通知</string>
+    <string name="pref_title_ringtone">铃声</string>
+    <string name="pref_ringtone_silent">静音</string>
+    <string name="pref_title_vibrate">震动</string>
+    <string name="pref_on_preference_click">onPreferenceClick</string>
+
+
+    <!-- String related to app short cuts -->
+    <string name="shortcut_label_setting">设置</string>
+    <string name="shortcut_label_search">搜索</string>
+    <string name="guide_key_sliding_root_navigation">guide_key_sliding_root_navigation</string>
+
+    <string name="camera_permission_confirmation">This app demonstrates the usage of CameraView. In order to do that, it needs permission to access camera.</string>
+    <string name="camera_permission_not_granted">Camera app cannot do anything without camera permission.</string>
+    <string name="picture_taken">Picture taken</string>
+    <string name="aspect_ratio">Aspect ratio</string>
+    <string name="switch_flash">Switch flash</string>
+    <string name="switch_camera">Switch camera</string>
+    <string name="flash_auto">Flash auto</string>
+    <string name="flash_off">Flash off</string>
+    <string name="flash_on">Flash on</string>
+
+
+    <string name="title_login_register">登录/注册</string>
+    <string name="action_get_verify_code">获取验证码</string>
+
+    <string name="title_login">登录</string>
+    <string name="title_login_by_verify_code">验证码登录</string>
+    <string name="title_register">注册</string>
+    <string name="lab_forget_password">忘记密码?</string>
+    <string name="lab_login_by_verify_code">验证码登录</string>
+    <string name="lab_login_by_password">密码登录</string>
+    <string name="tip_please_input_phone_number">请输入手机号码</string>
+    <string name="title_phone_number">手机号码</string>
+    <string name="title_password">密码</string>
+    <string name="title_old_password">旧密码</string>
+    <string name="hint_please_input_verify_code">请输入验证码</string>
+    <string name="lab_verify_code">验证码</string>
+    <string name="tip_password_error">密码必须是8~18位字母和数字的组合！</string>
+    <string name="tip_new_password_error">新密码必须是8~18位字母和数字的组合！</string>
+    <string name="tip_phone_number_error">无效的手机号！</string>
+    <string name="regex_phone_number">^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(16[6])|(17[0,1,3,5-8])|(18[0-9])|(19[8,9]))\\d{8}$</string>
+    <string name="tip_verify_code_error">请输入4位数验证码</string>
+    <string name="regex_verify_code">^\\d{4}$</string>
+    <string name="regex_password">^(?:(?=.*[a-zA-Z])(?=.*[0-9])).{8,18}$</string>
+    <string name="title_forget_password">重置密码</string>
+    <string name="lab_register_account">点击注册即表示同意</string>
+    <string name="lab_service_protocol"><![CDATA[<用户协议>]]></string>
+    <string name="url_add_qq_group"><![CDATA[https://qm.qq.com/cgi-bin/qm/qr?k=0lUqsbfHTNDbS2KK4nTPwPq07tOqAk6J&authKey=4PzQ2cQYIr28Qyg%2FkTk%2BmI7xlcq8B0IZKZGc1H3XloRrCDBO8az97DIsBHnQW0Ya]]></string>
+
+    <string name="sync">Sync</string>
+    <string name="alarm">Alarm</string>
+    <string name="camera">Camera</string>
+
+    <string name="lake_description">
+        Lake Tahoe is a large freshwater lake in the Sierra Nevada of the United States. At a surface
+        elevation of 6,225 ft (1,897 m), it straddles the border between California and Nevada, west
+        of Carson City. Lake Tahoe is the largest alpine lake in North America. Its depth is
+        1,645 ft (501 m), making it the second deepest in the United States after Crater Lake
+        (1,945 ft (593 m)). Additionally, Lake Tahoe is the sixth largest lake by volume in the
+        United States at 122,160,280 acre·ft (150,682,490 dam3), behind the five Great Lakes.
+
+The lake was formed about 2 million years ago and is a part of the Lake Tahoe Basin with the modern
+        lake being shaped during the ice ages. It is known for the clarity of its water and the
+        panorama of surrounding mountains on all sides. The area surrounding the lake is also
+        referred to as Lake Tahoe, or simply Tahoe. More than 75 percent of the lakes watershed is
+        national forest land, comprising the Lake Tahoe Basin Management Unit of the United States
+        Forest Service.
+    </string>
+    <string name="lake_tahoe_image">Image of Lake Tahoe</string>
+    <string name="lake_tahoe_title">Lake Tahoe</string>
+
 </resources>
