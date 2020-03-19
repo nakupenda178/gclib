@@ -24,6 +24,9 @@
     <dimen name="xui_config_content_spacing_horizontal_phone">12dp
     </dimen> <!-- margin 和 padding 等使用的内容通用水平间距 -->
 
+    <dimen name="xui_config_content_spacing_horizontal">16dp
+    </dimen><!-- margin 和 padding 等使用的内容通用水平间距 -->
+
     <dimen name="xui_config_content_spacing_vertical_tablet_big">12dp
     </dimen> <!-- margin 和 padding 等使用的内容通用垂直间距 -->
     <dimen name="xui_config_content_spacing_vertical_tablet_small">10dp

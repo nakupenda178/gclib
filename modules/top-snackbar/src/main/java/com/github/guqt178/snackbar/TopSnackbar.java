@@ -43,24 +43,7 @@ import static com.github.guqt178.snackbar.AnimationUtils.FAST_OUT_SLOW_IN_INTERP
 
 
 /**
- * <p>
- *         MySnackbar snackbar = MySnackbar.make(findViewById(R.id.ll_root),
- *                 msg, MySnackbar.LENGTH_SHORT, Gravity.TOP);
- *        //修改颜色
- *         MySnackbar.SnackbarLayout content = (MySnackbar.SnackbarLayout) snackbar.getView();
- *         content.setBackgroundColor(getResources().getColor(R.color.text_color_gold));
- *
- *         //修改高度
- *         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
- *         ViewGroup.LayoutParams lp = content.getLayoutParams();
- *         lp.height = toolbar.getHeight();
- *         content.setLayoutParams(lp);
- *
- *         //内容偏下移一点
- *         content.setPadding(0,70,0,0);
- *
- *         snackbar.show();
- *</p>
+ * recommend use {@link TopSnack} helper tools
  */
 public final class TopSnackbar {
     /**
