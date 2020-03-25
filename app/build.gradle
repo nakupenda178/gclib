@@ -30,6 +30,11 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -45,4 +50,5 @@ dependencies {
     api project(":modules:gclib")
     api project(":modules:top-snackbar")
     api project(":modules:gui")
+    api project(":modules:auto-size")
 }
