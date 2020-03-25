@@ -5,10 +5,6 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.trello.rxlifecycle2.LifecycleProvider;
-import com.trello.rxlifecycle2.android.ActivityEvent;
-import com.trello.rxlifecycle2.android.FragmentEvent;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -221,47 +217,5 @@ public class Util {
         return def;
     }
 
-    /**
-     * 倒计时
-     *
-     * @param total
-     * @param onNext
-     * @param onComplete
-     * @return
-     */
-    public static Disposable countDown(long total,
-                                       Consumer<Long> onNext,
-                                       Action onComplete) {
-        return Observable.interval(0, 1, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .take(total + 1)
-                .map((time) -> total - time)
-                .observeOn(AndroidSchedulers.mainThread())
-                //.doOnSubscribe((disposable) ->result = disposable )
-                .subscribe(
-                        onNext,
-                        (th) -> {
-                            th.toString();
-                        },
-                        onComplete
-                );
-    }
 
-    public static Disposable countDown2(long total,
-                                        Consumer<Long> onNext,
-                                        Action onComplete) {
-        return Observable.interval(0, 1, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .take(total + 1)
-                .map((time) -> total - time)
-                .observeOn(AndroidSchedulers.mainThread())
-                //.doOnSubscribe((disposable) ->result = disposable )
-                .subscribe(
-                        onNext,
-                        (th) -> {
-                            th.toString();
-                        },
-                        onComplete
-                );
-    }
 }
