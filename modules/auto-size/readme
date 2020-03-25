@@ -1,2 +1,10 @@
 # 今日头条屏幕适配
 # res下的是以最下宽度适配
+# 在manifest的application节点下
+        <!--配置适配大小-->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="360"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="640"/>

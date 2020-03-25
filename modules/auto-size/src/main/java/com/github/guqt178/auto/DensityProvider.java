@@ -1,15 +1,22 @@
 package com.github.guqt178.auto;
 
+import android.app.Application;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
+/**
+ * 在Manifest中注册改provider可以自己初始化
+ */
 public class DensityProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
+        DensityConfig.getInstance()
+                .init((Application)(getContext().getApplicationContext()));
         return false;
     }
 

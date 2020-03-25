@@ -15,7 +15,13 @@ import com.github.guqt178.auto.external.ExternalAdapterManager;
 import com.github.guqt178.auto.utils.Preconditions;
 import com.github.guqt178.auto.utils.ScreenUtils;
 
-
+/**
+ *  DensityConfig.getInstance()
+ * //                .setCustomFragment(true)
+ * //                .setUseDeviceSize(true)
+ * //                .setBaseOnWidth(false)
+ * //                .setAutoAdaptStrategy(new AutoAdaptStrategy())
+ */
 public final class DensityConfig {
     private static volatile DensityConfig sInstance;
     private static final String KEY_DESIGN_WIDTH_IN_DP = "design_width_in_dp";

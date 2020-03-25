@@ -20,6 +20,8 @@ import java.util.Map;
  * 但通过远程依赖的三方库并不能修改源码, 所以也不能让三方库的 {@link Activity} 实现接口, 实现接口的方式就显得无能为力
  * {@link ExternalAdapterManager} 就是专门用来处理这个问题, 项目初始化时把对应的三方库 {@link Activity} 传入 {@link ExternalAdapterManager} 即可
  * <p>
+ *      DensityConfig.getInstance().getExternalAdaptManager()
+ *                  .addExternalAdaptInfoOfActivity(DefaultErrorActivity.class, new ExternalAdapterInfo(true, 400));
  * ================================================
  */
 public class ExternalAdapterManager {
