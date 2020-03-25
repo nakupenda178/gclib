@@ -3,8 +3,11 @@ apply from: "../../config.gradle"
 dependencies {
     def dp = rootProject.ext.dependencies
 
-    api project(":modules:res")
-    api project(":modules:sweet-alert")
+    implementation project(":modules:res")
+    implementation project(":modules:gui")
+    implementation project(":modules:auto-size")
+    implementation project(":modules:sweet-alert")
+    implementation project(":modules:top-snackbar")
 
     api dp["recyclerview-v7"]
     api dp["BaseRecyclerViewAdapterHelper"]
