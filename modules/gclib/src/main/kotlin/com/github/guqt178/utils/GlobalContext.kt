@@ -7,7 +7,6 @@ import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
 import android.os.*
-import android.support.v4.content.FileProvider
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -19,7 +18,6 @@ import java.io.File
 import java.io.FileReader
 import java.lang.reflect.InvocationTargetException
 import java.util.*
-import java.util.concurrent.Executors
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
@@ -289,7 +287,7 @@ object GlobalContext {
         private var mForegroundCount = 0
         private var mConfigCount = 0
         private var mIsBackground = false
-        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             //LanguageUtils.applyLanguage(activity)
             setAnimatorsEnabled()
             setTopActivity(activity)
@@ -329,7 +327,7 @@ object GlobalContext {
             processHideSoftInputOnActivityDestroy(activity, true)
         }
 
-        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) { /**/
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle?) { /**/
         }
 
         override fun onActivityDestroyed(activity: Activity) {
@@ -475,12 +473,12 @@ object GlobalContext {
             }
     }
 
-    class FileProvider4UtilCode : FileProvider() {
+    /*class FileProvider4UtilCode : FileProvider() {
         override fun onCreate(): Boolean {
             init(context)
             return true
         }
-    }
+    }*/
 
     ///////////////////////////////////////////////////////////////////////////
     // interface

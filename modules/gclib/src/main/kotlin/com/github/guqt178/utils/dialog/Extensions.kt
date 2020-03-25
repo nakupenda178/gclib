@@ -1,7 +1,6 @@
 package com.github.guqt178.utils.dialog
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.Context
 import android.support.v4.app.Fragment
 import com.github.guqt178.DefaultConsumer
