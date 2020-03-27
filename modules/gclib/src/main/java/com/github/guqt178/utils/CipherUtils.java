@@ -1,9 +1,6 @@
 package com.github.guqt178.utils;
 
 
-
-import com.github.guqt178.utils.StringUtils;
-
 import java.io.UnsupportedEncodingException;
 import java.security.Key;
 import java.security.MessageDigest;
@@ -14,9 +11,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
 /**
- * Description :加密与解密的工具类
- * Author : AllenJuns
- * Date   : 2016-3-04
+ * 加密与解密的工具类
  */
 public class CipherUtils {
     /**

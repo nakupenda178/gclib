@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 
-import com.github.guqt178.R;
+import com.github.guqt178.widgets.R;
 
 
 /**

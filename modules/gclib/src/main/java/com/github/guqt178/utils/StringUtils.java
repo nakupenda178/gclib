@@ -16,10 +16,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by jxnk25 on 2016/12/30.
- *
- * @link https://xiaohaibin.github.io/
- * @email： xhb_199409@163.com
  * @github: https://github.com/xiaohaibin
  * @description： 字符串处理工具类
  */

@@ -8,7 +8,7 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 
 /**
- * Created by yedong on 2017/7/4.
+ * Created by sugar on 2017/7/4.
  */
 
 public class AndroidBug5497Workaround {

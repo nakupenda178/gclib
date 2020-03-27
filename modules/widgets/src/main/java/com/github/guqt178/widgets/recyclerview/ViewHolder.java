@@ -23,8 +23,6 @@ import android.widget.TextView;
 
 /**
  * 通用的RecyclerView 的ViewHolder ，使用者无需关心
- * Created by zhangxutong .
- * Date: 16/03/11
  */
 public class ViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;

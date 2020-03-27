@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.blankj.utilcode.util.Utils;
 import com.github.guqt178.utils.GlobalContext;
 
 import java.lang.reflect.Field;
@@ -75,7 +74,7 @@ public final class AdaptScreenUtils {
      * @return value of px
      */
     public static int pt2Px(final float ptValue) {
-        DisplayMetrics metrics = Utils.getApp().getResources().getDisplayMetrics();
+        DisplayMetrics metrics = GlobalContext.getContext().getResources().getDisplayMetrics();
         return (int) (ptValue * metrics.xdpi / 72f + 0.5);
     }
 
@@ -86,7 +85,7 @@ public final class AdaptScreenUtils {
      * @return value of pt
      */
     public static int px2Pt(final float pxValue) {
-        DisplayMetrics metrics = Utils.getApp().getResources().getDisplayMetrics();
+        DisplayMetrics metrics = GlobalContext.getContext().getResources().getDisplayMetrics();
         return (int) (pxValue * 72 / metrics.xdpi + 0.5);
     }
 

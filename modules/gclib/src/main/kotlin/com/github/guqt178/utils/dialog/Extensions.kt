@@ -58,7 +58,7 @@ fun Context?.hideLoading() {
 // <editor-fold defaultstate="collapsed" desc="带图标和按钮的提示框">
 fun Context.showSuccessTip(title: String,
                            content: String,
-                           config: DefaultConsumer<ProgressHelper>? = null):SweetAlertDialog {
+                           config: DefaultConsumer<ProgressHelper>? = null): SweetAlertDialog {
     val dialog = SweetAlertDialog(this).also {
         config?.invoke(it.progressHelper)
         it.changeAlertType(SweetAlertDialog.SUCCESS_TYPE)

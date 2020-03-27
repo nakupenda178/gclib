@@ -1,8 +1,11 @@
 rootProject.name='sample'
-include ':app'
-include ':modules:gclib'
-include ':modules:res'
-include ':modules:sweet-alert'
-include ':modules:top-snackbar'
-include ':modules:gui'
-include ':modules:auto-size'
+include ':app'                    //容器
+include ':modules:gclib'          //util
+include ':modules:res'            //公用的res资源
+include ':modules:sweet-alert'    //提示类弹窗
+include ':modules:top-snackbar'   //可以在顶部显示的snackbar
+include ':modules:gui'            //xui的本地化
+include ':modules:auto-size'      //今日头条适配(smallest适配dimen文件)
+include ':modules:widgets'        //收集常用的widgets
+
+include ':modules:all'            //依赖所有上面子modules

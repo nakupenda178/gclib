@@ -1,0 +1,13 @@
+apply from: "../../config.gradle"
+
+dependencies {
+    def dp = rootProject.ext.dependencies
+
+    api project(":modules:res")
+    api project(":modules:gui")
+    api project(":modules:gclib")
+    api project(":modules:widgets")
+    api project(":modules:auto-size")
+    api project(":modules:sweet-alert")
+    api project(":modules:top-snackbar")
+}

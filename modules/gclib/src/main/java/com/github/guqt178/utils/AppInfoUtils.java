@@ -28,7 +28,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
@@ -38,8 +37,6 @@ import android.util.Log;
 import android.util.Xml;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
-import com.github.guqt178.utils.file.FileUtils;
 
 import org.xmlpull.v1.XmlPullParser;
 

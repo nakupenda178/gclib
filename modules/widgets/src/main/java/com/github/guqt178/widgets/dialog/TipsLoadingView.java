@@ -10,7 +10,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
-import com.github.guqt178.R;
+import com.github.guqt178.widgets.R;
 
 
 /**

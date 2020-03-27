@@ -12,7 +12,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 
-import com.blankj.utilcode.util.Utils;
+import com.github.guqt178.utils.GlobalContext;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -550,7 +550,7 @@ public class FileUtils {
      */
     public static boolean copyDir(final String srcDirPath,
                                   final String destDirPath,
-                                  final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                  final FileUtils.OnReplaceListener listener) {
         return copyDir(getFileByPath(srcDirPath), getFileByPath(destDirPath), listener);
     }
 
@@ -576,7 +576,7 @@ public class FileUtils {
      */
     public static boolean copyDir(final File srcDir,
                                   final File destDir,
-                                  final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                  final FileUtils.OnReplaceListener listener) {
         return copyOrMoveDir(srcDir, destDir, listener, false);
     }
 
@@ -602,7 +602,7 @@ public class FileUtils {
      */
     public static boolean copyFile(final String srcFilePath,
                                    final String destFilePath,
-                                   final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                   final FileUtils.OnReplaceListener listener) {
         return copyFile(getFileByPath(srcFilePath), getFileByPath(destFilePath), listener);
     }
 
@@ -628,7 +628,7 @@ public class FileUtils {
      */
     public static boolean copyFile(final File srcFile,
                                    final File destFile,
-                                   final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                   final FileUtils.OnReplaceListener listener) {
         return copyOrMoveFile(srcFile, destFile, listener, false);
     }
 
@@ -654,7 +654,7 @@ public class FileUtils {
      */
     public static boolean moveDir(final String srcDirPath,
                                   final String destDirPath,
-                                  final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                  final FileUtils.OnReplaceListener listener) {
         return moveDir(getFileByPath(srcDirPath), getFileByPath(destDirPath), listener);
     }
 
@@ -680,7 +680,7 @@ public class FileUtils {
      */
     public static boolean moveDir(final File srcDir,
                                   final File destDir,
-                                  final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                  final FileUtils.OnReplaceListener listener) {
         return copyOrMoveDir(srcDir, destDir, listener, true);
     }
 
@@ -706,7 +706,7 @@ public class FileUtils {
      */
     public static boolean moveFile(final String srcFilePath,
                                    final String destFilePath,
-                                   final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                   final FileUtils.OnReplaceListener listener) {
         return moveFile(getFileByPath(srcFilePath), getFileByPath(destFilePath), listener);
     }
 
@@ -732,14 +732,14 @@ public class FileUtils {
      */
     public static boolean moveFile(final File srcFile,
                                    final File destFile,
-                                   final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener) {
+                                   final FileUtils.OnReplaceListener listener) {
         return copyOrMoveFile(srcFile, destFile, listener, true);
     }
 
     private static boolean copyOrMoveDir(final File srcDir,
                                          final File destDir,
                                          final boolean isMove) {
-        return copyOrMoveDir(srcDir, destDir, new com.blankj.utilcode.util.FileUtils.OnReplaceListener() {
+        return copyOrMoveDir(srcDir, destDir, new FileUtils.OnReplaceListener() {
             @Override
             public boolean onReplace() {
                 return true;
@@ -749,7 +749,7 @@ public class FileUtils {
 
     private static boolean copyOrMoveDir(final File srcDir,
                                          final File destDir,
-                                         final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener,
+                                         final FileUtils.OnReplaceListener listener,
                                          final boolean isMove) {
         if (srcDir == null || destDir == null) return false;
         // destDir's path locate in srcDir's path then return false
@@ -782,7 +782,7 @@ public class FileUtils {
     private static boolean copyOrMoveFile(final File srcFile,
                                           final File destFile,
                                           final boolean isMove) {
-        return copyOrMoveFile(srcFile, destFile, new com.blankj.utilcode.util.FileUtils.OnReplaceListener() {
+        return copyOrMoveFile(srcFile, destFile, new FileUtils.OnReplaceListener() {
             @Override
             public boolean onReplace() {
                 return true;
@@ -792,7 +792,7 @@ public class FileUtils {
 
     private static boolean copyOrMoveFile(final File srcFile,
                                           final File destFile,
-                                          final com.blankj.utilcode.util.FileUtils.OnReplaceListener listener,
+                                          final FileUtils.OnReplaceListener listener,
                                           final boolean isMove) {
         if (srcFile == null || destFile == null) return false;
         // srcFile equals destFile then return false
@@ -1506,7 +1506,7 @@ public class FileUtils {
         Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         Uri uri = Uri.fromFile(file);
         intent.setData(uri);
-        Utils.getApp().sendBroadcast(intent);
+        GlobalContext.getContext().sendBroadcast(intent);
     }
 
     /**

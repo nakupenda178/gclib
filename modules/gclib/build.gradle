@@ -1,13 +1,22 @@
 apply from: "../../config.gradle"
-
 dependencies {
     def dp = rootProject.ext.dependencies
 
-    api project(":modules:res")
-    api project(":modules:gui")
-    api project(":modules:auto-size")
-    api project(":modules:sweet-alert")
-    api project(":modules:top-snackbar")
+    ////////////////////////
+    //子module
+    ////////////////////////
+    implementation project(":modules:res")
+    implementation project(":modules:widgets")
+    implementation project(":modules:sweet-alert")
+
+    //implementation project(":modules:gui")
+    //implementation project(":modules:auto-size")
+    //implementation project(":modules:top-snackbar")
+
+    ////////////////////////
+    //第三方库
+    ////////////////////////
+    implementation dp["xlog"]
 
     api dp["recyclerview-v7"]
     api dp["BaseRecyclerViewAdapterHelper"]
@@ -40,7 +49,7 @@ dependencies {
     api dp["multidex"]
     api dp["utilcode"]
 
-    api dp["xlog"]
 
 
 }
+
