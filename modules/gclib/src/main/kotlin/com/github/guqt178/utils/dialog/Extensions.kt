@@ -12,12 +12,15 @@ import com.github.guqt178.widgets.dialog.DialogMaker
 // <editor-fold defaultstate="collapsed" desc="简单的转圈dialog">
 
 fun Activity?.showLoading(msg: String, cancelable: Boolean = true) {
-    if (this != null && !DialogMaker.isShowing() && !this.isFinishing) {
-        DialogMaker.showProgressDialog(this, msg, cancelable)
+    if (this != null && !this.isFinishing) {
+        if (DialogMaker.isShowing())
+            updateLoadingMessage(msg)
+        else
+            DialogMaker.showProgressDialog(this, msg, cancelable)
     }
 }
 
-fun Activity?.updateLoadingMessage(msg: String) {
+internal fun Activity?.updateLoadingMessage(msg: String) {
     if (this != null && !this.isFinishing) {
         DialogMaker.updateLoadingMessage(msg)
     }
