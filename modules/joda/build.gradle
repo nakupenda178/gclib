@@ -1,0 +1,5 @@
+apply from: "../../config.gradle"
+
+dependencies {
+    api 'net.danlew:android.joda:2.10.3'
+}

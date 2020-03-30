@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.guqt178.joda" >
+
+    <application
+        android:allowBackup="true"
+       >
+        <provider
+            android:name=".JodaInitProvider"
+            android:authorities="${applicationId}.joda-init-provider"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
