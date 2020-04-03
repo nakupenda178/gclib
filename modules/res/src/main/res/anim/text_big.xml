@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="500"
+    android:fillAfter="true"
+    android:fillBefore="false"
+    android:fromXScale="1.0"
+    android:fromYScale="1.0"
+    android:interpolator="@android:anim/linear_interpolator"
+    android:pivotX="0"
+    android:pivotY="100%"
+    android:repeatCount="0"
+    android:repeatMode="reverse"
+    android:startOffset="0"
+    android:toXScale="1"
+    android:toYScale="1.1" /><!--我们只需要调整放大的倍数即可  即 android:toXScale="1.4"android:toYScale="1.4"-->

@@ -72,3 +72,7 @@ fun Context.showSuccessTip(title: String,
     return dialog
 }
 // </editor-fold>
+
+// <editor-fold defaultstate="collapsed" desc="AlertDialog">
+
+// </editor-fold>

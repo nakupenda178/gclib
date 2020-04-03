@@ -2,11 +2,19 @@ package com.github.guqt178.utils.intent;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
+import android.widget.Toast;
+
+import com.blankj.utilcode.util.Utils;
+
+import java.io.File;
 
 /**
  * <pre>
@@ -46,6 +54,80 @@ public final class IntentUtils {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT, content);
         return intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    }
+
+
+    /**
+     * 获取word intent
+     *
+     * @return
+     */
+    public static Intent getWordFileIntent(final String path) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.addCategory("android.intent.category.DEFAULT");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        //Uri uri = Uri.fromFile(new File(param));
+        //intent.setType("application/msword");
+        //intent.setTypeAndNormalize("application/pdf");
+        intent.setDataAndTypeAndNormalize(file2Uri(getFileByPath(path)), "application/pdf");
+        return intent;
+    }
+
+
+    /**
+     *
+     * @param context you know
+     * @param path 文件路径
+     */
+    public static void startWordFileIntent(Context context, final String path) {
+        Intent intent = getWordFileIntent(path);
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
+            context.startActivity(intent);
+        } else {
+            Toast.makeText(context, "没有支持的应用", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    /**
+     * 选择图片intent
+     */
+    public static Intent getPickIntentWithGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        return intent.setTypeAndNormalize("image/*");
+    }
+
+
+    ///////////////////////////////////////////////////////
+    private static File getFileByPath(final String filePath) {
+        return isSpace(filePath) ? null : new File(filePath);
+    }
+
+    private static boolean isSpace(final String s) {
+        if (s == null) return true;
+        for (int i = 0, len = s.length(); i < len; ++i) {
+            if (!Character.isWhitespace(s.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 获取文件的uri
+     *
+     * @param file
+     * @return
+     */
+    private static Uri file2Uri(final File file) {
+        if (file == null) return null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //String authority = Utils.getApp().getPackageName() + ".utilcode.provider";
+            //return FileProvider.getUriForFile(Utils.getApp(), authority, file);
+            return Uri.parse("content://" + file.getAbsolutePath());
+        } else {
+            return Uri.fromFile(file);
+        }
     }
 
     /**
