@@ -32,15 +32,13 @@ inline fun <reified T : Activity> Context.starter(vararg params: Pair<String, An
 inline fun <reified T : Activity> Activity.starterForResult(
     requestCode: Int,
     vararg params: Pair<String, Any?>
-) =
-    Kit.internalStartActivityForResult(
+) = Kit.internalStartActivityForResult(
         this,
         T::class.java,
         requestCode,
         params
     )
 
-fun String?.ifEmpty(option: String = "") = if (this == null || this.isEmpty()) option else this
 
 object Kit {
 

@@ -13,7 +13,6 @@ import retrofit2.http.GET
 import retrofit2.http.Streaming
 import retrofit2.http.Url
 import java.io.*
-import java.lang.RuntimeException
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -16,7 +16,6 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.github.guqt178.DefaultConsumer
-import com.github.guqt178.log.Alog
 import com.github.guqt178.utils.result.ActivityResultHelper
 import com.github.guqt178.utils.result.ContainerActivity
 import com.github.guqt178.utils.result.OnResult
@@ -122,7 +121,7 @@ inline fun <reified T : Serializable> T. toMap(crossinline onResult: DefaultCons
             }
         }
         val end = SystemClock.currentThreadTimeMillis()
-        Alog.info("to map cost [${end - start}]ms")
+        //Alog.info("to map cost [${end - start}]ms")
         resultMap
     }) {
         onResult.invoke(it)
@@ -169,4 +168,7 @@ fun ImageView.loadWithListener(
                 .clearOnDetach()
     }
 }
+
+fun String?.ifEmpty(option: String = "") = if (this.isNullOrEmpty()) option else this
+
 
