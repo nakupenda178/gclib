@@ -7,6 +7,7 @@ dependencies {
     ////////////////////////
     implementation project(":modules:res")
     implementation project(":modules:log")
+    implementation project(":modules:http")
     implementation project(":modules:widgets")
     implementation project(":modules:sweet-alert")
 
@@ -23,31 +24,33 @@ dependencies {
     api dp["design"]
     api dp["kotlin_reflection"]
 
-    api dp["rxandroid"]
-    api dp["rxjava"]
-    api dp["rxpermissions"]
-    api dp["rxkotlin"]
-
-    api dp["rxlifecycle"]
-    api dp["rxlifecycle-life"]
-    api dp["rxlifecycle_components"]
-
-    api dp["zh-rxlifecycle-compat"]
-    api dp["zh-rxlifecycle"]
-
-
-    api dp["rxrelay"]
 
     api dp["guava"]
-    api dp["retrofit"]
-    api dp["retrofit-converter-gson"]
-    api dp["retrofit-converter-jackson"]
-    api dp["retrofit-adapter-rxjava2"]
 
     api dp["glide"]
     api dp["glide-transformations"]
     api dp["multidex"]
     api dp["utilcode"]
+
+    api dp["rxpermissions"]
+
+    implementation dp["zh-rxlifecycle-compat"]
+    implementation dp["zh-rxlifecycle"]
+    implementation dp["rxrelay"]
+
+    //api dp["retrofit-converter-jackson"]
+    //api dp["retrofit-converter-gson"]
+    //api dp["retrofit-adapter-rxjava2"]
+    //api dp["rxjava"]
+    //api dp["rxkotlin"]
+    //api dp["retrofit"]
+    //api dp["rxlifecycle-life"]
+
+
+    //api dp["rxandroid"]
+    //api dp["rxlifecycle"]
+    //api dp["rxlifecycle_components"]
+
 
 
 
