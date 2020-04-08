@@ -1,6 +1,6 @@
-package com.github.guqt178.utils.log
+package com.github.guqt178.log
 
-import com.github.guqt178.utils.log.LoggerWrapper.Companion.logger
+import com.github.guqt178.log.LoggerWrapper.Companion.logger
 
 /**
  * xLog

@@ -5,6 +5,7 @@ dependencies {
 
     api project(":modules:res")
     api project(":modules:gui")
+    api project(":modules:log")
     api project(":modules:gclib")
     api project(":modules:widgets")
     api project(":modules:auto-size")

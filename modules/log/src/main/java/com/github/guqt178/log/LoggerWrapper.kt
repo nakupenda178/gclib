@@ -1,4 +1,4 @@
-package com.github.guqt178.utils.log
+package com.github.guqt178.log
 
 internal class LoggerWrapper private constructor() : ILogger {
     override fun wtf(msg: String, vararg format: Any) {

@@ -8,6 +8,7 @@ include ':modules:gui'            //xui的本地化
 include ':modules:auto-size'      //今日头条适配(smallest适配dimen文件)
 include ':modules:widgets'        //收集常用的widgets
 include ':modules:joda'           //joda-time
-include ':modules:usual'          //
+include ':modules:usual'          //常用的BaseXXX类
+include ':modules:log'            //log
 
 include ':modules:all'            //依赖所有上面子modules

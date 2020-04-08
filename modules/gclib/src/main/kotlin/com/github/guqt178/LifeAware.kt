@@ -6,7 +6,6 @@ import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.OnLifecycleEvent
 import android.support.annotation.CallSuper
 import android.support.annotation.NonNull
-import com.github.guqt178.utils.log.Alog
 
 /**
  * 继承该类感知可以activity生命周期

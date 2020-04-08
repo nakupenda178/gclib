@@ -6,6 +6,7 @@ dependencies {
     //子module
     ////////////////////////
     implementation project(":modules:res")
+    implementation project(":modules:log")
     implementation project(":modules:widgets")
     implementation project(":modules:sweet-alert")
 
@@ -16,7 +17,6 @@ dependencies {
     ////////////////////////
     //第三方库
     ////////////////////////
-    implementation dp["xlog"]
 
     api dp["recyclerview-v7"]
     api dp["BaseRecyclerViewAdapterHelper"]

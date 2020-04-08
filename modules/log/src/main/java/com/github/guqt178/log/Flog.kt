@@ -1,4 +1,4 @@
-package com.github.guqt178.utils.log
+package com.github.guqt178.log
 
 import android.util.Log
 

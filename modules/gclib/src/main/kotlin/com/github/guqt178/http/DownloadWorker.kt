@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Environment
 import com.github.guqt178.http.retrofit.RetrofitManager
-import com.github.guqt178.utils.log.Alog
+import com.github.guqt178.log.Alog
 import com.trello.rxlifecycle2.LifecycleProvider
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
