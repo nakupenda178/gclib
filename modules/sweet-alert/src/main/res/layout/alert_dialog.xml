@@ -77,7 +77,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/success_circle" />
 
-        <com.github.guqt178.dialog.SuccessTickView
+        <com.github.guqt178.alert.dialog.SuccessTickView
             android:id="@+id/success_tick"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -115,7 +115,7 @@
         tools:visibility="visible"
         android:visibility="gone">
 
-        <com.github.guqt178.dialog.ProgressWheel
+        <com.github.guqt178.alert.dialog.ProgressWheel
             android:id="@+id/progressWheel"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -148,6 +148,7 @@
 
     <LinearLayout
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">

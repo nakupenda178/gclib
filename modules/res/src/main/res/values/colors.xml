@@ -15,7 +15,6 @@
     <color name="text_dark">#999999</color>
     <color name="text_light_dark">#333333</color>
     <color name="text_normal">#666666</color>
-    <color name="transparent">#00000000</color>
 
 
 
@@ -62,7 +61,6 @@
     <color name="bg_keyborad_color_press">#bfbfbf</color>
     <color name="keyborad_line_color">#bfbfbf</color>
     <color name="btnnormal">#108EE9</color>
-
 
 
 

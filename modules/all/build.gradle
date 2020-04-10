@@ -8,6 +8,7 @@ dependencies {
     api project(":modules:log")
     api project(":modules:http")
     api project(":modules:gclib")
+    api project(":modules:dialog")
     api project(":modules:widgets")
     api project(":modules:auto-size")
     api project(":modules:sweet-alert")

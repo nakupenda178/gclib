@@ -2,18 +2,17 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
 
     <scale
-        android:duration = "300"
+        android:duration="300"
         android:fromXScale="1.2"
-        android:toXScale="1.0"
         android:fromYScale="1.2"
-        android:toYScale="1.0"
         android:pivotX="50%"
-        android:pivotY="50%"/>
+        android:pivotY="50%"
+        android:toXScale="1.0"
+        android:toYScale="1.0" />
 
     <alpha
         android:duration="300"
         android:fromAlpha="0.0"
         android:toAlpha="1.0" />
 
-</set>
-<!--类似Ios弹窗的动画配合dialog_out_anim-->
+</set><!--类似Ios弹窗的动画配合dialog_out_anim-->

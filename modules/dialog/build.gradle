@@ -1,0 +1,10 @@
+apply from: "../../config.gradle"
+dependencies {
+    def dp = rootProject.ext.dependencies
+    implementation project(":modules:res")
+    implementation project(":modules:widgets")
+
+    implementation dp["cardview-v7"]
+    //implementation 'com.google.android.material:material:1.2.0-alpha04'
+
+}

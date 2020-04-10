@@ -8,6 +8,7 @@ dependencies {
     implementation project(":modules:res")
     implementation project(":modules:log")
     implementation project(":modules:http")
+    implementation project(":modules:dialog")
     implementation project(":modules:widgets")
     implementation project(":modules:sweet-alert")
 

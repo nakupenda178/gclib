@@ -4,19 +4,19 @@ import android.app.Activity
 import android.content.Context
 import android.support.v4.app.Fragment
 import com.github.guqt178.DefaultConsumer
-import com.github.guqt178.dialog.ProgressHelper
-import com.github.guqt178.dialog.SweetAlertDialog
-import com.github.guqt178.widgets.dialog.DialogMaker
+import com.github.guqt178.alert.dialog.ProgressHelper
+import com.github.guqt178.alert.dialog.SweetAlertDialog
+import com.github.guqt178.dialogs.easy.DialogMaker
 
 
 // <editor-fold defaultstate="collapsed" desc="简单的转圈dialog">
 
-fun Activity?.showLoading(msg: String, cancelable: Boolean = true) {
+fun Activity?.showLoading(msg: String, cancelable: Boolean = false) {
     if (this != null && !this.isFinishing) {
         if (DialogMaker.isShowing())
             updateLoadingMessage(msg)
         else
-            DialogMaker.showProgressDialog(this, msg, cancelable)
+            DialogMaker.showProgressDialog(this,0.0f, msg, cancelable)
     }
 }
 
