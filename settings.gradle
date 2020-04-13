@@ -12,5 +12,6 @@ include ':modules:usual'          //常用的BaseXXX类
 include ':modules:log'            //log
 include ':modules:http'           //http
 include ':modules:dialog'         //dialog
+include ':modules:permission'     //rxpermisson
 
 include ':modules:all'            //依赖所有上面子modules

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.guqt178.usual" >
+    package="com.github.guqt178.permission" >
 
    <!-- <application
         android:allowBackup="true"

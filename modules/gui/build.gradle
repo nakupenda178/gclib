@@ -4,4 +4,6 @@ dependencies {
     def dp = rootProject.ext.dependencies
     implementation dp["calligraphy"]
     implementation dp["glide"]
+    //图片选择
+    //implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.1'
 }

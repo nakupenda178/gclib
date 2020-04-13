@@ -1,0 +1,7 @@
+apply from: "../../config.gradle"
+dependencies {
+    def dp = rootProject.ext.dependencies
+    implementation dp["rxjava"]
+    //implementation project(":modules:xxx")
+
+}

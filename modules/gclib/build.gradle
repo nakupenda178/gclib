@@ -33,7 +33,6 @@ dependencies {
     api dp["multidex"]
     api dp["utilcode"]
 
-    api dp["rxpermissions"]
 
     implementation dp["zh-rxlifecycle-compat"]
     implementation dp["zh-rxlifecycle"]
@@ -46,6 +45,7 @@ dependencies {
     //api dp["rxkotlin"]
     //api dp["retrofit"]
     //api dp["rxlifecycle-life"]
+    //api dp["rxpermissions"]
 
 
     //api dp["rxandroid"]

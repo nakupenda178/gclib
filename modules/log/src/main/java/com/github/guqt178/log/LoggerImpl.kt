@@ -41,8 +41,8 @@ internal class LoggerImpl(
             mPrinters = printers
         }
         XLog.init(                                                 // Initialize XLog
-            mConfig, // Specify the log configuration, if not specified, will use new LogConfiguration.Builder().build()
-            *mPrinters
+                mConfig, // Specify the log configuration, if not specified, will use new LogConfiguration.Builder().build()
+                *mPrinters
         )
     }
 
@@ -100,44 +100,45 @@ internal class LoggerImpl(
     private fun defaultPrinter() = AndroidPrinter()
 
     private fun defaultFilePrinter() =
-        FilePrinter.Builder(// Printer that print the log to the file system
-                File(Environment.getExternalStorageDirectory(), "ALggerExample").path
+            FilePrinter.Builder( // Printer that print the log to the file system
+                    //File(Environment.getExternalStorageDirectory(), "ALggerExample").path
+                    ContextProvider.getContext()?.externalCacheDir?.path
             )            // Specify the path to save log file
-            .fileNameGenerator(
-                DateFileNameGenerator()
-            )        // Default: ChangelessFileNameGenerator("log")
-            // .backupStrategy(new MyBackupStrategy())             // Default: FileSizeBackupStrategy(1024 * 1024)
-            // .cleanStrategy(new FileLastModifiedCleanStrategy(MAX_TIME))     // Default: NeverCleanStrategy()
-            .flattener(ClassicFlattener())                     // Default: DefaultFlattener
-            .build()
+                    .fileNameGenerator(
+                            DateFileNameGenerator()
+                    )        // Default: ChangelessFileNameGenerator("log")
+                    // .backupStrategy(new MyBackupStrategy())             // Default: FileSizeBackupStrategy(1024 * 1024)
+                    // .cleanStrategy(new FileLastModifiedCleanStrategy(MAX_TIME))     // Default: NeverCleanStrategy()
+                    .flattener(ClassicFlattener())                     // Default: DefaultFlattener
+                    .build()
 
     private fun defaultConfig() = LogConfiguration.Builder()
-        .logLevel(
-            if (isDebug)
-                LogLevel.ALL             // Specify log level, logs below this level won't be printed, default: LogLevel.ALL
-            else
-                LogLevel.NONE
-        )
-        .tag(mTag)                   // Specify TAG, default: "X-LOG"
-        .nb()
-        // .t()                                                // Enable thread info, disabled by default
-         //.st(2)                                              // Enable stack trace info with depth 2, disabled by default
-        // Enable border, disabled by default
-        // .jsonFormatter(new MyJsonFormatter())               // Default: DefaultJsonFormatter
-        // .xmlFormatter(new MyXmlFormatter())                 // Default: DefaultXmlFormatter
-        // .throwableFormatter(new MyThrowableFormatter())     // Default: DefaultThrowableFormatter
-        // .threadFormatter(new MyThreadFormatter())           // Default: DefaultThreadFormatter
-        // .stackTraceFormatter(new MyStackTraceFormatter())   // Default: DefaultStackTraceFormatter
-        // .borderFormatter(new MyBoardFormatter())            // Default: DefaultBorderFormatter
-        // .addObjectFormatter(AnyClass.class,                 // Add formatter for specific class of object
-        //     new AnyClassObjectFormatter())                  // Use Object.toString() by default
-        .addInterceptor(
-            BlacklistTagsFilterInterceptor(    // Add blacklist tags filter
-                "blacklist1", "blacklist2", "blacklist3"
+            .logLevel(
+                    if (isDebug)
+                        LogLevel.ALL             // Specify log level, logs below this level won't be printed, default: LogLevel.ALL
+                    else
+                        LogLevel.NONE
             )
-        )
-        // .addInterceptor(new WhitelistTagsFilterInterceptor( // Add whitelist tags filter
-        //     "whitelist1", "whitelist2", "whitelist3"))
-        // .addInterceptor(new MyInterceptor())                // Add a log interceptor
-        .build()
+            .tag(mTag)                   // Specify TAG, default: "X-LOG"
+            .nb()
+            // .t()                                                // Enable thread info, disabled by default
+            //.st(2)                                              // Enable stack trace info with depth 2, disabled by default
+            // Enable border, disabled by default
+            // .jsonFormatter(new MyJsonFormatter())               // Default: DefaultJsonFormatter
+            // .xmlFormatter(new MyXmlFormatter())                 // Default: DefaultXmlFormatter
+            // .throwableFormatter(new MyThrowableFormatter())     // Default: DefaultThrowableFormatter
+            // .threadFormatter(new MyThreadFormatter())           // Default: DefaultThreadFormatter
+            // .stackTraceFormatter(new MyStackTraceFormatter())   // Default: DefaultStackTraceFormatter
+            // .borderFormatter(new MyBoardFormatter())            // Default: DefaultBorderFormatter
+            // .addObjectFormatter(AnyClass.class,                 // Add formatter for specific class of object
+            //     new AnyClassObjectFormatter())                  // Use Object.toString() by default
+            .addInterceptor(
+                    BlacklistTagsFilterInterceptor(    // Add blacklist tags filter
+                            "blacklist1", "blacklist2", "blacklist3"
+                    )
+            )
+            // .addInterceptor(new WhitelistTagsFilterInterceptor( // Add whitelist tags filter
+            //     "whitelist1", "whitelist2", "whitelist3"))
+            // .addInterceptor(new MyInterceptor())                // Add a log interceptor
+            .build()
 }
