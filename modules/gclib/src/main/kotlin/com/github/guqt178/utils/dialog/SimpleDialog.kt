@@ -1,17 +1,13 @@
 package com.github.guqt178.utils.dialog
 
-import android.app.Activity
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.support.annotation.FloatRange
 import android.support.annotation.LayoutRes
 import android.support.annotation.StyleRes
 import android.support.v7.app.AlertDialog
 import android.view.LayoutInflater
-import android.view.View
 import com.github.guqt178.R
-import com.github.guqt178.utils.view.ViewHolderHelper
+import com.github.guqt178.utils.helper.ViewHolderHelper
 
 
 /**

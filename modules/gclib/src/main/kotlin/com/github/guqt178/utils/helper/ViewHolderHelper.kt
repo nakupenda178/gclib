@@ -1,4 +1,4 @@
-package com.github.guqt178.utils.view
+package com.github.guqt178.utils.helper
 
 import android.graphics.Bitmap
 import android.graphics.Paint

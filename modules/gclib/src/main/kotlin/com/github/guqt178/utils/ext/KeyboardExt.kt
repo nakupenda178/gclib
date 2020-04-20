@@ -1,4 +1,4 @@
-package com.github.guqt178.utils.keyboard
+package com.github.guqt178.utils.ext
 
 import android.app.Activity
 import android.app.Dialog
@@ -12,7 +12,6 @@ import com.github.guqt178.DefaultConsumer
 import com.github.guqt178.utils.keyboard.keyboardvisibilityevent.AutoActivityLifecycleCallback
 import com.github.guqt178.utils.keyboard.keyboardvisibilityevent.KeyboardVisibilityEvent
 import com.github.guqt178.utils.keyboard.keyboardvisibilityevent.KeyboardVisibilityEventListener
-
 
 /**
  * 点击空白区域隐藏键盘

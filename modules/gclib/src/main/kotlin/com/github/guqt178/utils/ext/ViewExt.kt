@@ -1,9 +1,8 @@
-package com.github.guqt178.utils.view
+package com.github.guqt178.utils.ext
 
 import android.view.View
 import com.github.guqt178.DefaultConsumer
 import com.github.guqt178.utils.ClickUtils
-
 
 fun View?.onClick(onClickListener: View.OnClickListener) {
     this?.doOnClick{

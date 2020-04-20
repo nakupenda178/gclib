@@ -1,4 +1,4 @@
-package com.github.guqt178.utils.date
+package com.github.guqt178.utils.ext
 
 import java.text.SimpleDateFormat
 import java.util.*

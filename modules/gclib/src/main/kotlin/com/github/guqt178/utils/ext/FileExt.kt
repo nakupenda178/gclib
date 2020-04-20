@@ -1,9 +1,8 @@
-package com.github.guqt178.utils.file
+package com.github.guqt178.utils.ext
 
 import okhttp3.MediaType
 import java.io.File
 import java.net.URLConnection
-
 
 fun File.guessMimeType(): MediaType? {
     var path = absolutePath

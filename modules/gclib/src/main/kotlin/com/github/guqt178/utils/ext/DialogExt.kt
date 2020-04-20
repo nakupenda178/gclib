@@ -1,4 +1,4 @@
-package com.github.guqt178.utils.dialog
+package com.github.guqt178.utils.ext
 
 import android.app.Activity
 import android.content.Context

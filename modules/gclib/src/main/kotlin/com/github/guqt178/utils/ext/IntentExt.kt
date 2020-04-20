@@ -1,9 +1,8 @@
-package com.github.guqt178.utils.intent
+package com.github.guqt178.utils.ext
 
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-
 
 /**
  * 调起百度地图URI

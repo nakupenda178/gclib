@@ -20,23 +20,32 @@ dependencies {
     //第三方库
     ////////////////////////
 
-    api dp["recyclerview-v7"]
-    api dp["BaseRecyclerViewAdapterHelper"]
-    api dp["design"]
     api dp["kotlin_reflection"]
+
+    api dp["recyclerview-v7"]
+    api dp["design"]
+
+    api dp["BaseRecyclerViewAdapterHelper"]
 
 
     api dp["guava"]
 
     api dp["glide"]
     api dp["glide-transformations"]
+
     api dp["multidex"]
+
     api dp["utilcode"]
 
 
     implementation dp["zh-rxlifecycle-compat"]
     implementation dp["zh-rxlifecycle"]
     implementation dp["rxrelay"]
+
+    //下拉刷新
+    implementation dp["smartRefresh"]
+    //implementation dp["smartRefresh-h"]//水平刷新
+    //implementation dp["smartRefreshHeader"]
 
     //api dp["retrofit-converter-jackson"]
     //api dp["retrofit-converter-gson"]

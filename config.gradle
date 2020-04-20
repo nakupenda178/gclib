@@ -76,6 +76,9 @@ android {
         }
     }
 
+    dataBinding{
+        enabled true
+    }
 }
 
 

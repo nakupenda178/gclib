@@ -1,9 +1,6 @@
-package com.github.guqt178.utils.color
+package com.github.guqt178.utils.ext
 
 import android.graphics.Color
-import android.support.v4.content.ContextCompat
-import com.github.guqt178.utils.GlobalContext
-
 
 fun String.toColor(): Int {
     try {
