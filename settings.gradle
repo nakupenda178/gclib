@@ -1,17 +1,20 @@
 rootProject.name='sample'
 include ':app'                    //容器
-include ':modules:gclib'          //util
-include ':modules:res'            //公用的res资源
-include ':modules:sweet-alert'    //提示类弹窗
-include ':modules:top-snackbar'   //可以在顶部显示的snackbar
-include ':modules:gui'            //xui的本地化
-include ':modules:auto-size'      //今日头条适配(smallest适配dimen文件)
-include ':modules:widgets'        //收集常用的widgets
-include ':modules:joda'           //joda-time
-include ':modules:usual'          //常用的BaseXXX类
-include ':modules:log'            //log
-include ':modules:http'           //http
-include ':modules:dialog'         //dialog
-include ':modules:permission'     //rxpermisson
 
 include ':modules:all'            //依赖所有上面子modules
+
+include ':modules:res'            //公用的res资源
+include ':modules:log'            //log
+include ':modules:gui'            //xui的本地化
+include ':modules:http'           //http
+include ':modules:joda'           //joda-time
+include ':modules:usual'          //常用的BaseXXX类
+include ':modules:gclib'          //util
+include ':modules:dialog'         //dialog
+include ':modules:widgets'        //收集常用的widgets
+include ':modules:coroutine'      //kotlin 协程
+include ':modules:auto-size'      //今日头条适配(smallest适配dimen文件)
+include ':modules:permission'     //rxpermisson
+include ':modules:sweet-alert'    //提示类弹窗
+include ':modules:top-snackbar'   //可以在顶部显示的snackbar
+

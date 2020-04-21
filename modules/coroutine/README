@@ -1,0 +1,15 @@
+协程:
+1.场景一个界面需要多个接口返回的数据渲染,可以这样
+CoroutineScope(Dispatchers.Main).launch {
+            val result1 = async {//网络接口1
+                api.getName()
+            }
+
+            val result2 = async {//网络接口2
+               api.getInfo()
+            }
+
+
+           //此处只有2个接口都成功获取结果后才会执行且不会阻塞主线程
+           Log.wtf("${result1.await()} ${result2.await()} ")
+        }
