@@ -4,4 +4,6 @@ dependencies {
     def dp = rootProject.ext.dependencies
 
     implementation project(":modules:res")
+    implementation dp["BaseRecyclerViewAdapterHelper"]
+
 }

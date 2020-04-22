@@ -6,13 +6,13 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 
 //UI thread
-val mainScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+internal val mainScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
 //适合计算密集型
-val cpuScope = CoroutineScope(Dispatchers.Default)
+internal val cpuScope = CoroutineScope(Dispatchers.Default)
 
 //文件读写 / 网络访问
-val ioScope = CoroutineScope(Dispatchers.IO)
+internal val ioScope = CoroutineScope(Dispatchers.IO)
 
 
 suspend fun <T> Deferred<T>.await(): T = await()
@@ -34,3 +34,21 @@ fun CoroutineScope.doLaunch(
     context: CoroutineContext = EmptyCoroutineContext,
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit): Job = launch(context, start, block)
+
+fun main(action: suspend CoroutineScope.() -> Unit) {
+    mainScope.launch {
+        action.invoke(this)
+    }
+}
+
+fun io(action: suspend CoroutineScope.() -> Unit) {
+    ioScope.launch {
+        action.invoke(this)
+    }
+}
+
+fun compute(action: suspend CoroutineScope.() -> Unit) {
+    cpuScope.launch {
+        action.invoke(this)
+    }
+}

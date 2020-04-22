@@ -169,6 +169,5 @@ fun ImageView.loadWithListener(
     }
 }
 
-fun String?.ifEmpty(option: String = "") = if (this.isNullOrEmpty()) option else this
 
 

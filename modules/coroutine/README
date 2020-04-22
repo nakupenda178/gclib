@@ -1,4 +1,41 @@
-协程:
+(教程)[https://kaixue.io/kotlin-coroutines-1/]
+## 创建:
+ >三种方法来创建协程
+         // 方法一，使用 runBlocking 顶层函数
+         // 方法一通常适用于单元测试的场景，而业务开发中不会用到这种方法，因为它是线程阻塞的
+         runBlocking {
+             getImage(imageId)
+         }
+
+         // 方法二，使用 GlobalScope 单例对象
+         // 方法二和使用 runBlocking 的区别在于不会阻塞线程。但在 Android 开发中同样不推荐这种用法，
+         //因为它的生命周期会和 app 一致，且不能取消（什么是协程的取消后面的文章会讲）。
+         //  可以直接调用 launch 开启协程
+         GlobalScope.launch {
+             getImage(imageId)
+         }
+
+         // 方法三，自行通过 CoroutineContext 创建一个 CoroutineScope 对象
+         // 方法三是比较推荐的使用方法，我们可以通过 context 参数去管理和控制协程的生命周期
+         //（这里的 context 和 Android 里的不是一个东西，是一个更通用的概念，会有一个 Android 平台的封装来配合使用）。
+
+
+         //  需要一个类型为 CoroutineContext 的参数
+         val coroutineScope = CoroutineScope(context)
+         coroutineScope.launch {
+             getImage(imageId)
+         }
+         注: launch 与 async 这两个函数。
+         相同点：它们都可以用来启动一个协程，返回的都是 Coroutine，我们这里不需要纠结具体是返回哪个类。
+         不同点：async 返回的 Coroutine 多实现了 Deferred 接口。
+         withContext(Dispatchers.IO) 切换线程
+
+## 使用场景
+协程最常用的功能是并发，而并发的典型场景就是多线程。可以使用 Dispatchers.IO 参数把任务切到 IO 线程执行：
+coroutineScope.launch(Dispatchers.IO) {
+    ...
+}
+## 协程:
 1.场景一个界面需要多个接口返回的数据渲染,可以这样
 CoroutineScope(Dispatchers.Main).launch {
             val result1 = async {//网络接口1
@@ -13,3 +50,73 @@ CoroutineScope(Dispatchers.Main).launch {
            //此处只有2个接口都成功获取结果后才会执行且不会阻塞主线程
            Log.wtf("${result1.await()} ${result2.await()} ")
         }
+//并行处理的请求
+coroutineScope.launch(Dispatchers.Main) {
+    //
+    val avatar = async { api.getAvatar(user) }      // 获取用户头像
+    val logo   = async { api.getCompanyLogo(user) } // 获取用户所在公司的 logo
+    val merged = suspendingMerge(avatar, logo)      // 合并结果
+    //
+    show(merged) // 更新 UI
+}
+
+## 什么时候用协程？当你需要切线程或者指定线程的时候。你要在后台执行任务？切
+launch(Dispatchers.IO) {
+    val image = getImage(imageId)
+}
+需要在前台更新界面？再切！
+coroutineScope.launch(Dispatchers.IO) {
+    val image = getImage(imageId)
+    launch(Dispatchers.Main) {
+        avatarIv.setImageBitmap(image)
+    }
+}
+如果只是使用 launch 函数，协程并不能比线程做更多的事。不过协程中却有一个很实用的函数：withContext 。
+这个函数可以切换到指定的线程，并在闭包内的逻辑执行结束之后，自动把线程切回去继续执行。那么可以将上面的代码写成这样：
+coroutineScope.launch(Dispatchers.Main) {      // 👈 在 UI 线程开始
+    val image = withContext(Dispatchers.IO) {  // 👈 切换到 IO 线程，并在执行完成后切回 UI 线程
+        getImage(imageId)                      // 👈 将会运行在 IO 线程
+    }
+    avatarIv.setImageBitmap(image)             // 👈 回到 UI 线程更新 UI
+}
+
+还有更多用法
+// 通过第二种写法来实现相同的逻辑
+coroutineScope.launch(Dispatchers.Main) {
+    ...//main线程
+    withContext(Dispatchers.IO) {
+        ...//io线程
+    }
+    ...
+    withContext(Dispatchers.IO) {
+        ...//io线程
+    }
+    ...//main线程
+}
+
+我们甚至可以把 withContext 放进一个单独的函数里面：
+launch(Dispatchers.Main) {              // 👈 在 UI 线程开始
+    val image = getImage(imageId)
+    avatarIv.setImageBitmap(image)     // 👈 执行结束后，自动切换回 UI 线程
+}
+//                               👇
+suspend fun getImage(imageId: Int) = withContext(Dispatchers.IO) {
+    ...
+}
+
+## suspend
+    什么时候需要自定义 suspend 函数
+    ** 如果你的某个函数比较耗时，也就是要等的操作，那就把它写成 suspend 函数。这就是原则。
+    ** 耗时操作一般分为两类：I/O 操作和 CPU 计算工作。比如文件的读写、网络交互、图片的模糊处理，都是耗时的，通通可以把它们写进 suspend 函数里。
+       另外这个「耗时」还有一种特殊情况，就是这件事本身做起来并不慢，但它需要等待，比如 5 秒钟之后再做这个操作。这种也是 suspend 函数的应用场景。
+## 怎么写
+    给函数加上 suspend 关键字，然后在 withContext 把函数的内容包住就可以了。
+    提到用 withContext是因为它在挂起函数里功能最简单直接：把线程自动切走和切回。
+    当然并不是只有 withContext 这一个函数来辅助我们实现自定义的 suspend 函数，
+    比如还有一个挂起函数叫  delay，它的作用是等待一段时间后再继续往下执行代码
+
+## 总结
+
+  * 协程就是切线程；
+  * 挂起就是可以自动切回来的切线程；
+  * 挂起的非阻塞式指的是它能用看起来阻塞的代码写出非阻塞的操作，就这么简单。
