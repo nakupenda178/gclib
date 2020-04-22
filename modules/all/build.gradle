@@ -1,12 +1,13 @@
 apply from: "../../config.gradle"
 
 dependencies {
-    def dp = rootProject.ext.dependencies
+    //def dp = rootProject.ext.dependencies
 
     api project(":modules:res")
-    api project(":modules:gui")
+    api project(":modules:log")
     api project(":modules:log")
     api project(":modules:http")
+    api project(":modules:joda")
     api project(":modules:gclib")
     api project(":modules:dialog")
     api project(":modules:widgets")
