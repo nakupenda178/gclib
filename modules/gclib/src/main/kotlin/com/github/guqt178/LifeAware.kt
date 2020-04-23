@@ -12,8 +12,10 @@ import android.support.annotation.NonNull
  */
 abstract class LifeAware(@NonNull private val lifecycleOwner: LifecycleOwner) : LifecycleObserver {
 
+    protected val lifecycle: Lifecycle = lifecycleOwner.lifecycle
+
     init {
-        lifecycleOwner.lifecycle.addObserver(this)
+        lifecycle.addObserver(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
