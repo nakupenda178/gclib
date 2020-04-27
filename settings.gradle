@@ -16,5 +16,6 @@ include ':modules:coroutine'      //kotlin 协程
 include ':modules:auto-size'      //今日头条适配(smallest适配dimen文件)
 include ':modules:permission'     //rxpermisson
 include ':modules:sweet-alert'    //提示类弹窗
+include ':modules:page-state'     //页面状态管理
 include ':modules:top-snackbar'   //可以在顶部显示的snackbar
 

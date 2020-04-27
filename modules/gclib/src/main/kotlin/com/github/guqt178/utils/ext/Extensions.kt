@@ -20,6 +20,9 @@ import com.github.guqt178.utils.result.ActivityResultHelper
 import com.github.guqt178.utils.result.ContainerActivity
 import com.github.guqt178.utils.result.OnResult
 import com.github.guqt178.utils.thread.doAsyncTask
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 import java.io.Serializable
 import kotlin.reflect.KProperty
 
@@ -110,7 +113,7 @@ fun Context?.startContainerActivityForResult(
  * 省去需要自己创建Map,一个一个放key和value
  * </p>
  */
-inline fun <reified T : Serializable> T. toMap(crossinline onResult: DefaultConsumer<Map<String, Any>>) {
+inline fun <reified T : Serializable> T.toMap(crossinline onResult: DefaultConsumer<Map<String, Any>>) {
 
     doAsyncTask<Map<String, Any>>({
         val start = SystemClock.currentThreadTimeMillis()
@@ -167,6 +170,21 @@ fun ImageView.loadWithListener(
                 .into(this)
                 .clearOnDetach()
     }
+}
+
+//从assert文件夹中配置文件，然后转化为json对象
+fun Context.readAssetsFile(fileName: String): String {
+    val sb = StringBuilder()
+    try {
+        val br = BufferedReader(InputStreamReader(assets.open(fileName)))
+        var line: String?
+        while (br.readLine().also { line = it } != null) {
+            sb.append(line)
+        }
+    } catch (e: IOException) {
+        e.printStackTrace()
+    }
+    return sb.toString()
 }
 
 

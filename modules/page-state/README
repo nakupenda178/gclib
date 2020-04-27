@@ -1,0 +1,19 @@
+源库:https://github.com/darryrzhong/LoadSir
+优雅地处理加载中，重试，无数据等)
+
+使用:1. Config -> 2. Register -> 3. Display
+如果全局配置:
+PageState.beginBuilder()
+                .addLayoutState(ErrorLayoutState())
+                .addLayoutState(EmptyLayoutState())
+                .addLayoutState(LoadingLayoutState())
+                .addLayoutState(TimeoutLayoutState())
+                .addLayoutState(CustomLayoutState())
+                .setDefaultLayoutState(LoadingLayoutState::class.java)
+                .commit()
+
+在某个页面中使用的时候
+PageSateService service= PageState.getDefault().registerXX 方法可以设置重新加载的逻辑,也可以同时调用
+service中的setLayoutState(),定制某种状态的布局
+
+通过service可以shouSuccess() 或具体的状态showLayoutState

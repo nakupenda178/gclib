@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
+import android.support.v4.app.Fragment
 import java.util.*
+import kotlin.system.exitProcess
 
 /**
  * @author gc  on 2018/5/8.
@@ -14,6 +16,7 @@ class AppStackManager private constructor() {
 
 
     private val activityStack: Stack<Activity> = Stack()
+    private val fragmentStack: Stack<Fragment> = Stack()
 
     companion object {
         @JvmStatic
@@ -64,7 +67,7 @@ class AppStackManager private constructor() {
         finishAllActivity()
         val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         activityManager.killBackgroundProcesses(context.packageName)
-        System.exit(0)
+        exitProcess(0)
     }
 
     /**
@@ -75,4 +78,35 @@ class AppStackManager private constructor() {
             activityStack.pop()?.finish()
         }
     }
+
+
+    /**
+     * 添加Fragment到堆栈
+     */
+    fun addFragment(fragment: Fragment?) {
+        fragmentStack.add(fragment)
+    }
+
+    /**
+     * 移除指定的Fragment
+     */
+    fun removeFragment(fragment: Fragment?) {
+        if (fragment != null) {
+            fragmentStack.remove(fragment)
+        }
+    }
+
+
+    /**
+     * 是否有Fragment
+     */
+    fun hasFragment(): Boolean {
+        return !fragmentStack.isEmpty()
+    }
+
+    /**
+     * 获取当前Fragment（堆栈中最后一个压入的）
+     */
+    fun currentFragment(): Fragment? = fragmentStack.lastElement()
+
 }

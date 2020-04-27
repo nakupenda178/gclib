@@ -16,6 +16,7 @@ dependencies {
     api project(":modules:auto-size")
     api project(":modules:coroutine")
     api project(":modules:permission")
+    api project(":modules:page-state")
     api project(":modules:sweet-alert")
     api project(":modules:top-snackbar")
 }

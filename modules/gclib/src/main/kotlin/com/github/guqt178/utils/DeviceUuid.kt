@@ -11,22 +11,22 @@ import java.util.*
  * Describe：获取Android设备唯一id
  */
 @SuppressLint("MissingPermission")
-class DeviceUUID private constructor(context: Context) {
+class DeviceUuid private constructor(context: Context) {
     private var deviceUuid: UUID? = null
 
     companion object {
-        private var INSTANCE: DeviceUUID? = null
+        private var INSTANCE: DeviceUuid? = null
         private const val PREFS_FILE = "device_id.xml"
         private const val PREFS_DEVICE_ID = "device_id"
 
-        fun getDeviceUUid(context: Context) = INSTANCE?.deviceUuid
-                ?: DeviceUUID(context).deviceUuid
+        fun getDeviceUuid(context: Context) = INSTANCE?.deviceUuid
+                ?: DeviceUuid(context).deviceUuid
 
     }
 
     init {
         if (deviceUuid == null) {
-            synchronized(DeviceUUID::class.java) {
+            synchronized(DeviceUuid::class.java) {
                 if (deviceUuid == null) {
                     val prefs = context.getSharedPreferences(PREFS_FILE, 0)
                     val id = prefs.getString(PREFS_DEVICE_ID, null)

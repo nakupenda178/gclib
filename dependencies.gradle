@@ -130,6 +130,8 @@ ext {
                     "arouter_compiler"             : "com.alibaba:arouter-compiler:${dependVersion.arouter_compiler_version}",
                     "multidex"                     : "com.android.support:multidex:1.0.3",
 
+                    "work_manager"                 : "android.arch.work:work-runtime:1.0.0-alpha06",
+
 
                     //logger
                     "logger"                       : "com.orhanobut:logger:2.2.0",

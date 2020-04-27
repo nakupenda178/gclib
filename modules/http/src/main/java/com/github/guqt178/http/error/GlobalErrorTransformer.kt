@@ -1,7 +1,12 @@
 package com.github.guqt178.http.error
 
 import io.reactivex.*
+import java.io.File
 
+//
+typealias OnErrorCallback = (Throwable) -> Unit
+typealias OnSuccessCallback = (File) -> Unit
+//
 typealias OnNextInterceptor<T> = (T) -> Observable<T>
 typealias OnErrorResumeNext<T> = (Throwable) -> Observable<T>
 typealias OnErrorRetrySupplier = (Throwable) -> RetryConfig

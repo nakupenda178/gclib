@@ -3,6 +3,8 @@ package com.github.guqt178.http
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Environment
+import com.github.guqt178.http.error.OnErrorCallback
+import com.github.guqt178.http.error.OnSuccessCallback
 import com.github.guqt178.http.retrofit.RetrofitManager
 import com.trello.rxlifecycle2.LifecycleProvider
 import io.reactivex.Flowable
@@ -17,8 +19,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-typealias OnErrorCallback = (Throwable) -> Unit
-typealias OnSuccessCallback = (File) -> Unit
 /**
  * 下载文件
  */
@@ -114,7 +114,7 @@ class DownloadWorker {
     //生成一个文件名
     private fun generateFileName(isPic: Boolean): String {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(Date())
-        return if (isPic) "IMG_${timeStamp}.jpg" else "video_${timeStamp}.mp4"
+        return if (isPic) "IMG_${timeStamp}.jpg" else "download_file_${timeStamp}"
     }
 
     //lifecycle
