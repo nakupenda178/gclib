@@ -11,6 +11,7 @@ include ':modules:joda'           //joda-time
 include ':modules:usual'          //常用的BaseXXX类
 include ':modules:gclib'          //util
 include ':modules:dialog'         //dialog
+include ':modules:ezhttp'         //easyhttp
 include ':modules:widgets'        //收集常用的widgets
 include ':modules:coroutine'      //kotlin 协程
 include ':modules:auto-size'      //今日头条适配(smallest适配dimen文件)

@@ -110,6 +110,8 @@ ext {
                     "retrofit-converter-jackson"   : "com.squareup.retrofit2:converter-jackson:${dependVersion.retrofit}",
                     "retrofit-adapter-rxjava2"     : "com.squareup.retrofit2:adapter-rxjava2:${dependVersion.retrofit}",
 
+                    "disklrucache"                 : "com.jakewharton:disklrucache:2.0.2",
+
                     "gson"                         : "com.google.code.gson:gson:2.7",
                     "okhttp"                       : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
                     "okhttp-logging-interceptor"   : "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",

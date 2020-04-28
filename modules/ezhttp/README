@@ -1,0 +1,391 @@
+Ezhttp:https://github.com/darryrzhong/RxEzhttp
+一款基于RxJava2+Retrofit2实现简单易用的网络请求框架，结合android平台特性的网络封装库,
+采用api链式调用一点到底,集成cookie管理,多种缓存模式,极简https配置,上传下载进度显示,请求错误自动重试,
+请求携带token、时间戳、签名sign动态配置,自动登录成功后请求重发功能,3种层次的参数设置默认全局局部,
+默认标准ApiResult同时可以支持自定义的数据结构，已经能满足现在的大部分网络请求。
+
+## 特点
+* 比Retrofit使用更简单、更易用。
+* 采用链式调用一点到底
+* 加入基础ApiService，减少Api冗余
+* 支持动态配置和自定义底层框架Okhttpclient、Retrofit.
+* 支持多种方式访问网络GET、POST、PUT、DELETE等请求协议
+* 支持网络缓存,八种缓存策略可选,涵盖大多数业务场景
+* 支持固定添加header和动态添加header
+* 支持添加全局参数和动态添加局部参数
+* 支持文件下载、多文件上传和表单提交数据
+* 支持文件请求、上传、下载的进度回调、错误回调，也可以自定义回调
+* 支持默认、全局、局部三个层次的配置功能
+* 支持任意数据结构的自动解析
+* 支持添加动态参数例如timeStamp时间戳、token、签名sign
+* 支持自定义的扩展API
+* 支持多个请求合并
+* 支持Cookie管理
+* 支持异步、同步请求
+* 支持Https、自签名网站Https的访问、双向验证
+* 支持失败重试机制，可以指定重试次数、重试间隔时间
+* 支持根据ky删除网络缓存和清空网络缓存
+* 提供默认的标准ApiResult解析和回调，并且可自定义ApiResult
+* 支持取消数据请求，取消订阅，带有对话框的请求不需要手动取消请求，对话框消失会自动取消请求
+* 支持请求数据结果采用回调和订阅两种方式
+* api设计上结合http协议和android平台特点来实现,loading对话框,实时进度条显示
+* 返回结果和异常统一处理
+* 结合RxJava2，线程智能控制
+
+使用:
+
+配置:
+                //全局设置请求头
+                HttpHeaders headers = new HttpHeaders();
+                headers.put("User-Agent", SystemInfoUtils.getUserAgent(this, AppConstant.APPID));
+                //全局设置请求参数
+                HttpParams params = new HttpParams();
+                params.put("appId", AppConstant.APPID);
+
+                //以下设置的所有参数是全局参数,同样的参数可以在请求的时候再设置一遍,那么对于该请求来讲,请求中的参数会覆盖全局参数
+                EzHttp.getInstance()
+
+                        //可以全局统一设置全局URL
+                        .setBaseUrl(Url)//设置全局URL  url只能是域名 或者域名+端口号
+
+                        // 打开该调试开关并设置TAG,不需要就不要加入该行
+                        // 最后的true表示是否打印内部异常，一般打开方便调试错误
+                        .debug("Ezhttp", true)
+
+                        //如果使用默认的60秒,以下三行也不需要设置
+                        .setReadTimeOut(60 * 1000)
+                        .setWriteTimeOut(60 * 100)
+                        .setConnectTimeout(60 * 100)
+
+                        //可以全局统一设置超时重连次数,默认为3次,那么最差的情况会请求4次(一次原始请求,三次重连请求),
+                        //不需要可以设置为0
+                        .setRetryCount(3)//网络不好自动重试3次
+                        //可以全局统一设置超时重试间隔时间,默认为500ms,不需要可以设置为0
+                        .setRetryDelay(500)//每次延时500ms重试
+                        //可以全局统一设置超时重试间隔叠加时间,默认为0ms不叠加
+                        .setRetryIncreaseDelay(500)//每次延时叠加500ms
+
+                        //可以全局统一设置缓存模式,默认是不使用缓存,可以不传,具体请看CacheMode
+                        .setCacheMode(CacheMode.NO_CACHE)
+                        //可以全局统一设置缓存时间,默认永不过期
+                        .setCacheTime(-1)//-1表示永久缓存,单位:秒 ，Okhttp和自定义RxCache缓存都起作用
+                        //全局设置自定义缓存保存转换器，主要针对自定义RxCache缓存
+                        .setCacheDiskConverter(new SerializableDiskConverter())//默认缓存使用序列化转化
+                        //全局设置自定义缓存大小，默认50M
+                        .setCacheMaxSize(100 * 1024 * 1024)//设置缓存大小为100M
+                        //设置缓存版本，如果缓存有变化，修改版本后，缓存就不会被加载。特别是用于版本重大升级时缓存不能使用的情况
+                        .setCacheVersion(1)//缓存版本为1
+                        //.setHttpCache(new Cache())//设置Okhttp缓存，在缓存模式为DEFAULT才起作用
+
+                        //可以设置https的证书,以下几种方案根据需要自己设置
+                        .setCertificates()                                  //方法一：信任所有证书,不安全有风险
+                        //.setCertificates(new SafeTrustManager())            //方法二：自定义信任规则，校验服务端证书
+                        //配置https的域名匹配规则，不需要就不要加入，使用不当会导致https握手失败
+                        //.setHostnameVerifier(new SafeHostnameVerifier())
+                        //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
+                        .addCommonHeaders(headers)//设置全局公共头
+                        .addCommonParams(params)//设置全局公共参数
+                        //.addNetworkInterceptor(new NoCacheInterceptor())//设置网络拦截器
+                        //.setCallFactory()//局设置Retrofit对象Factory
+                        //.setCookieStore()//设置cookie
+                        //.setOkproxy()//设置全局代理
+                        //.setOkconnectionPool()//设置请求连接池
+                        //.setCallbackExecutor()//全局设置Retrofit callbackExecutor
+                        //可以添加全局拦截器，不需要就不要加入，错误写法直接导致任何回调不执行
+                        //.addInterceptor(new GzipRequestInterceptor())//开启post数据进行gzip后发送给服务器
+                        .addInterceptor(new CustomSignInterceptor());//添加参数签名拦截器
+
+使用:
+execute(Class clazz)和execute(Type type)功能基本一样，execute(Type type)主要是针对集合不能直接传递Class
+通用:
+1.包含一次普通请求所有能配置的参数，真实使用时不需要配置这么多，按自己的需要选择性的使用即可
+2.以下配置全部是单次请求配置，不会影响全局配置，没有配置的仍然是使用全局参数。
+3.为单个请求设置超时，比如涉及到文件的需要设置读写等待时间多一点。
+完整参数GET示例：
+          EzHttp.get("/v1/app/chairdressing/skinAnalyzePower/skinTestResult")
+                .baseUrl("http://www.xxxx.com")//设置url
+                .writeTimeOut(30*1000)//局部写超时30s,单位毫秒
+                .readTimeOut(30*1000)//局部读超时30s,单位毫秒
+                .connectTimeout(30*1000)//局部连接超时30s,单位毫秒
+                .headers(new HttpHeaders("header1","header1Value"))//添加请求头参数
+                .headers("header2","header2Value")//支持添加多个请求头同时添加
+                .headers("header3","header3Value")//支持添加多个请求头同时添加
+                .params("param1","param1Value")//支持添加多个参数同时添加
+                .params("param2","param2Value")//支持添加多个参数同时添加
+                //.addCookie(new CookieManger(this).addCookies())//支持添加Cookie
+                .cacheTime(300)//缓存300s 单位s
+                .cacheKey("cachekey")//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTE)//设置请求缓存模式
+                //.okCache()//使用模式缓存模式时，走Okhttp缓存
+                .cacheDiskConverter(new GsonDiskConverter())//GSON-数据转换器
+                //.certificates()添加证书
+                .retryCount(5)//本次请求重试次数
+                .retryDelay(500)//本次请求重试延迟时间500ms
+                .addInterceptor(Interceptor)//添加拦截器
+                .okproxy()//设置代理
+                .removeHeader("header2")//移除头部header2
+                .removeAllHeaders()//移除全部请求头
+                .removeParam("param1")
+                .accessToken(true)//本次请求是否追加token
+                .timeStamp(false)//本次请求是否携带时间戳
+                .sign(false)//本次请求是否需要签名
+                .syncRequest(true)//是否是同步请求，默认异步请求。true:同步请求
+                .execute(new CallBack<SkinTestResult>() {
+                    @Override
+                    public void onStart() {
+                        //开始请求
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                       //请求完成
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                      //请求错误
+                    }
+
+                    @Override
+                    public void onSuccess(SkinTestResult response) {
+                      //请求成功
+                    }
+                });
+
+
+
+Url可以通过:
+1.初始化配置的时候传入Ezhttp.getInstance().setBaseUrl("http://www.xxx.com");
+2.入口方法传入： Ezhttp.get("/v1/app/chairdressing/skinAnalyzePower/skinTestResult").baseUrl("http://www.xxxx.com")
+如果入口方法中传入的url含有http或者https,则不会拼接初始化设置的baseUrl.
+例如：Ezhttp.get("http://www.xxx.com/v1/app/chairdressing/skinAnalyzePower/skinTestResult")
+则setBaseUrl()和baseUrl()传入的baseurl都不会被拼接。
+注:Ezhttp.get/post/put/等采用拼接的用法时请注意，url要用/斜杠开头，
+例如：Ezhttp.get("/v1/login") 正确 Ezhttp.get("v1/login") 错误
+
+
+支持get/post/delete/put等 链式调用的终点请求的执行方式有：execute(Class clazz) 、execute(Type type)、execute(CallBack callBack)三种方式，
+都是针对标准的ApiResult
+GET:
+   EzHttp.get(url)
+                   .params("param1", "paramValue1")
+                   .execute(SkinTestResult.class)//非常简单直接传目标class
+                   //.execute(new TypeToken<List<SectionItem>>() {}.getType())//Type类型
+                   .subscribe(new BaseSubscriber<SkinTestResult>() {
+                       @Override
+                       public void onError(ApiException e) {
+                           showToast(e.getMessage());
+                       }
+
+                       @Override
+                       public void onNext(SkinTestResult skinTestResult) {
+                           showToast(skinTestResult.toString());
+                       }
+                   });
+
+
+POST:    EzHttp.post 上传String、json、object、body、byte[]
+一般此种用法用于与服务器约定的数据格式，当使用该方法时，params中的参数设置是无效的，所有参数均需要通过需要上传的文本中指定，此外，额外指定的header参数仍然保持有效。
+
+    .upString("这是要上传的长文本数据！")//默认类型是：MediaType.parse("text/plain")
+        如果你对请求头有自己的要求，可以使用这个重载的形式，传入自定义的content-type文本 upString("这是要上传的长文本数据！", "application/xml") // 比如上传xml数据，这里就可以自己指定请求头
+    upJson该方法与upString没有本质区别，只是数据格式是json,通常需要自己创建一个实体bean或者一个map，把需要的参数设置进去，然后通过三方的Gson或者 fastjson转换成json字符串，最后直接使用该方法提交到服务器。 .upJson(jsonObject.toString())//上传json
+    .upBytes(new byte[]{})//上传byte[]
+    .requestBody(body)//上传自定义RequestBody
+    .upObject(object)//上传对象object 必须要增加.addConverterFactory(GsonConverterFactory.create())设置
+    注:upString、upJson、requestBody、upBytes、upObject五个方法不能同时使用，当前只能选用一个 2.使用upJson、upObject时候params、sign(true/false)、accessToken（true/false）、拦截器都不会起作用
+例子:
+HashMap<String, String> params = new HashMap<>();
+params.put("key1", "value1");
+params.put("key2", "这里是需要提交的json格式数据");
+params.put("key3", "也可以使用三方工具将对象转成json字符串");
+JSONObject jsonObject = new JSONObject(params);
+
+RequestBody body=RequestBody.create(MediaType.parse("xxx/xx"),"内容");
+EzHttp.post("v1/app/chairdressing/news/favorite")
+                //.params("param1", "paramValue1")//不能使用params，upString 与 params 是互斥的，只有 upString 的数据会被上传
+                .upString("这里是要上传的文本！")//默认类型是：MediaType.parse("text/plain")
+                //.upString("这是要上传的长文本数据！", "application/xml") // 比如上传xml数据，这里就可以自己指定请求头
+
+                 //.upJson(jsonObject.toString())
+                 //.requestBody(body)
+                 //.upBytes(new byte[]{})
+                 //.upObject(object)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        showToast(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String response) {
+                        showToast(response);
+                    }
+                });
+
+
+PUT:EzHttp.put
+
+DELETE:
+    EzHttp.delete
+
+CUSTOM:
+    EzHttp.custom
+
+DOWNLOAD:文件下载
+    EzHttp.download
+
+上传图片或者文件:
+final UIProgressResponseCallBack listener = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
+                if (done) {//完成
+                }
+                ...
+            }
+        };
+        EzHttp.post("/v1/user/uploadAvatar")
+                //支持上传新增的参数
+                //.params(String key, File file, ProgressResponseCallBack responseCallBack)
+                //.params(String key, InputStream stream, String fileName, ProgressResponseCallBack responseCallBack)
+                //.params(String key, byte[] bytes, String fileName, ProgressResponseCallBack responseCallBack)
+                //.addFileParams(String key, List<File> files, ProgressResponseCallBack responseCallBack)
+                //.addFileWrapperParams(String key, List<HttpParams.FileWrapper> fileWrappers)
+                //.params(String key, File file, String fileName, ProgressResponseCallBack responseCallBack)
+                //.params(String key, T file, String fileName, MediaType contentType, ProgressResponseCallBack responseCallBack)
+
+                //方式一：文件上传
+                File file = new File("/sdcard/1.jpg");
+                //如果有文件名字可以不用再传Type,会自动解析到是image/*
+                .params("avatar", file, file.getName(), listener)
+                //.params("avatar", file, file.getName(),MediaType.parse("image/*"), listener)
+
+                //方式二：InputStream上传
+               final InputStream inputStream = getResources().getAssets().open("1.jpg");
+                .params("avatar", inputStream, "test.png", listener)
+
+                //方式三：byte[]上传
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test);
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                final byte[] bytes = baos.toByteArray();
+                //.params("avatar",bytes,"streamfile.png",MediaType.parse("image/*"),listener)
+                //如果有文件名字可以不用再传Type,会自动解析到是image/*
+                .params("avatar", bytes, "streamfile.png", listener)
+
+                .params("file1", new File("filepath1"))   // 可以添加文件上传
+	            .params("file2", new File("filepath2")) 	// 支持多文件同时添加上传
+	            .addFileParams("key", List<File> files)	// 这里支持一个key传多个文件
+                .params("param1", "paramValue1") 		// 这里可以上传参数
+                .accessToken(true)
+                .timeStamp(true)
+                .execute(new ProgressDialogCallBack<String>(mProgressDialog, true, true) {
+                    @Override
+                    public void onError(ApiException e) {
+                        super.onError(e);
+                        showToast(e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String response) {
+                        showToast(response);
+                    }
+                });
+
+
+请求回调CallBack支持的类型:
+
+//支持回调的类型可以是Bean、String、CacheResult<Bean>、CacheResult<String>、List<Bean>
+new SimpleCallBack<CacheResult<Bean>>()//支持缓存的回调，请看缓存讲解
+new SimpleCallBack<CacheResult<String>>()//支持缓存的回调，请看缓存讲解
+new SimpleCallBack<Bean>()//返回Bean
+new SimpleCallBack<String>()//返回字符串
+new SimpleCallBack<List<Bean>()//返回集合
+说明:CacheResult中的isFromCache可以知道是否来自缓存，true：来自缓存，false：来自网络。请使用new SimpleCallBack<CacheResult<T>>() 也就是在你原有的T上包含一层CacheResult就可以了。如果不想用到isFromCache就不需要用CacheResult
+
+回调方式:
+此种方式主要针对execute(CallBack callBack)，
+目前内部提供的回调包含CallBack, SimpleCallBack ,ProgressDialogCallBack ,DownloadProgressCallBack 可以根据自己的需求去自定义Callback
+
+CallBack所有回调的基类，抽象类
+SimpleCallBack简单回调，只有成功和失败
+ProgressDialogCallBack带有进度框的回调，可以自定义进度框、支持是否可以取消对话框、对话框消失自动取消网络请求等参数设置
+DownloadProgressCallBack如果要做文件下载，则必须使用该回调，内部封装了关于文件下载进度回调的方法，如果使用其他回调也可以，但是没有进度通知
+该网络框架的核心使用方法即为Callback的继承使用，因为不同的项目需求，会有个性化的回调请自定义
+
+
+自定义call()请求:
+提供了用户自定义ApiService的接口，您只需调用call方法即可. 示例：
+public interface LoginService {
+    @POST("{path}")
+    @FormUrlEncoded
+    Observable<ApiResult<AuthModel>> login(@Path("path") String path, @FieldMap Map<String, String> map);
+}
+
+final CustomRequest request = EasyHttp.custom()
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))//自定义的可以设置GsonConverterFactory
+                .params("param1", "paramValue1")
+                .build();
+
+        LoginService mLoginService = request.create(LoginService.class);
+        Observable<ApiResult<AuthModel>> observable = request.call(mLoginService.login("v1/account/login", request.getParams().urlParamsMap));
+        Disposable subscription = observable.subscribe(new Action1<ApiResult<AuthModel>>() {
+            @Override
+            public void call(ApiResult<AuthModel> result) {
+                //请求成功
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+                //请求失败
+            }
+        });
+
+
+自定义ApiResult:
+本库中默认提供的是标准ApiResult.内部是靠ApiResult进行解析的，如果你的数据结构跟ApiResult不同，你可以在你的项目中继承ApiResult，然后重写getCode()、getData()、getMsg()和isOk()等方法来实现自己的需求。 本库中ApiResult如下：
+原格式:
+{
+"code": 100010101,
+"data": 内容,
+"msg": "请求成功"
+}
+自定义ApiResult回调方式（通过CallBackProxy代理）:
+EzHttp.get(url)
+                .readTimeOut(30 * 1000)//局部定义读超时
+                .writeTimeOut(30 * 1000)
+                .connectTimeout(30 * 1000)
+                //.cacheKey(this.getClass().getSimpleName()+"11")
+                //.cacheMode(CacheMode.CACHEANDREMOTE)
+                //.cacheMode(CacheMode.ONLYREMOTE)
+                //.headers("","")//设置头参数
+                //.params("name","张三")//设置参数
+                //.addInterceptor()
+                //.addConverterFactory()
+                //.addCookie()
+                //.timeStamp(true)
+                .baseUrl("http://apis.juhe.cn")
+                .params("phone", "手机号")
+                .params("dtype", "json")
+                .params("key", "5682c1f44a7f486e40f9720d6c97ffe4")
+                .execute(new CallBackProxy<CustomApiResult<ResultBean>, ResultBean>(new SimpleCallBack<ResultBean>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        //请求错误
+                    }
+
+                    @Override
+                    public void onSuccess(ResultBean response) {
+                        //请求成功
+                    }
+                }) {
+                });
+
+这种写法会觉得有点长，CallBackProxy的泛型参数每次都需要填写，其中CustomApiResult是继承ApiResult的，
+CustomApiResult相当于项目的basebean,对于一个实际项目来讲，basebean是固定的，所以我们可以继续封装这个方法，
+根据需要一般只需要封装get和post请求就可以了。
+public static <T> Disposable customExecute(CallBack<T> callBack) {
+        return execute(new CallBackProxy<CustomApiResult<T>, T>(callBack) {
+        });
+    }
