@@ -1,0 +1,6 @@
+<resources>
+    <style name="KeyboardAnim">
+        <item name="android:windowEnterAnimation">@anim/keyboard_anim_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/keyboard_anim_bottom_out</item>
+    </style>
+</resources>

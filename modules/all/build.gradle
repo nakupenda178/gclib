@@ -14,6 +14,7 @@ dependencies {
     api project(":modules:dialog")
     api project(":modules:ezhttp")
     api project(":modules:widgets")
+    api project(":modules:keyboard")
     api project(":modules:auto-size")
     api project(":modules:coroutine")
     api project(":modules:permission")
