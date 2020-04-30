@@ -1,0 +1,15 @@
+apply from: "../../config.gradle"
+dependencies {
+    def dependencies = rootProject.ext.dependencies
+    //implementation project(":modules:xxx")
+
+    implementation dependencies.glide
+    //implementation dependencies["glide"]
+    implementation dependencies["recyclerview-v7"]
+
+    //compileOnly dependencies["glide"]
+    //implementation dependencies.support-annotations
+    //api dependencies.exifinterface
+    //api dependencies.support_v7
+
+}

@@ -22,4 +22,5 @@ dependencies {
     api project(":modules:page-state")
     api project(":modules:sweet-alert")
     api project(":modules:top-snackbar")
+    api project(":modules:picture-selector")
 }

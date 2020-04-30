@@ -1,0 +1,19 @@
+仿微信图片选择
+https://github.com/arvinljw/PictureSelector
+使用:
+SelectorHelper.selectPicturesXXX
+
+获取
+onActivityResult:
+
+private ArrayList<String> selectedPictures = new ArrayList<>();
+if (resultCode == RESULT_OK) {
+
+     ArrayList<String> backPics = data.getStringArrayListExtra(ConstantData.KEY_BACK_PICTURES);
+     if (backPics != null && backPics.size() > 0) {
+         selectedPictures.clear();
+         selectedPictures.addAll(backPics);
+         PSGlideUtil.loadImage(this, backPics.get(0), mImage);
+     }
+
+}
