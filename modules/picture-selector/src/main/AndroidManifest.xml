@@ -11,9 +11,8 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
         >
-
+        <!--android:requestLegacyExternalStorage="true" 让应用自己选择,这里不添加-->
         <provider
             android:name="com.github.guqt178.selector.utils.SelectorFileProvider"
             android:authorities="${applicationId}.picture.selector.provider"
