@@ -1,5 +1,11 @@
 apply from: "../../config.gradle"
 
+android{
+
+    dataBinding{
+        enabled true
+    }
+}
 dependencies {
     def dp = rootProject.ext.dependencies
 

@@ -38,7 +38,7 @@ public class PSUtil {
     public static Uri getUriFromPath(Context context, String path) {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                return FileProvider.getUriForFile(context, getAuthorities(context), new File(path));
+                return SelectorFileProvider.getUriForFile(context, getAuthorities(context), new File(path));
             } else {
                 return Uri.fromFile(new File(path));
             }
