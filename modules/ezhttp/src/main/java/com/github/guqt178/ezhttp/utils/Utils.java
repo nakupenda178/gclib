@@ -12,6 +12,7 @@ import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.lang.reflect.WildcardType;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,9 +21,6 @@ import okhttp3.RequestBody;
 
 /**
  * <p>描述：工具类</p>
- * 作者： zhouyou<br>
- * 日期： 2016/12/20 10:33<br>
- * 版本： v2.0<br>
  */
 public class Utils {
     public static <T> T checkNotNull(T t, String message) {
@@ -158,6 +156,8 @@ public class Utils {
             return (Class) ((GenericArrayType) genericClass).getGenericComponentType();
         } else if (genericClass instanceof TypeVariable) { // 处理泛型擦拭对象     
             return getClass(((TypeVariable) genericClass).getBounds()[0], 0);
+        } else if (genericClass instanceof WildcardType) { // 处理泛型擦拭对象
+            return getClass(((WildcardType) genericClass).getUpperBounds()[0], 0);
         } else {
             return (Class) genericClass;
         }
