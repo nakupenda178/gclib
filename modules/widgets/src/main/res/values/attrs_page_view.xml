@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--xml支持3个界面-->
+    <attr name="p_page_one" format="reference" />
+    <attr name="p_page_two" format="reference" />
+    <attr name="p_page_three" format="reference" />
+    <attr name="p_disable_scroll" format="boolean" />
+
+    <declare-styleable name="PageView">
+        <attr name="p_page_one" />
+        <attr name="p_page_two" />
+        <attr name="p_page_three" />
+        <attr name="p_disable_scroll" />
+    </declare-styleable>
+
+</resources>
