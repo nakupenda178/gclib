@@ -1,6 +1,6 @@
 package com.github.guqt178.widgets.layout;
 
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
@@ -24,9 +24,10 @@ import com.github.guqt178.widgets.R;
  * app:p_page_three="@layout/page_three"
  * app:p_disable_scroll="true" //true 只能代码左右切换
  * app:p_page_two="@layout/page_two"/>
- *
+ * <p>
  * pageView.nextPage
  */
+@SuppressLint("NewApi")
 public class PageView extends HorizontalScrollView {
     // <editor-fold defaultstate="collapsed" desc="成员变量">
     private int mBaseScrollX;//滑动基线。也就是点击并滑动之前的x值，以此值计算相对滑动距离。
@@ -36,6 +37,7 @@ public class PageView extends HorizontalScrollView {
     private int mScreenHeight;
 
     private int mWidth = 0; // pageview的宽
+    private boolean mInited = false;
 
     private LinearLayout mContainer;
     private int mPageCount;//页面数量
@@ -199,8 +201,9 @@ public class PageView extends HorizontalScrollView {
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        if (hasWindowFocus) {
+        if (!mInited && hasWindowFocus) {
             addChildView();
+            mInited = true;
         }
     }
 
@@ -237,7 +240,12 @@ public class PageView extends HorizontalScrollView {
         } else {
             mContainer.addView(page, index, params);
         }
+
+        if (onPageAddEvent != null) {
+            onPageAddEvent.onPageAdd(this, page, mPageCount);
+        }
         mPageCount++;
+
     }
     // </editor-fold>
 
@@ -271,7 +279,8 @@ public class PageView extends HorizontalScrollView {
      * @param page
      */
     public void addPage(View page, int index) {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        //LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(mScreenWidth, LinearLayout.LayoutParams.MATCH_PARENT);
         if (index == -1) {
             mContainer.addView(page, params);
         } else {
@@ -314,6 +323,42 @@ public class PageView extends HorizontalScrollView {
         return mPageCount;
     }
 
+    /**
+     * pageview滑动监听
+     * @param onScrollEvent
+     */
+    public void setOnScrollEvent(OnScrollEvent onScrollEvent) {
+        this.onScrollEvent = onScrollEvent;
+    }
+
+
+    /**
+     * pageview添加子view的时候回调
+     * @param onPageAddlEvent
+     */
+    public void setOnPageAddEvent(OnPageAddEvent onPageAddlEvent) {
+        this.onPageAddEvent = onPageAddlEvent;
+    }
+
     // </editor-fold>
+
+
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        super.onScrollChanged(l, t, oldl, oldt);
+        if (onScrollEvent != null)
+            onScrollEvent.onScrollChange(this, l, t);
+    }
+
+    private OnScrollEvent onScrollEvent;
+    private OnPageAddEvent onPageAddEvent;
+
+    public interface OnScrollEvent {
+        void onScrollChange(PageView v, int scrollX, int scrollY);
+    }
+
+    public interface OnPageAddEvent {
+        void onPageAdd(PageView container, View currentPage, int pageIndex);
+    }
 
 }

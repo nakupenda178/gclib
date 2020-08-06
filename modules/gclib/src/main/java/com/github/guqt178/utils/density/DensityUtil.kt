@@ -1,49 +1,59 @@
 package com.github.guqt178.utils.density
 
 import android.content.Context
-import android.util.TypedValue
+import android.content.res.Resources
+import android.util.DisplayMetrics
+import android.view.WindowManager
 
-/**
- * @author Dsh  on 2018/7/18.
- */
+object DensityUtil {
 
-class DensityUtil private constructor() {
-
-    init {
-        throw UnsupportedOperationException("cannot be instantiated")
+    fun dip2px(context: Context, dipValue: Float): Int {
+        val density = context.resources.displayMetrics.density
+        return (dipValue * density + 0.5f).toInt()
     }
 
-    companion object {
+    fun dip2px(dipValue: Float): Int {
+        val density = Resources.getSystem().displayMetrics.density
+        return (dipValue * density + 0.5f).toInt()
+    }
 
-        /**
-         * dp转px
-         */
-        fun dp2px(context: Context, dpVal: Float): Int {
-            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                    dpVal, context.resources.displayMetrics).toInt()
-        }
+    fun px2dip(context: Context, pxValue: Float): Int {
+        val density = context.resources.displayMetrics.density
+        return (pxValue / density + 0.5f).toInt()
+    }
 
-        /**
-         * sp转px
-         */
-        fun sp2px(context: Context, spVal: Float): Int {
-            return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP,
-                    spVal, context.resources.displayMetrics).toInt()
-        }
+    fun sp2px(context: Context, spValue: Float): Int {
+        val fontScale = context.resources.displayMetrics.scaledDensity
+        return (spValue * fontScale + 0.5f).toInt()
+    }
 
-        /**
-         * px转dp
-         */
-        fun px2dp(context: Context, pxVal: Float): Float {
-            val scale = context.resources.displayMetrics.density
-            return pxVal / scale
-        }
+    fun getScreenWidth(context: Context): Int {
+        val metrics = DisplayMetrics()
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getMetrics(metrics)
+        return metrics.widthPixels
+    }
 
-        /**
-         * px转sp
-         */
-        fun px2sp(context: Context, pxVal: Float): Float {
-            return pxVal / context.resources.displayMetrics.scaledDensity
+    fun getScreenHeight(context: Context): Int {
+        val metrics = DisplayMetrics()
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.getMetrics(metrics)
+        return metrics.heightPixels
+    }
+
+    fun getStatusBarHeight(context: Context): Int {
+        var result = 0
+        val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = context.resources.getDimensionPixelSize(resourceId)
         }
+        return result
+    }
+
+    fun getStatusBarHeight(): Int {
+        var result = 0
+        val resourceId = Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            result = Resources.getSystem().getDimensionPixelSize(resourceId)
+        }
+        return result
     }
 }

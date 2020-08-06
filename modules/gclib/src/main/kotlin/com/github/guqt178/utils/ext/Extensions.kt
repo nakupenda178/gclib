@@ -6,9 +6,11 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.SystemClock
+import android.support.annotation.IntRange
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import android.util.ArrayMap
+import android.widget.EditText
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -16,6 +18,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.github.guqt178.DefaultConsumer
+import com.github.guqt178.utils.keyboard.MoneyValueFilter
 import com.github.guqt178.utils.result.ActivityResultHelper
 import com.github.guqt178.utils.result.ContainerActivity
 import com.github.guqt178.utils.result.OnResult
@@ -186,6 +189,27 @@ fun Context.readAssetsFile(fileName: String): String {
     }
     return sb.toString()
 }
+
+//
+
+/**
+ *
+ * 限制EditText的输入项只能是数字
+ * @param maxLength 最大输入位数长度,例如,3,表示最大输入3位数,即999.99
+ * @param precision 小数点后多少位(0表示只能输入整数)
+ */
+val BIT_COUNT = arrayOf(0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000,100000000000)
+
+fun EditText.applyFilter(@IntRange(from = 0, to = 11) maxLength: Int, precision: Int = 2) {
+    val tempLength = if (maxLength < 0) 0 else maxLength
+    MoneyValueFilter().also {
+        it.setMaxValue(BIT_COUNT[tempLength])
+        it.setPrecision(precision)
+        val customFilters = arrayOf(it)
+        this.filters = customFilters
+    }
+}
+
 
 
 
