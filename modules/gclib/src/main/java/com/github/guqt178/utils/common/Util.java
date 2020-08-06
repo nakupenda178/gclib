@@ -3,7 +3,11 @@ package com.github.guqt178.utils.common;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
+import android.view.View;
+
+import com.github.guqt178.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -203,11 +207,55 @@ public class Util {
     public static int parseInt(final String string, final int def) {
         try {
             return (string == null || string.length() <= 0) ? def : Integer.parseInt(string);
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return def;
     }
 
 
+    public boolean isNeedCheckPermission() {
+        return Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1;
+    }
+
+    /**
+     * 测量 view 的大小，返回宽高
+     */
+    public int[] measureView(View view) {
+        int[] arr = new int[2];
+        int spec = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        view.measure(spec, spec);
+        arr[0] = view.getMeasuredWidth();
+        arr[1] = view.getMeasuredHeight();
+        return arr;
+    }
+
+
+    /**
+     * 连续点击达到点击次数后回调监听
+     */
+    public void multiClickListener(View view, int frequency, View.OnClickListener listener) {
+        view.setTag(R.id.multiClickFrequency, 0);
+        view.setTag(R.id.multiClickLastTime, System.currentTimeMillis());
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                int f = (int) (view.getTag(R.id.multiClickFrequency));
+                if (f == frequency) {
+                    view.setTag(R.id.multiClickFrequency, 0);
+                    view.setTag(R.id.multiClickLastTime, System.currentTimeMillis());
+                    if (listener != null) {
+                        listener.onClick(v);
+                    }
+                } else {
+                    long lastTime = (Long) (view.getTag(R.id.multiClickLastTime));
+                    if (System.currentTimeMillis() - lastTime < 400) {
+                        view.setTag(R.id.multiClickFrequency, f + 1);
+                    }
+                    view.setTag(R.id.multiClickLastTime, System.currentTimeMillis());
+                }
+            }
+        });
+    }
 }
