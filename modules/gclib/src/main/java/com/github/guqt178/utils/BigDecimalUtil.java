@@ -13,34 +13,34 @@ public class BigDecimalUtil {
     /**
      * 精确加法
      */
-    public static String add(double value1, double value2) {
-        BigDecimal b1 = BigDecimal.valueOf(value1);
-        BigDecimal b2 = BigDecimal.valueOf(value2);
+    public static String add(Number value1, Number value2) {
+        BigDecimal b1 = BigDecimal.valueOf(value1.doubleValue());
+        BigDecimal b2 = BigDecimal.valueOf(value2.doubleValue());
         return b1.add(b2).stripTrailingZeros().toPlainString();
     }
 
     /**
      * 精确减法
      */
-    public static String sub(double value1, double value2) {
-        BigDecimal b1 = BigDecimal.valueOf(value1);
-        BigDecimal b2 = BigDecimal.valueOf(value2);
+    public static String sub(Number value1, Number value2) {
+        BigDecimal b1 = BigDecimal.valueOf(value1.doubleValue());
+        BigDecimal b2 = BigDecimal.valueOf(value2.doubleValue());
         return b1.subtract(b2).stripTrailingZeros().toPlainString();
     }
 
     /**
      * 精确乘法
      */
-    public static String mul(double value1, double value2) {
-        BigDecimal b1 = BigDecimal.valueOf(value1);
-        BigDecimal b2 = BigDecimal.valueOf(value2);
+    public static String mul(Number value1, Number value2) {
+        BigDecimal b1 = BigDecimal.valueOf(value1.doubleValue());
+        BigDecimal b2 = BigDecimal.valueOf(value2.doubleValue());
         return b1.multiply(b2).stripTrailingZeros().toPlainString();
     }
 
     /**
      * 精确除法 使用默认精度
      */
-    public static String div(double value1, double value2) {
+    public static String div(Number value1, Number value2) {
         return div(value1, value2, DEF_DIV_SCALE);
     }
 
@@ -49,12 +49,12 @@ public class BigDecimalUtil {
      *
      * @param scale 精度
      */
-    public static String div(double value1, double value2, int scale) {
+    public static String div(Number value1, Number value2, int scale) {
         if (scale < 0) {
             scale = DEF_DIV_SCALE;
         }
-        BigDecimal b1 = BigDecimal.valueOf(value1);
-        BigDecimal b2 = BigDecimal.valueOf(value2);
+        BigDecimal b1 = BigDecimal.valueOf(value1.doubleValue());
+        BigDecimal b2 = BigDecimal.valueOf(value2.doubleValue());
         return b1.divide(b2, scale, BigDecimal.ROUND_HALF_UP).stripTrailingZeros().toPlainString();
     }
 
@@ -113,7 +113,7 @@ public class BigDecimalUtil {
      * @param scale 小数点后保留几位
      */
 
-    public static String round(double v, int scale) {
+    public static String round(Number v, int scale) {
         return div(v, 1, scale);
     }
 
