@@ -160,7 +160,7 @@ public final class PermissionFragment extends Fragment implements Runnable {
                         grantResults[i] = PermissionUtils.hasStoragePermission() ? PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED;
                     }
                 } else if (Permission.MANAGE_EXTERNAL_STORAGE.equals(permission)) {
-                    grantResults[i] = XXPermissions.hasPermission(getActivity(), Permission.Group.STORAGE) ? PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED;
+                    grantResults[i] = KyPermissions.hasPermission(getActivity(), Permission.Group.STORAGE) ? PackageManager.PERMISSION_GRANTED : PackageManager.PERMISSION_DENIED;
                 }
 
                 // 重新检查 Android 8.0 的两个新权限

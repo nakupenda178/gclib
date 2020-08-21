@@ -16,7 +16,7 @@ import java.util.List;
  *    time   : 2018/06/15
  *    desc   : Android 危险权限请求类
  */
-public final class XXPermissions {
+public final class KyPermissions {
 
     private Activity mActivity;
     private List<String> mPermissions;
@@ -25,21 +25,21 @@ public final class XXPermissions {
     /**
      * 私有化构造函数
      */
-    private XXPermissions(Activity activity) {
+    private KyPermissions(Activity activity) {
         mActivity = activity;
     }
 
     /**
      * 设置请求的对象
      */
-    public static XXPermissions with(Activity activity) {
-        return new XXPermissions(activity);
+    public static KyPermissions with(Activity activity) {
+        return new KyPermissions(activity);
     }
 
     /**
      * 设置权限组
      */
-    public XXPermissions permission(String... permissions) {
+    public KyPermissions permission(String... permissions) {
         if (mPermissions == null) {
             mPermissions = new ArrayList<>(permissions.length);
         }
@@ -50,7 +50,7 @@ public final class XXPermissions {
     /**
      * 设置权限组
      */
-    public XXPermissions permission(String[]... permissions) {
+    public KyPermissions permission(String[]... permissions) {
         if (mPermissions == null) {
             int length = 0;
             for (String[] permission : permissions) {
@@ -67,7 +67,7 @@ public final class XXPermissions {
     /**
      * 设置权限组
      */
-    public XXPermissions permission(List<String> permissions) {
+    public KyPermissions permission(List<String> permissions) {
         if (mPermissions == null) {
             mPermissions = permissions;
         }else {
@@ -79,7 +79,7 @@ public final class XXPermissions {
     /**
      * 被拒绝后继续申请，直到授权或者永久拒绝
      */
-    public XXPermissions constantRequest() {
+    public KyPermissions constantRequest() {
         mConstant = true;
         return this;
     }
