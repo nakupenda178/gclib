@@ -3,14 +3,20 @@ package com.github.guqt178.utils.common;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Build;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
 import com.github.guqt178.R;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -18,6 +24,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class Util {
 
@@ -258,4 +267,149 @@ public class Util {
             }
         });
     }
+
+    /**
+     * 检查目标缓存目录是否存在，如果存在则返回这个目录，如果不存在则新建这个目录
+     *
+     * @return
+     */
+    public static File checkTargetCacheDir(String storageDir) {
+
+        File file = null;
+        file = new File(storageDir);
+
+        if (!file.exists()) {
+            file.mkdirs();//创建目录
+        }
+
+        if (file != null && file.exists())
+            return file;//文件已经被成功创建
+        else {
+            return null;//即时经过以上检查，文件还是没有被准确的创建
+        }
+    }
+
+    /**
+     * 将bitmap写入一个file中
+     *
+     * @return 保存bitmap的file对象
+     */
+    public static File convertToFile(Bitmap bitmap, String storageDir, String prefix) throws IOException {
+        File cacheDir = checkTargetCacheDir(storageDir);
+        //以时间戳生成一个临时文件名称
+        cacheDir = createFile(cacheDir, prefix, ".jpg");
+        boolean created = false;//是否创建成功,默认没有创建
+        if (!cacheDir.exists()) created = cacheDir.createNewFile();
+        if (created)//将图片写入目标file,100表示不压缩,Note:png是默认忽略这个参数的
+            bitmap.compress(CompressFormat.PNG, 100, new FileOutputStream(cacheDir));
+        return cacheDir;
+    }
+
+
+    /**
+     * 根据系统时间、前缀、后缀产生一个文件
+     */
+    public static File createFile(File folder, String prefix, String suffix) {
+        if (!folder.exists() || !folder.isDirectory()) folder.mkdirs();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd_HHmmssSSS", Locale.CHINA);
+        String filename = prefix + dateFormat.format(new Date(System.currentTimeMillis())) + suffix;
+        return new File(folder, filename);
+    }
+
+    /**
+     * 压缩图片质量
+     *
+     * @param image
+     * @param desireSize 默认可以穿200代表将图片压缩到200k一下
+     * @return
+     */
+    public static Bitmap compressImage(Bitmap image, int desireSize) {
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        image.compress(CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+        int offset = 100;
+        while (baos.toByteArray().length / 1024 > desireSize) {  //循环判断如果压缩后图片是否大于200kb,大于继续压缩
+
+            baos.reset();//重置baos即清空baos
+            image.compress(CompressFormat.JPEG, offset, baos);//这里压缩options%，把压缩后的数据存放到baos中
+            offset -= 10;//每次都减少10
+        }
+        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
+        //把压缩后的数据baos存放到ByteArrayInputStream中
+        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
+        return bitmap;
+    }
+
+    //压缩图片大小
+    public static Bitmap resizeImageSize(File file) throws IOException {
+        BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(in, null, options);
+        in.close();
+        int i = 1;
+        Bitmap bitmap = null;
+        while (true) {
+            if (((options.outWidth / i) <= 600)
+                    && ((options.outHeight / i) <= 600)) {
+                in = new BufferedInputStream(
+                        new FileInputStream(file));
+                options.inSampleSize = i;
+                options.inJustDecodeBounds = false;
+                bitmap = BitmapFactory.decodeStream(in, null, options);
+                break;
+            }
+            i += 1;
+        }
+        return bitmap;
+    }
+
+    /**
+     * 使用矩阵缩放图片至期待的宽高
+     *
+     * @param source       被缩放的图片
+     * @param expectWidth  期待的宽
+     * @param expectHeight 期待的高
+     * @return 返回压缩后的图片
+     */
+    public static Bitmap zoomBitmap(Bitmap source, float expectWidth, float expectHeight) {
+        // 获取这个图片的宽和高
+        float width = source.getWidth();
+        float height = source.getHeight();
+        // 创建操作图片用的matrix对象
+        Matrix matrix = new Matrix();
+        //默认不缩放
+        float scaleWidth = 1;
+        float scaleHeight = 1;
+        // 计算宽高缩放率
+        if (expectWidth < width) {
+            scaleWidth = ((float) expectWidth) / width;
+        }
+        if (expectHeight < height) {
+            scaleHeight = ((float) expectHeight) / height;
+        }
+        // 缩放图片动作
+        matrix.postScale(scaleWidth, scaleHeight);
+        Bitmap bitmap = Bitmap.createBitmap(source, 0, 0, (int) width,
+                (int) height, matrix, true);
+        return bitmap;
+    }
+
+
+    /**
+     * 压缩Bitmap,同时使用两种策略压缩,先压缩宽高，再压缩质量
+     *
+     * @return 存储Bitmap的文件
+     * @throws IOException
+     */
+    public static File compressBitmap(String url, String storageDir, String prefix) throws IOException {
+        if (!TextUtils.isEmpty(url)) {
+            File img = new File(url);
+            Bitmap bitmap = resizeImageSize(img);
+            bitmap = compressImage(bitmap, 200);
+            return convertToFile(bitmap, storageDir, prefix);
+        }
+        return null;
+    }
+
 }
