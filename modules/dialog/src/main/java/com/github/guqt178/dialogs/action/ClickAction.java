@@ -5,12 +5,13 @@ import android.view.View;
 
 
 /**
- *    author : Android 轮子哥
- *    github : https://github.com/getActivity/AndroidProject
- *    time   : 2019/09/15
- *    desc   : 点击事件意图
+ * author : Android 轮子哥
+ * github : https://github.com/getActivity/AndroidProject
+ * time   : 2019/09/15
+ * desc   : 点击事件意图
  */
 public interface ClickAction extends View.OnClickListener {
+
 
     <V extends View> V findViewById(@IdRes int id);
 
@@ -22,6 +23,12 @@ public interface ClickAction extends View.OnClickListener {
     default void setOnClickListener(@IdRes int... ids) {
         for (int id : ids) {
             findViewById(id).setOnClickListener(this);
+        }
+    }
+
+    default void setOnClickListener(View... views) {
+        for (View view : views) {
+            view.setOnClickListener(this);
         }
     }
 }
