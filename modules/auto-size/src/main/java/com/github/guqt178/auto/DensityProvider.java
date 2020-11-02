@@ -14,8 +14,6 @@ import android.support.annotation.Nullable;
 public class DensityProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
-        DensityConfig.getInstance()
-                .init((Application)(getContext().getApplicationContext()));
         return false;
     }
 
