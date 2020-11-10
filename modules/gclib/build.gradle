@@ -9,9 +9,9 @@ dependencies {
     implementation project(":modules:log")
     implementation project(":modules:http")
     implementation project(":modules:dialog")
-    implementation project(":modules:widgets")
     implementation project(":modules:sweet-alert")
 
+    //implementation project(":modules:widgets")
     //implementation project(":modules:gui")
     //implementation project(":modules:auto-size")
     //implementation project(":modules:top-snackbar")
