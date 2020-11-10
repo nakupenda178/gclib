@@ -3,16 +3,11 @@ package com.sample.test
 import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.github.guqt178.utils.dialog.hideLoading
-import com.github.guqt178.utils.dialog.showLoading
-import com.github.guqt178.utils.keyboard.hideKeyboard
-import com.github.guqt178.utils.keyboard.observeKeyboardEvent
-import com.github.guqt178.utils.keyboard.showKeyboardForce
-import com.github.guqt178.utils.log.Alog
+import com.github.guqt178.log.Alog
+import com.github.guqt178.utils.ext.*
 import com.github.guqt178.utils.thread.SimpleOnTask
 import com.github.guqt178.utils.thread.exeAsyncAction
 import com.github.guqt178.utils.thread.postDelay
-import com.github.guqt178.utils.view.doOnClick
 import kotlinx.android.synthetic.main.activity_main.*
 
 
