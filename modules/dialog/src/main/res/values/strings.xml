@@ -200,4 +200,6 @@
     <string name="camera_launch_fail">无法启动相机</string>
     <string name="camera_image_error">目标地址错误</string>
 
+    <string name="photo_total">已选%1s</string>
+
 </resources>
