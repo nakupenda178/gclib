@@ -16,4 +16,10 @@
 
 <resources>
 
+    <attr name="aiv_bottom_margin" format="reference|dimension" />
+
+    <declare-styleable name="ArchImageView">
+        <attr name="aiv_bottom_margin" />
+    </declare-styleable>
+
 </resources>

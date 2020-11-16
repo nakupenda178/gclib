@@ -14,7 +14,7 @@
         <!-- 正则输入限制 -->
         <attr name="inputRegex" format="string" />
         <!-- 常用正则类型 -->
-        <attr name="regexType" >
+        <attr name="regexType">
             <!-- 手机号（只能以 1 开头） -->
             <enum name="mobile" value="0x01" />
             <!-- 中文（普通的中文字符） -->
@@ -33,14 +33,14 @@
     <!-- 设置栏 -->
     <declare-styleable name="SettingBar">
         <!-- 左边 -->
-        <attr name="bar_leftText" format="string"/>
-        <attr name="bar_leftHint" format="string"/>
+        <attr name="bar_leftText" format="string" />
+        <attr name="bar_leftHint" format="string" />
         <attr name="bar_leftIcon" format="reference" />
         <attr name="bar_leftColor" format="color" />
         <attr name="bar_leftSize" format="dimension" />
         <!-- 右边 -->
         <attr name="bar_rightText" format="string" />
-        <attr name="bar_rightHint" format="string"/>
+        <attr name="bar_rightHint" format="string" />
         <attr name="bar_rightIcon" format="reference" />
         <attr name="bar_rightColor" format="color" />
         <attr name="bar_rightSize" format="dimension" />
@@ -83,4 +83,23 @@
         <attr name="barWidth" format="dimension" />
         <attr name="linearProgress" format="boolean" />
     </declare-styleable>
+
+
+    <!--    DragScrollDetailsLayout-->
+    <attr name="percent" format="float" />
+    <attr name="duration" format="integer" />
+    <attr name="default_panel" format="enum">
+        <enum name="front" value="0" />
+        <enum name="behind" value="1" />
+    </attr>
+
+    <declare-styleable name="DragScrollDetailsLayout">
+        <!-- float value for indicate the moment of switch panel-->
+        <attr name="percent" />
+        <!-- how long the animation keep-->
+        <attr name="duration" />
+        <!-- default panel to show after init-->
+        <attr name="default_panel" />
+    </declare-styleable>
+
 </resources>
