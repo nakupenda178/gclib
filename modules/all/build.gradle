@@ -15,6 +15,7 @@ dependencies {
     api project(":modules:ezhttp")
     api project(":modules:widgets")
     api project(":modules:gallery")
+    api project(":modules:fragment")
     api project(":modules:keyboard")
     api project(":modules:auto-size")
     api project(":modules:coroutine")
