@@ -2,16 +2,17 @@ package com.sample.test
 
 import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import com.github.guqt178.fragment.AppleActivity
 import com.github.guqt178.log.Alog
 import com.github.guqt178.utils.ext.*
 import com.github.guqt178.utils.thread.SimpleOnTask
 import com.github.guqt178.utils.thread.exeAsyncAction
 import com.github.guqt178.utils.thread.postDelay
+import com.sample.fragment.IndexFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppleActivity() {
     private val TAG = "MainActivity"
     private fun createDownloadFileDir(): String {
         return "${externalCacheDir}/download"
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 "result"
             }, object : SimpleOnTask<Activity, String>() {
                 override fun onStart(t: Activity) {
-                    postDelay(600){
+                    postDelay(600) {
                         showLoading("上传中...")
                     }
                     Alog.wtf("${Thread.currentThread().name}- onStart ...")
@@ -60,6 +61,9 @@ class MainActivity : AppCompatActivity() {
 
         tv2.doOnClick {
 
+
+            startFragment(IndexFragment::class.java)
+
         }
 
         button.doOnClick {
@@ -70,4 +74,6 @@ class MainActivity : AppCompatActivity() {
             hideKeyboard()
         }
     }
+
+    override fun fragmentLayoutId(): Int  = R.id.fragment
 }
