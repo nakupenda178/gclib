@@ -198,7 +198,7 @@ fun Context.readAssetsFile(fileName: String): String {
  * @param maxLength 最大输入位数长度,例如,3,表示最大输入3位数,即999.99
  * @param precision 小数点后多少位(0表示只能输入整数)
  */
-val BIT_COUNT = arrayOf(0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000,100000000000)
+val BIT_COUNT = arrayOf(0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 10000000000, 100000000000)
 
 fun EditText.applyFilter(@IntRange(from = 0, to = 11) maxLength: Int, precision: Int = 2) {
     val tempLength = if (maxLength < 0) 0 else maxLength
@@ -209,6 +209,18 @@ fun EditText.applyFilter(@IntRange(from = 0, to = 11) maxLength: Int, precision:
         this.filters = customFilters
     }
 }
+
+//快速排序
+// 使用 [2,5,1] -> [1,2,5]
+//listOf(2,5,1).quickSort() // [1,2,5]
+fun <T : Comparable<T>> List<T>.quickSort(): List<T> =
+        if (size < 2) {
+            this
+        } else {
+            val pivot = first()
+            val (smaller, greater) = drop(1).partition { it <= pivot }
+            smaller.quickSort() + pivot + greater.quickSort()
+        }
 
 
 

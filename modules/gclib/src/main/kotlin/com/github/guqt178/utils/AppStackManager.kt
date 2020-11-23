@@ -36,16 +36,49 @@ class AppStackManager private constructor() {
     /**
      * 出栈
      */
+    fun removeActivity(activity: Activity) {
+        activityStack.remove(activity)
+    }
+
+    /**
+     * 出栈并结束
+     */
     fun finishActivity(activity: Activity) {
         activity.finish()
-        activityStack.remove(activity)
+        removeActivity(activity)
+
+    }
+
+    /**
+     * 出栈并结束:根据类名
+     */
+    fun finishActivity(cls: Class<*>) {
+        activityStack.iterator().let {iterator ->
+            while (iterator.hasNext()) {
+                val aty = iterator.next()
+                if (aty.javaClass == cls) {
+                    aty.finish()
+                    iterator.remove()
+                    break
+                }
+            }
+        }
     }
 
     /**
      * 获取栈顶activity
      */
-    fun currentActivity(): Activity {
-        return activityStack.lastElement()
+    fun currentActivity(): Activity? {
+
+        return try {
+            activityStack.lastElement()
+        } catch (e: NoSuchElementException) {
+            e.printStackTrace()
+            null
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 
     /**
