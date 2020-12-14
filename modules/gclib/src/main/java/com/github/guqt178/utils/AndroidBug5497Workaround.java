@@ -36,6 +36,7 @@ public class AndroidBug5497Workaround {
         this.activity = activity;
         FrameLayout content = (FrameLayout) activity.findViewById(android.R.id.content);
         mChildOfContent = content.getChildAt(0);
+        if(mChildOfContent==null) return;
 
         //界面出现变动都会调用这个监听事件
         mChildOfContent.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
