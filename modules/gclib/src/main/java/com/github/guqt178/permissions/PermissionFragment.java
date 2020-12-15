@@ -1,4 +1,4 @@
-package com.github.guqt178.permission;
+package com.github.guqt178.permissions;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

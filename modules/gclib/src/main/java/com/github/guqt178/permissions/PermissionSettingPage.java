@@ -1,6 +1,5 @@
-package com.github.guqt178.permission;
+package com.github.guqt178.permissions;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;

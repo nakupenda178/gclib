@@ -44,9 +44,9 @@ dependencies {
     api dp["utilcode"]
 
 
-    implementation dp["zh-rxlifecycle-compat"]
-    implementation dp["zh-rxlifecycle"]
     implementation dp["rxrelay"]
+    implementation dp["rxlife-zhihu-compat"]
+    implementation dp["rxlife-zhihu"]
 
     //下拉刷新
     implementation dp["smartRefresh"]
@@ -59,13 +59,9 @@ dependencies {
     //api dp["rxjava"]
     //api dp["rxkotlin"]
     //api dp["retrofit"]
-    //api dp["rxlifecycle-life"]
     //api dp["rxpermissions"]
 
 
-    //api dp["rxandroid"]
-    //api dp["rxlifecycle"]
-    //api dp["rxlifecycle_components"]
 
 
 

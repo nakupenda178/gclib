@@ -2,6 +2,5 @@ apply from: "../../config.gradle"
 dependencies {
     def dp = rootProject.ext.dependencies
 
-    api dp["rxlifecycle_components"]
 
 }

@@ -10,16 +10,25 @@ import com.github.guqt178.R
 import com.github.guqt178.alert.dialog.ProgressHelper
 import com.github.guqt178.alert.dialog.SweetAlertDialog
 import com.github.guqt178.dialogs.easy.DialogMaker
+import com.github.guqt178.utils.thread.postDelay
 
 
 // <editor-fold defaultstate="collapsed" desc="简单的转圈dialog">
 
-fun Activity?.showLoading(msg: String, cancelable: Boolean = false) {
+fun Activity?.showLoading(msg: String,
+                          dismissDelayTime: Number = 0,
+                          cancelable: Boolean = false) {
     if (this != null && !this.isFinishing) {
         if (DialogMaker.isShowing())
             updateLoadingMessage(msg)
         else
-            DialogMaker.showProgressDialog(this,0.0f, msg, cancelable)
+            DialogMaker.showProgressDialog(this, 0.0f, msg, cancelable)
+
+        if(dismissDelayTime.toInt() >0){
+            postDelay(dismissDelayTime.toLong()) {
+                hideLoading()
+            }
+        }
     }
 }
 
