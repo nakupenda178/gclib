@@ -1,12 +1,15 @@
 package com.github.guqt178.http
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.os.Environment
+import cn.nekocode.rxlifecycle.LifecycleEvent
+import cn.nekocode.rxlifecycle.RxLifecycle
 import com.github.guqt178.http.error.OnErrorCallback
 import com.github.guqt178.http.error.OnSuccessCallback
 import com.github.guqt178.http.retrofit.RetrofitManager
-import com.trello.rxlifecycle2.LifecycleProvider
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -43,17 +46,19 @@ class DownloadWorker {
                 .createApi(InternalApi::class.java)
                 .entry(fileUrl)
                 .subscribeOn(Schedulers.io())
-                .let {
-                    if (getLifeProvider() != null) {
-                        it.compose(getLifeProvider()?.bindToLifecycle())
-                    } else {
-                        it
-                    }
-                }
                 .map {
                     writeResponseBodyToDisk(it)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
+                .let {
+                    if (getLifeProvider() is Activity) {
+                        val owner = getLifeProvider()
+                        it.compose(RxLifecycle.bind(getLifeProvider() as Activity).cancelFlowableWhen(LifecycleEvent.STOP))
+                    } else {
+                        it
+                    }
+                }
+
                 .subscribe({
                     if (it?.isFile == true && it.exists())
                         callBack.invoke(it)
@@ -118,7 +123,7 @@ class DownloadWorker {
     }
 
     //lifecycle
-    private fun getLifeProvider() = context as? LifecycleProvider<*>
+    private fun getLifeProvider() = context as? LifecycleOwner
 
     //下载目录
     private fun createDownloadFileDir(): String = "${context?.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)}"

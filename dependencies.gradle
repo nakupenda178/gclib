@@ -27,9 +27,9 @@ ext {
                      anko_version                 : "0.10.8",
                      rxKotlin_version             : "2.4.0",
                      rxandroid                    : "2.0.2",
-                     rxpermission                 : "0.9.5@aar",
-                     rxlifecycle                  : "2.2.1",
-                     //rxlifecycle                  : "3.1.0",
+
+                     autodispose                  : "2.0.0",
+
                      android_support_version      : "26.1.0",
                      glide_version                : "4.9.0",
                      take_photo_version           : "4.0.3",
@@ -81,19 +81,17 @@ ext {
                     "rxjava"                       : "io.reactivex.rxjava2:rxjava:2.2.15",
                     "rxandroid"                    : "io.reactivex.rxjava2:rxandroid:2.1.1",
 
-                    "rxpermissions"                : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3",
+                    "rxpermissions"                : "com.tbruyelle.rxpermissions2:rxpermissions:0.12",
 
-                    "zh-rxlifecycle-compat"        : "com.github.nekocode.rxlifecycle:rxlifecycle-compact:2.0",
-                    "zh-rxlifecycle"               : "com.github.nekocode.rxlifecycle:rxlifecycle:2.0",
+                    "autodispose-java"             : "com.uber.autodispose2:autodispose:${dependVersion.autodispose}",
+                    "autodispose-provider"         : "com.uber.autodispose2:autodispose-lifecycle:${dependVersion.autodispose}",
+                    "autodispose-provider-x"       : "com.uber.autodispose2:autodispose-androidx-lifecycle:${dependVersion.autodispose}",
+                    "autodispose-android"          : "com.uber.autodispose2:autodispose-android:${dependVersion.autodispose}",
+                    "autodispose-android"          : "com.uber.autodispose2:autodispose-android:${dependVersion.autodispose}",
 
-                    //"rxlifecycle"                  : "com.trello.rxlifecycle3:rxlifecycle:${dependVersion.rxlifecycle}",
-                    "rxlifecycle"                  : "com.trello.rxlifecycle2:rxlifecycle:${dependVersion.rxlifecycle}",
-                    //"rxlifecycle-life"             : "com.trello.rxlifecycle3:rxlifecycle-android:${dependVersion.rxlifecycle}",
-                    "rxlifecycle-life"             : "com.trello.rxlifecycle2:rxlifecycle-android:${dependVersion.rxlifecycle}",
-                    //"rxlifecycle-life-kotlin"      : "com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:${dependVersion.rxlifecycle}",
-                    "rxlifecycle-life-kotlin"      : "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:${dependVersion.rxlifecycle}",
-                    //"rxlifecycle_components"       : "com.trello.rxlifecycle3:rxlifecycle-components:${dependVersion.rxlifecycle}",
-                    "rxlifecycle_components"       : "com.trello.rxlifecycle2:rxlifecycle-components:${dependVersion.rxlifecycle}",
+                    //zhihu版
+                    "rxlife-zhihu"                 : 'com.github.nekocode.rxlifecycle:rxlifecycle:2.0',
+                    "rxlife-zhihu-compat"          : 'com.github.nekocode.rxlifecycle:rxlifecycle-compact:2.0', // Optional
 
                     "rxrelay"                      : "com.jakewharton.rxrelay2:rxrelay:2.1.1",
                     "rxbinding3"                   : "com.jakewharton.rxbinding3:rxbinding:${dependVersion.rxbinding3}",

@@ -1,13 +1,12 @@
 package com.github.guqt178.http
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
-import android.os.Environment
+import cn.nekocode.rxlifecycle.LifecycleEvent
+import cn.nekocode.rxlifecycle.RxLifecycle
 import com.github.guqt178.http.error.OnErrorCallback
-import com.github.guqt178.http.error.OnSuccessCallback
 import com.github.guqt178.http.retrofit.RetrofitManager
-import com.google.gson.JsonObject
-import com.trello.rxlifecycle2.LifecycleProvider
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -16,9 +15,6 @@ import org.json.JSONObject
 import retrofit2.http.GET
 import retrofit2.http.Streaming
 import retrofit2.http.Url
-import java.io.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 /**
@@ -42,14 +38,15 @@ class JsonWorker {
                 .createApi(InternalApi::class.java)
                 .entry(url)
                 .subscribeOn(Schedulers.io())
-                .let {
-                    if (getLifeProvider() != null) {
-                        it.compose(getLifeProvider()?.bindToLifecycle())
-                    } else {
+                .observeOn(AndroidSchedulers.mainThread())
+                .let{
+                    if(getLifeProvider() is Activity){
+                        val owner = getLifeProvider()
+                        it.compose(RxLifecycle.bind(getLifeProvider() as Activity).cancelFlowableWhen(LifecycleEvent.STOP))
+                    }else{
                         it
                     }
                 }
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     val jsonResq = it.contentType()?.toString()?.contains("application/json") ?: false
 
@@ -67,7 +64,7 @@ class JsonWorker {
     }
 
     //lifecycle
-    private fun getLifeProvider() = context as? LifecycleProvider<*>
+    private fun getLifeProvider() = context
 
 
     private interface InternalApi {
