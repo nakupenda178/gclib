@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
@@ -32,6 +33,7 @@ fun View?.onDebounceClick(duration: Long = 2000,
 
 //弹性点击事件(有按下和弹起的动画,已滤重)
 var lastClickTime = 0L
+@SuppressLint("ClickableViewAccessibility")
 fun View?.onFlexibleClick(action: DefaultConsumer<View>? = null) {
     this?.setOnTouchListener { view, event ->
         when (event.action) {

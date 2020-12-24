@@ -68,7 +68,8 @@ public class PictureSelectUtils {
      * @return 图片的uri
      */
     public static Uri createImagePathUri(Activity activity) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) { //适配 Android Q
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) { //适配 Android Q
+        if (Build.VERSION.SDK_INT >= 29) { //适配 Android Q
             String displayName = String.valueOf(System.currentTimeMillis());
             ContentValues values = new ContentValues(2);
             values.put(MediaStore.Images.Media.DISPLAY_NAME, displayName);
@@ -126,14 +127,16 @@ public class PictureSelectUtils {
                     if (cropEnabled) {
                         activity.startActivityForResult(crop(activity, uri, w, h, aspectX, aspectY), CROP);
                     } else {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        if (Build.VERSION.SDK_INT >= 29) {
                             picturePath = ImageUtils.getImagePath(activity, uri);
                         } else {
                             picturePath = takePictureFile.getAbsolutePath();
                         }
                     }
                     /*Android Q 以下发送广播通知图库更新，Android Q 以上使用 insert 的方式则会自动更新*/
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                    //if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                    if (Build.VERSION.SDK_INT >= 29) {
                         activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(takePictureFile)));
                     }
                     break;

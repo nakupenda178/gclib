@@ -13,7 +13,7 @@ class SpaceDecoration(
     private val bottom: Number = top
 ) : RecyclerView.ItemDecoration() {
 
-    override fun getItemOffsets(outRect: Rect?, itemPosition: Int, parent: RecyclerView) {
+    override fun getItemOffsets(outRect: Rect, itemPosition: Int, parent: RecyclerView) {
         outRect?.also {
             it.left = left.toInt()
             it.top = top.toInt()
