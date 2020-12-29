@@ -57,7 +57,7 @@ fun Fragment?.hideLoading() {
 }
 
 fun Context?.showLoading(msg: String, cancelable: Boolean = true) {
-    (this as? Activity)?.showLoading(msg, cancelable)
+    (this as? Activity)?.showLoading(msg,0, cancelable)
 }
 
 fun Context?.updateLoadingMessage(msg: String) {
