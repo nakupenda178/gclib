@@ -115,7 +115,7 @@ public final class DensityConfig {
      *
      * @param application {@link Application}
      */
-    DensityConfig init(Application application) {
+    public DensityConfig init(Application application) {
         return init(application, true, null);
     }
 
@@ -127,7 +127,7 @@ public final class DensityConfig {
      * @param application   {@link Application}
      * @param isBaseOnWidth 详情请查看 {@link #isBaseOnWidth} 的注释
      */
-    DensityConfig init(Application application, boolean isBaseOnWidth) {
+    public DensityConfig init(Application application, boolean isBaseOnWidth) {
         return init(application, isBaseOnWidth, null);
     }
 
@@ -138,7 +138,7 @@ public final class DensityConfig {
      * @param isBaseOnWidth 详情请查看 {@link #isBaseOnWidth} 的注释
      * @param strategy      {@link AutoAdaptStrategy}, 传 {@code null} 则使用 {@link DefaultAutoAdaptStrategy}
      */
-    DensityConfig init(final Application application, boolean isBaseOnWidth, AutoAdaptStrategy strategy) {
+    public DensityConfig init(final Application application, boolean isBaseOnWidth, AutoAdaptStrategy strategy) {
         Preconditions.checkArgument(mInitDensity == -1, "AutoSizeConfig#init() can only be called once");
         Preconditions.checkNotNull(application, "application == null");
         this.mApplication = application;
