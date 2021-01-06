@@ -5,11 +5,15 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
 import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
+import android.widget.TextView
 import com.github.guqt178.DefaultConsumer
-import com.github.guqt178.log.Alog
 import com.github.guqt178.utils.ClickUtils
 
 fun View?.onClick(onClickListener: View.OnClickListener) {
@@ -80,6 +84,40 @@ fun View?.onFlexibleClick(action: DefaultConsumer<View>? = null) {
         true
     }
 }
+
+/**
+ * 设置高亮,和点击事件
+ * @param size 变成多大
+ * @param startIndex 开始位置
+ * @param endIndex   结束位置
+ */
+fun TextView.highLight(highLightText: String?, highLightColor: Int, action: (() -> Unit)? = null) {
+    val fullText = this.text.toString().trim()
+    val index = fullText.indexOf(highLightText.orEmpty())
+    if (index != -1) {
+
+        val endIndex = index + highLightText!!.length
+
+        val style = SpannableStringBuilder()
+        style.append(fullText)
+
+        val clickSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                action?.invoke()
+            }
+        }
+
+        style.setSpan(clickSpan, index, endIndex, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+        text = style
+
+        val colorSpan = ForegroundColorSpan(highLightColor)
+        style.setSpan(colorSpan, index, endIndex, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+
+        movementMethod = LinkMovementMethod.getInstance()
+        text = style
+    }
+}
+
 
 
 

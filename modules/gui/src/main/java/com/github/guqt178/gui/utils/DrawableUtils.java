@@ -276,7 +276,7 @@ public final class DrawableUtils {
     }
 
     /**
-     * 创建一张渐变图片，支持韵脚。
+     * 创建一张渐变图片，支持圆角。
      *
      * @param startColor 渐变开始色
      * @param endColor   渐变结束色

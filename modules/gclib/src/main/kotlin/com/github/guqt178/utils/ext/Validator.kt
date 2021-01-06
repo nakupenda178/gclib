@@ -41,3 +41,19 @@ fun isChinese(c: Char): Boolean {
             || ub == Character.UnicodeBlock.HALFWIDTH_AND_FULLWIDTH_FORMS
             || ub == Character.UnicodeBlock.GENERAL_PUNCTUATION
 }
+
+/**
+ * 判断手机号是否中国大陆
+ *
+ * */
+fun isMainlandPhone(target: String?) = if (target.isNullOrEmpty())
+    false
+else
+    Pattern.compile("^1[3|4|5|6|7|8|9][0-9]{9}\$").matcher(target).matches()
+
+
+/**
+ * 8-16位数字+字母组合的密码格式才对
+ * */
+fun passwordIsValid(target: String?) =
+        Pattern.compile("^(?![0-9]+\$)(?![a-zA-Z]+\$)[0-9A-Za-z]{8,16}\$").matcher(target).matches()

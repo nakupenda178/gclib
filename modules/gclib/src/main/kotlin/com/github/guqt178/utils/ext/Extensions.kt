@@ -27,6 +27,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.io.Serializable
+import java.util.regex.Pattern
 import kotlin.reflect.KProperty
 
 /**
@@ -222,6 +223,23 @@ fun <T : Comparable<T>> List<T>.quickSort(): List<T> =
             smaller.quickSort() + pivot + greater.quickSort()
         }
 
+
+fun isInteger(str: String): Boolean {
+    val pattern = Pattern.compile("^[-\\+]?[\\d]*$")
+    return pattern.matcher(str).matches()
+}
+
+
+/**
+ * 返回candidate中第一个不为空的值
+ */
+fun optionals(vararg candidate: String?): String {
+    candidate.forEach {
+        if (!it.isNullOrEmpty())
+            return it!!
+    }
+    return ""
+}
 
 
 

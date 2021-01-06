@@ -46,7 +46,7 @@ public class StatusBarUtil {
      * @param activity
      * @return 1:MIUUI 2:Flyme 3:android6.0
      */
-    public static int StatusBarLightMode(Activity activity) {
+    public static int statusBarLightMode(Activity activity) {
         int result = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (MIUISetStatusBarLightMode(activity, true)) {
@@ -68,7 +68,7 @@ public class StatusBarUtil {
      * @param activity
      * @param type     1:MIUUI 2:Flyme 3:android6.0
      */
-    public static void StatusBarLightMode(Activity activity, int type) {
+    public static void statusBarLightMode(Activity activity, int type) {
         if (type == 1) {
             MIUISetStatusBarLightMode(activity, true);
         } else if (type == 2) {
@@ -82,7 +82,7 @@ public class StatusBarUtil {
     /**
      * 状态栏暗色模式，清除MIUI、flyme或6.0以上版本状态栏黑色文字、图标
      */
-    public static void StatusBarDarkMode(Activity activity, int type) {
+    public static void statusBarDarkMode(Activity activity, int type) {
         if (type == 1) {
             MIUISetStatusBarLightMode(activity, false);
         } else if (type == 2) {
