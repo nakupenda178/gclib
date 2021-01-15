@@ -7,8 +7,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import com.github.guqt178.DefaultConsumer
 import com.github.guqt178.R
-import com.github.guqt178.alert.dialog.ProgressHelper
-import com.github.guqt178.alert.dialog.SweetAlertDialog
+import com.github.guqt178.dialogs.HintDialog
+import com.github.guqt178.dialogs.base.BaseDialog
 import com.github.guqt178.dialogs.easy.DialogMaker
 import com.github.guqt178.utils.thread.postDelay
 
@@ -24,7 +24,7 @@ fun Activity?.showLoading(msg: String,
         else
             DialogMaker.showProgressDialog(this, 0.0f, msg, cancelable)
 
-        if(dismissDelayTime.toInt() >0){
+        if (dismissDelayTime.toInt() > 0) {
             postDelay(dismissDelayTime.toLong()) {
                 hideLoading()
             }
@@ -57,7 +57,7 @@ fun Fragment?.hideLoading() {
 }
 
 fun Context?.showLoading(msg: String, cancelable: Boolean = true) {
-    (this as? Activity)?.showLoading(msg,0, cancelable)
+    (this as? Activity)?.showLoading(msg, 0, cancelable)
 }
 
 fun Context?.updateLoadingMessage(msg: String) {
@@ -71,17 +71,19 @@ fun Context?.hideLoading() {
 // </editor-fold>
 
 // <editor-fold defaultstate="collapsed" desc="带图标和按钮的提示框">
-fun Context.showSuccessTip(title: String,
-                           content: String,
-                           config: DefaultConsumer<ProgressHelper>? = null): SweetAlertDialog {
-    val dialog = SweetAlertDialog(this).also {
-        config?.invoke(it.progressHelper)
-        it.changeAlertType(SweetAlertDialog.SUCCESS_TYPE)
-        it.titleText = title
-        it.contentText = content
-    }
-    dialog.show()
-    return dialog
+fun Context.showHint(type: Int = 1,
+                     content: String? = "",
+                     duration: Number = 1000,
+                     dismissAction: DefaultConsumer<BaseDialog>? = null) {
+
+    HintDialog.Builder(this)
+            .setType(type)
+            .setMessage(content.orEmpty())
+            .setOnDismissListener {
+                dismissAction?.invoke(it)
+            }
+            .show(duration.toLong())
+
 }
 // </editor-fold>
 

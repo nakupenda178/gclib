@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.text.TextUtils;
 
-import com.github.guqt178.widgets.R;
+import com.github.guqt178.dialogs.R;
+
 
 public class DialogMaker {
 

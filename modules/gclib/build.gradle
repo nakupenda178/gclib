@@ -13,14 +13,7 @@ dependencies {
     ////////////////////////
     implementation project(":modules:res")
     implementation project(":modules:log")
-    implementation project(":modules:http")
     implementation project(":modules:dialog")
-    implementation project(":modules:sweet-alert")
-
-    //implementation project(":modules:widgets")
-    //implementation project(":modules:gui")
-    //implementation project(":modules:auto-size")
-    //implementation project(":modules:top-snackbar")
 
     ////////////////////////
     //第三方库
@@ -35,6 +28,8 @@ dependencies {
 
 
     implementation dp["guava"]
+    implementation dp["gson"]
+    implementation dp["rxandroid"]
 
     implementation dp["glide"]
     implementation dp["glide-transformations"]
@@ -49,18 +44,22 @@ dependencies {
     implementation dp["rxlife-zhihu"]
 
     //下拉刷新
-    implementation dp["smartRefresh"]
+    //implementation dp["smartRefresh"]
     //implementation dp["smartRefresh-h"]//水平刷新
     //implementation dp["smartRefreshHeader"]
 
-    //api dp["retrofit-converter-jackson"]
-    //api dp["retrofit-converter-gson"]
-    //api dp["retrofit-adapter-rxjava2"]
-    //api dp["rxjava"]
-    //api dp["rxkotlin"]
-    //api dp["retrofit"]
-    //api dp["rxpermissions"]
+    //implementation dp["retrofit-converter-jackson"]
+    //implementation dp["retrofit-converter-gson"]
+    //implementation dp["retrofit-adapter-rxjava2"]
+    //implementation dp["rxjava"]
+    //implementation dp["rxkotlin"]
+    //implementation dp["retrofit"]
+    //implementation dp["rxpermissions"]
 
+    //implementation project(":modules:widgets")
+    //implementation project(":modules:gui")
+    //implementation project(":modules:auto-size")
+    //implementation project(":modules:top-snackbar")
 
 
 

@@ -1,6 +1,6 @@
 package com.github.guqt178.utils.ext
 
-import okhttp3.MediaType
+import com.google.common.net.MediaType
 import java.io.File
 import java.net.URLConnection
 

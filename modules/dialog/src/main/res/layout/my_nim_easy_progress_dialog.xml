@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="140dp"
-    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/shape_rec_corner_4dp"
+    android:background="@drawable/shape_rec_corner_6dp"
     android:gravity="center"
+    android:minWidth="120dp"
+    android:minHeight="80dp"
     android:padding="10dp">
 
     <RelativeLayout
@@ -26,11 +30,14 @@
             android:layout_below="@+id/easy_progress_bar"
             android:layout_centerHorizontal="true"
             android:gravity="center"
+            android:maxWidth="120dp"
+            android:maxLines="3"
             android:paddingTop="8dip"
-            android:singleLine="true"
             android:textColor="@android:color/white"
             android:textSize="12sp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            tools:text="加载总加载总加载总加载总"
+            tools:visibility="visible" />
     </RelativeLayout>
 
 </FrameLayout>
