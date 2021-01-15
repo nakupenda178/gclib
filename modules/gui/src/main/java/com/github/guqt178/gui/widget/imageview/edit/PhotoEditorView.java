@@ -49,7 +49,7 @@ public class PhotoEditorView extends RelativeLayout {
 
     private FilterImageView mImgSource;
     private BrushDrawingView mBrushDrawingView;
-    private ImageFilterView mImageFilterView;
+    private MyImageFilterView mImageFilterView;
     private static final int IMG_SRC_ID = 1, BRUSH_SRC_ID = 2, GL_FILTER_ID = 3;
 
     public PhotoEditorView(Context context) {
@@ -102,7 +102,7 @@ public class PhotoEditorView extends RelativeLayout {
         brushParam.addRule(RelativeLayout.ALIGN_BOTTOM, IMG_SRC_ID);
 
         //Setup GLSurface attributes
-        mImageFilterView = new ImageFilterView(getContext());
+        mImageFilterView = new MyImageFilterView(getContext());
         mImageFilterView.setId(GL_FILTER_ID);
         mImageFilterView.setVisibility(GONE);
 

@@ -67,9 +67,9 @@ import static com.github.guqt178.gui.widget.imageview.edit.PhotoFilter.NONE;
  * @author xuexiang
  * @since 2019-10-28 10:01
  */
-class ImageFilterView extends GLSurfaceView implements GLSurfaceView.Renderer {
+class MyImageFilterView extends GLSurfaceView implements GLSurfaceView.Renderer {
 
-    private static final String TAG = "ImageFilterView";
+    private static final String TAG = "MyImageFilterView";
     private int[] mTextures = new int[2];
     private EffectContext mEffectContext;
     private Effect mEffect;
@@ -83,12 +83,12 @@ class ImageFilterView extends GLSurfaceView implements GLSurfaceView.Renderer {
     private OnBitmapSaveListener mOnBitmapSaveListener;
     private boolean isSaveImage = false;
 
-    public ImageFilterView(Context context) {
+    public MyImageFilterView(Context context) {
         super(context);
         init();
     }
 
-    public ImageFilterView(Context context, AttributeSet attrs) {
+    public MyImageFilterView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }

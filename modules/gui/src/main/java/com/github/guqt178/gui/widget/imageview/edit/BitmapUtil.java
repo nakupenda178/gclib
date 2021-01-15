@@ -85,7 +85,7 @@ class BitmapUtil {
     }
 
     /**
-     * Save filter bitmap from {@link ImageFilterView}
+     * Save filter bitmap from {@link MyImageFilterView}
      *
      * @param glSurfaceView surface view on which is image is drawn
      * @param gl            open gl source to read pixels from {@link GLSurfaceView}
