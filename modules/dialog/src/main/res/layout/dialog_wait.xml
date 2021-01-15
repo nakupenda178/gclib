@@ -9,8 +9,7 @@
     android:orientation="vertical"
     app:cardBackgroundColor="@color/black70"
     app:cardCornerRadius="15dp"
-    app:cardElevation="0px"
-    >
+    app:cardElevation="0px">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -21,14 +20,12 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <com.github.guqt178.widgets.view.ProgressView
+        <ProgressBar
             android:layout_width="60dp"
             android:layout_height="60dp"
-            app:barColor="@android:color/white"
-            app:barWidth="2dp"
-            app:fillRadius="false"
-            app:linearProgress="true"
-            app:progressIndeterminate="true"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/white"
+            style="@style/Widget.AppCompat.ProgressBar"
             />
 
         <android.support.v7.widget.AppCompatTextView
