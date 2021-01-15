@@ -26,22 +26,22 @@ dependencies {
     //第三方库
     ////////////////////////
 
-    api dp["kotlin_reflection"]
+    implementation dp["kotlin_reflection"]
 
-    api dp["recyclerview-v7"]
-    api dp["design"]
+    implementation dp["recyclerview-v7"]
+    implementation dp["design"]
 
-    api dp["BaseRecyclerViewAdapterHelper"]
+    implementation dp["BaseRecyclerViewAdapterHelper"]
 
 
-    api dp["guava"]
+    implementation dp["guava"]
 
-    api dp["glide"]
-    api dp["glide-transformations"]
+    implementation dp["glide"]
+    implementation dp["glide-transformations"]
 
-    api dp["multidex"]
+    implementation dp["multidex"]
 
-    api dp["utilcode"]
+    implementation dp["utilcode"]
 
 
     implementation dp["rxrelay"]
