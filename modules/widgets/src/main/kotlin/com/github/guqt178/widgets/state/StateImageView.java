@@ -55,9 +55,9 @@ public class StateImageView extends AppCompatImageView {
 
         TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.StateImageView);
 
-        mNormalDrawable = a.getDrawable(R.styleable.StateImageView_normalBackground);
-        mPressedDrawable = a.getDrawable(R.styleable.StateImageView_pressedBackground);
-        mUnableDrawable = a.getDrawable(R.styleable.StateImageView_unableBackground);
+        mNormalDrawable = a.getDrawable(R.styleable.StateImageView_st_normalBackground);
+        mPressedDrawable = a.getDrawable(R.styleable.StateImageView_st_pressedBackground);
+        mUnableDrawable = a.getDrawable(R.styleable.StateImageView_st_unableBackground);
         setStateBackground(mNormalDrawable, mPressedDrawable, mUnableDrawable);
 
         mDuration = a.getInteger(R.styleable.StateImageView_AnimationDuration, mDuration);

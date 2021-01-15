@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="radius" format="dimension|reference" />
-    <attr name="round" format="boolean|reference" />
+    <attr name="st_radius" format="dimension|reference" />
+    <attr name="st_round" format="boolean" />
 
-    <attr name="normalBackgroundColor" format="color|reference" />
-    <attr name="pressedBackgroundColor" format="color|reference" />
-    <attr name="unableBackgroundColor" format="color|reference" />
+    <attr name="st_normalBackgroundColor" format="color|reference" />
+    <attr name="st_pressedBackgroundColor" format="color|reference" />
+    <attr name="st_unableBackgroundColor" format="color|reference" />
 
-    <attr name="strokeDashWidth" format="dimension|reference" />
-    <attr name="strokeDashGap" format="dimension|reference" />
-    <attr name="normalStrokeWidth" format="dimension|reference" />
-    <attr name="pressedStrokeWidth" format="dimension|reference" />
-    <attr name="unableStrokeWidth" format="dimension|reference" />
-    <attr name="normalStrokeColor" format="color|reference" />
-    <attr name="pressedStrokeColor" format="color|reference" />
-    <attr name="unableStrokeColor" format="color|reference" />
+    <attr name="st_strokeDashWidth" format="dimension|reference" />
+    <attr name="st_strokeDashGap" format="dimension|reference" />
+    <attr name="st_normalStrokeWidth" format="dimension|reference" />
+    <attr name="st_pressedStrokeWidth" format="dimension|reference" />
+    <attr name="st_unableStrokeWidth" format="dimension|reference" />
+    <attr name="st_normalStrokeColor" format="color|reference" />
+    <attr name="st_pressedStrokeColor" format="color|reference" />
+    <attr name="st_unableStrokeColor" format="color|reference" />
 
-    <attr name="normalTextColor" format="color|reference" />
-    <attr name="pressedTextColor" format="color|reference" />
-    <attr name="unableTextColor" format="color|reference" />
-    <attr name="animationDuration" format="integer|reference" />
+    <attr name="st_normalTextColor" format="color|reference" />
+    <attr name="st_pressedTextColor" format="color|reference" />
+    <attr name="st_unableTextColor" format="color|reference" />
+    <attr name="st_animationDuration" format="integer|reference" />
 
-    <attr name="normalBackground" format="color|reference" />
-    <attr name="pressedBackground" format="color|reference" />
-    <attr name="unableBackground" format="color|reference" />
+    <attr name="st_normalBackground" format="color|reference" />
+    <attr name="st_pressedBackground" format="color|reference" />
+    <attr name="st_unableBackground" format="color|reference" />
 
     <attr name="AnimationDuration" format="integer|reference" />
 
     <declare-styleable name="StateButton">
 
         <!--text color-->
-        <attr name="normalTextColor" />
-        <attr name="pressedTextColor" />
-        <attr name="unableTextColor" />
+        <attr name="st_normalTextColor" />
+        <attr name="st_pressedTextColor" />
+        <attr name="st_unableTextColor" />
 
         <!--stroke width and color, dash width, dash gap-->
-        <attr name="strokeDashWidth" />
-        <attr name="strokeDashGap" />
-        <attr name="normalStrokeWidth" />
-        <attr name="pressedStrokeWidth" />
-        <attr name="unableStrokeWidth" />
-        <attr name="normalStrokeColor" />
-        <attr name="pressedStrokeColor" />
-        <attr name="unableStrokeColor" />
+        <attr name="st_strokeDashWidth" />
+        <attr name="st_strokeDashGap" />
+        <attr name="st_normalStrokeWidth" />
+        <attr name="st_pressedStrokeWidth" />
+        <attr name="st_unableStrokeWidth" />
+        <attr name="st_normalStrokeColor" />
+        <attr name="st_pressedStrokeColor" />
+        <attr name="st_unableStrokeColor" />
 
         <!--background color-->
-        <attr name="normalBackgroundColor" />
-        <attr name="pressedBackgroundColor" />
-        <attr name="unableBackgroundColor" />
+        <attr name="st_normalBackgroundColor" />
+        <attr name="st_pressedBackgroundColor" />
+        <attr name="st_unableBackgroundColor" />
 
         <!--background radius-->
-        <attr name="radius" />
-        <attr name="round" />
+        <attr name="st_radius" />
+        <attr name="st_round" />
 
         <!--animation duration-->
-        <attr name="animationDuration" />
+        <attr name="st_animationDuration" />
 
     </declare-styleable>
 
     <declare-styleable name="StateImageView">
-        <attr name="normalBackground" />
-        <attr name="pressedBackground" />
-        <attr name="unableBackground" />
+        <attr name="st_normalBackground" />
+        <attr name="st_pressedBackground" />
+        <attr name="st_unableBackground" />
 
         <!--animation duration-->
         <attr name="AnimationDuration" />
