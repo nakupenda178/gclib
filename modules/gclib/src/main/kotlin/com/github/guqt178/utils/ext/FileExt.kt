@@ -1,10 +1,6 @@
 package com.github.guqt178.utils.ext
 
-import com.google.common.net.MediaType
-import java.io.File
-import java.net.URLConnection
-
-fun File.guessMimeType(): MediaType? {
+/*fun File.guessMimeType(): MediaType? {
     var path = absolutePath
     val fileNameMap = URLConnection.getFileNameMap()
     path = path.replace("#", "")
@@ -27,4 +23,4 @@ fun String?.guessMimeType(): MediaType? {
         contentType = "application/octet-stream"
     }
     return MediaType.parse(contentType)
-}
+}*/

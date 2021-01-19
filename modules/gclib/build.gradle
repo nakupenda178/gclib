@@ -13,7 +13,6 @@ dependencies {
     ////////////////////////
     implementation project(":modules:res")
     implementation project(":modules:log")
-    implementation project(":modules:dialog")
 
     ////////////////////////
     //第三方库
@@ -42,6 +41,7 @@ dependencies {
     implementation dp["rxlife-zhihu-compat"]
     implementation dp["rxlife-zhihu"]
 
+    //implementation project(":modules:dialog")
     //下拉刷新
     //implementation dp["smartRefresh"]
     //implementation dp["smartRefresh-h"]//水平刷新
