@@ -27,7 +27,6 @@ dependencies {
     implementation dp["BaseRecyclerViewAdapterHelper"]
 
 
-    implementation dp["guava"]
     implementation dp["gson"]
     implementation dp["rxandroid"]
 
@@ -47,6 +46,7 @@ dependencies {
     //implementation dp["smartRefresh"]
     //implementation dp["smartRefresh-h"]//水平刷新
     //implementation dp["smartRefreshHeader"]
+    //implementation dp["guava"]
 
     //implementation dp["retrofit-converter-jackson"]
     //implementation dp["retrofit-converter-gson"]
